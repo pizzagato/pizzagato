@@ -80,10 +80,10 @@
 #### Suunnittelutason luokkakaavio
 
 * Valkotaululla
-* [Tehtävä 10](teht/t10-umlc.md)
+* [Tehtävä 10](teht/t10-uml_class.md)
 
 #### Sekvenssikaavio ohjelman etenemisestä
 
 * Valkotaululla
-* [Tehtävä 11](teht/t11.umls.md)
+* [Tehtävä 11](teht/t11.uml_seq.md)
 
