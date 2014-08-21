@@ -85,5 +85,5 @@
 #### Sekvenssikaavio ohjelman etenemisestä
 
 * Valkotaululla
-* [Tehtävä 11](teht/t11.uml_seq.md)
+* [Tehtävä 11](teht/t11-uml_seq.md)
 
