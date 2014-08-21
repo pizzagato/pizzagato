@@ -33,24 +33,24 @@
 ### Sessio
 
 * [Demo 5](demot/d05-session)
-* [Tehtävä 5](demot/d05-session.md)
+* [Tehtävä 5](teht/t05-session.md)
 
 ## 2. Tietokantasovellukset
 
 ### JDBC
 
 * [Demo 6](demot/d06-jdbc)
-* [Tehtävä 6](demot/d06-jdbc.md)
+* [Tehtävä 6](teht/t06-jdbc.md)
 
 ### DAO
 
 * [Demo 7](demot/d07-dao)
-* [Tehtävä 7](demot/d07-dao.md)
+* [Tehtävä 7](teht/t07-dao.md)
 
 ### Prepared Statement
 
 * [Demo 8](demot/d08-prepstat)
-* [Tehtävä 8](teht/d08-prepstat.md)
+* [Tehtävä 8](teht/t08-prepstat.md)
 
 ## 3. Versionhallinta
 
