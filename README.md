@@ -60,7 +60,7 @@
 
 ### Git
 
-* clone, pull, commit, push
+* clone, pull, add, commit, push
 * [Tehtävä 9](teht/t09-git.md)
 
 ## 4. Ohjelmistosuunnittelu
