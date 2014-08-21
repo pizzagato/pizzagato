@@ -12,8 +12,8 @@
 
 ### Servletit
 
-* Demo 1
-* Tehtävä 1
+* [Demo 1](demot/d01-servlet)
+* [Tehtävä 1](teht/t01-serv.md)
 
 ### JSP
 
