@@ -1,6 +1,6 @@
 #Ohjelmistokehitys - Tekninen materiaali
 
-## Webbisovellukset
+## 1. Webbisovellukset
 
 ### Servletit
 ### JSP
@@ -8,18 +8,18 @@
 ### JSTL
 ### Sessio
 
-## Tietokantasovellukset
+## 2. Tietokantasovellukset
 
 ### JDBC
 ### DAO
 ### Prepared Statement
 
-## Versionhallinta
+## 3. Versionhallinta
 
 ### Periaatteet
 ### Git
 
-## Ohjelmistosuunnittelu
+## 4. Ohjelmistosuunnittelu
 
 ### Arkkitehtuuri
 
