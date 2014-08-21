@@ -4,31 +4,53 @@
 
 ### Client - Server
 
-* Valkotaulupiirros
+* Valkotaululla
 
 ### Staattinen vs dynaaminen web
 
-* Valkotaulupiirros
+* Valkotaululla
 
 ### Servletit
 
-* Demo 1 toiminnallisuus
-* Demo 1 rakentaminen
+* Demo 1
 * Tehtävä 1
 
 ### JSP
 
+* Demo 2
+* Tehtävä 2
+
 ### Lomakkeet
+
+* Demo 3
+* Tehtävä 3
 
 ### JSTL
 
+* Demo 4
+* Tehtävä 4
+
 ### Sessio
+
+* Demo 5
+* Tehtävä 5
 
 ## 2. Tietokantasovellukset
 
 ### JDBC
+
+* Demo 6
+* Tehtävä 6
+
 ### DAO
+
+* Demo 7
+* Tehtävä 7
+
 ### Prepared Statement
+
+* Demo 8
+* Tehtävä 8
 
 ## 3. Versionhallinta
 
@@ -41,20 +63,21 @@
 
 #### Kolmitasoarkkitehtuuri
 
+* Valkotaululla
+
 #### MVC
+
+* Valkotaululla
 
 ### Mallinnus
 
 #### Suunnittelutason luokkakaavio
 
+* Valkotaululla
+* Tehtävä 9
+
 #### Sekvenssikaavio ohjelman etenemisestä
 
-### Muuta
+* Valkotaululla
+* Tehtävä 10
 
-#### ID-relaatiosta olioviittaukseen
-
-##### Yhden suhde yhteen
-
-##### Yhden suhde moneen
-
-##### Monen suhde moneen
