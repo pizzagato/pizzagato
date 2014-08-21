@@ -1,7 +1,8 @@
 #Tehtävä 1: Servletit
 
 ##Projekti
-Luo uusi dynaaminen webbiprojekti eclipsellä ja anna sen nimeksi PizzeriaAdmin (ilman ääkkösiä).
+
+*Luo uusi dynaaminen webbiprojekti eclipsellä ja anna sen nimeksi PizzeriaAdmin (ilman ääkkösiä).
 
 ##Bean
 
