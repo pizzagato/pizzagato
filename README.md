@@ -2,10 +2,26 @@
 
 ## 1. Webbisovellukset
 
+### Client - Server
+
+* Valkotaulupiirros
+
+### Staattinen vs dynaaminen web
+
+* Valkotaulupiirros
+
 ### Servletit
+
+* Demo 1 toiminnallisuus
+* Demo 1 rakentaminen
+* Tehtävä 1
+
 ### JSP
+
 ### Lomakkeet
+
 ### JSTL
+
 ### Sessio
 
 ## 2. Tietokantasovellukset
