@@ -20,6 +20,20 @@
 * [Demo 2](demot/d02-jsp)
 * [Tehtävä 2](teht/t02-jsp.md)
 
+### HTTP
+
+#### Head, body
+
+* Valkotaululla
+
+#### Get, Post
+
+* Valkotaululla
+
+#### Parametrit
+
+* Valkotaululla
+
 ### Lomakkeet
 
 * [Demo 3](demot/d03-form)
