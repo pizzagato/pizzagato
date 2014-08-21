@@ -1,4 +1,4 @@
-#OHJELMISTOKEHITYS: tekninen materiaali
+#OHJELMISTOKEHITYS: TEKNIIKKA
 
 ## 1. Webbisovellukset
 
