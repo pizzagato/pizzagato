@@ -1,5 +1,13 @@
 #Tehtävä 1: Servletit
 
+## Eclipse
+
+Avaa Eclipse ja vaihda näkymäksi Java EE -perspektiivi
+
+## Tomcat
+
+* Luo Eclipseen uusi Tomcat-palvelininstanssi
+
 ##Projekti
 
 * Luo uusi dynaaminen webbiprojekti eclipsellä ja anna sen nimeksi PizzeriaAdmin (ilman ääkkösiä).
