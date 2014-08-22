@@ -5,6 +5,7 @@
 ###
 * [Eclipse IDE for Java EE Developers](http://www.eclipse.org)
 * [Tomcat](http://tomcat.apache.org)
+  * Eclipse -> File -> New -> Other... -> Server -> Apache -> Tomcat v7.0 Server -> Browse... -> C:\install\apache-tomcat-7.0.39
 * Proto-palvelimet (Git, MariaDB, Tomcat):
 * [Materiaali@GitHub] (https://github.com/jleikko/ohke)
   * Eclipse -> File -> Import -> Projects from Git -> Clone URI -> https://github.com/jleikko/ohke.git
