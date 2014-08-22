@@ -7,6 +7,12 @@ Avaa Eclipse ja vaihda näkymäksi Java EE -perspektiivi
 ## Tomcat
 
 * Luo Eclipseen uusi Tomcat-palvelininstanssi
+* *Eclipse -> File -> New -> Other... -> Server -> Apache -> Tomcat v7.0 Server -> Browse... -> C:\install\apache-tomcat-7.0.39*
+
+## Esimerkkikoodit
+
+* Klonaa demoprojektit GitHubin ohke-Repositorysta
+* *Eclipse -> File -> Import -> Projects from Git -> (Clone) URI -> https://github.com/jleikko/ohke.git*
 
 ##Projekti
 
