@@ -1,6 +1,6 @@
 #OHJELMISTOKEHITYS: TEKNIIKKA
 
-## 0. Kehitysympäristö
+## 1. Kehitysympäristö kuntoon
 
 ###
 * [Eclipse IDE for Java EE Developers](http://www.eclipse.org)
@@ -9,7 +9,7 @@
 * [Materiaali@GitHub] (https://github.com/jleikko/ohke)
   * Eclipse -> File -> Import -> Projects from Git -> Clone URI -> https://github.com/jleikko/ohke.git
 
-### 1. Webbisovellukset
+### 2. Webbisovellukset
 
 ### Client - Server
 
@@ -58,7 +58,7 @@
 * [Demo 5](demot/d05-session)
 * [Tehtävä 5](teht/t05-session.md)
 
-## 2. Tietokantasovellukset
+## 3. Tietokantasovellukset
 
 ### JDBC
 
@@ -75,7 +75,7 @@
 * [Demo 8](demot/d08-prepstat)
 * [Tehtävä 8](teht/t08-prepstat.md)
 
-## 3. Versionhallinta
+## 4. Versionhallinta
 
 ### Periaatteet
 
@@ -86,7 +86,7 @@
 * clone, pull, add, commit, push
 * [Tehtävä 9](teht/t09-git.md)
 
-## 4. Ohjelmistosuunnittelu
+## 5. Ohjelmistosuunnittelu
 
 ### Arkkitehtuurisuunnittelu
 
