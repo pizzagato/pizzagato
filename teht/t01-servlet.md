@@ -26,7 +26,7 @@ Avaa Eclipse ja vaihda näkymäksi Java EE -perspektiivi
 ##Servlet
 
 * Luo pakkaus fi.omapizzeria.admin.controller.
-* Luo uusi Servlet, jonka nimi on ControllerServlet ja se löytyy osoittteesta http://host/PizzeriaAdmin/controller.
+* Luo uusi Servlet, jonka nimi on ControllerServlet ja merkitse se löytymään osoittteesta http://host/PizzeriaAdmin/controller.
 * Luo doGet-metodin sisällä ArrayList, ja lisää siihen kolme erilaista pizzaa.
 * Tulosta doGet-metodin lopussa responseen collectionin sisältö käyttäen foreach-silmukkaa. Erottele pizzat toisistaan p-tageilla ja pizzan ominaisuudet toisistaan br-tageilla.
 
