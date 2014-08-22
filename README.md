@@ -1,6 +1,15 @@
 #OHJELMISTOKEHITYS: TEKNIIKKA
 
-## 1. Webbisovellukset
+## 0. Kehitysympäristö
+
+###
+* [Eclipse IDE for Java EE Developers](http://www.eclipse.org)
+* [Tomcat](http://tomcat.apache.org)
+* Proto-palvelimet (GIT-versionhallinta, MariaDB, Tomcat):
+* [Materiaali@GitHub] (https://github.com/jleikko/ohke)
+  * Eclipse -> File -> Import -> Projects from Git -> Clone URI -> https://github.com/jleikko/ohke.git
+
+### 1. Webbisovellukset
 
 ### Client - Server
 
