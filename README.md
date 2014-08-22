@@ -10,13 +10,13 @@
   * Lisätietoa luvassa myöhemmin
   * [SSH-tunnelointiohjeet MariaDB:n etäkäyttöä varten](http://myy.haaga-helia.fi/~ict2tn007/materiaalit/SSHputkitus_proto.pdf)
 * [Materiaali@GitHub] (https://github.com/jleikko/ohke)
-  * Eclipse -> File -> Import -> Projects from Git -> Clone URI -> https://github.com/jleikko/ohke.git
+  * *Eclipse -> File -> Import -> Projects from Git -> Clone URI -> https://github.com/jleikko/ohke.git*
 
 ### 2. Webbisovellukset
 
 ### Client - Server
 
-- [X] Valkotaululla
+* Valkotaululla
 
 ### Staattinen vs dynaaminen web
 
