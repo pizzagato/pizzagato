@@ -16,7 +16,7 @@
 
 ### Client - Server
 
-[X] Valkotaululla
+- [X] Valkotaululla
 
 ### Staattinen vs dynaaminen web
 
