@@ -2,7 +2,7 @@
 
 ##Rautalankamalli
 * Luo webbiprojektisi WebContent-hakemistoon img-niminen kansio.
-* Piirrä rautalankamalli pizzalistan ylläpitoliittymästä ja tallenna se png-tiedostona webbiprojektisi img-kansioon. Vaadittavia ominaisuuksia on pizzojen listaus, lisäys, poisto ja muokkaus. Voit käyttää esim. työkalua http://draw.io
+* Piirrä rautalankamalli pizzalistan ylläpitotyökalusta ja tallenna se png-tiedostona webbiprojektisi img-kansioon. Vaadittavia ominaisuuksia on pizzojen listaus, lisäys, poisto ja muokkaus. Voit käyttää esim. työkalua http://draw.io
 
 ##CSS
 * Luo projektisi WebContent-hakemistoon css-kansio.
