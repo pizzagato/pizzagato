@@ -23,7 +23,7 @@
 ### Servletit
 
 * [Demo 1](demot/d01-servlet)
-* [Tehtävä 1](teht/t01-servlet.md)
+* [Tehtävä 1 - DL 29.8.](teht/t01-servlet.md)
 
 ### JSP
 
