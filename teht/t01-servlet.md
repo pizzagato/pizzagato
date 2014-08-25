@@ -16,7 +16,7 @@ Avaa Eclipse ja vaihda näkymäksi Java EE -perspektiivi
 
 ##Projekti
 
-* Luo uusi dynaaminen webbiprojekti eclipsellä ja anna sen nimeksi PizzeriaAdmin (ilman ääkkösiä).
+* Luo uusi dynaaminen webbiprojekti eclipsellä ja anna sen nimeksi PizzeriaAdmin. (Target Runtime: Tomcat 7)
 
 ##Bean
 
@@ -30,7 +30,7 @@ Avaa Eclipse ja vaihda näkymäksi Java EE -perspektiivi
 * Luo doGet-metodin sisällä ArrayList, ja lisää siihen kolme erilaista pizzaa.
 * Tulosta doGet-metodin lopussa responseen collectionin sisältö käyttäen foreach-silmukkaa. Erottele pizzat toisistaan p-tageilla ja pizzan ominaisuudet toisistaan br-tageilla.
 
-## *Winkki*
+## *Vinkki Servlettiin*
 ```java
 //TEHDÄÄN LISTALLINEN OLIOITA
 List<Pizza> lista = new ArrayList<Pizza>();
