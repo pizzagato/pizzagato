@@ -17,3 +17,4 @@
 
 # Testaus
 * Testaa osoitetta: http://localhost:8080/PizzeriaAdmin/controller
+* Sinun pitäisi saada näkyviin html-muotoiltu lista pizzoista. Sen sisältö on koodattu controlleriin ja ulkoasu on määritelty jsp-sivulla.
