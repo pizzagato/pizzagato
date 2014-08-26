@@ -6,10 +6,14 @@
 * Kopio demoprojektista jstl-kirjasto omaan lib-hakemistoosi.
 
 ## Servlet
-* Siirrä Pizzalista-arraylistin luomiskoodi jsp-sivulta Controlleriin (doget vai dopost?)
+* Poista controllerin doGet-metodista kaikki tulostamiseen liittyvä koodi. Jätä jäljellä ainostaan ArrayListin luominen ja sen täyttäminen pizzoilla.
+* Lisää doGet-metodin loppuun sellainen koodi, että pizzalista listätään requestin atribuutiksi.
+* Forwardoi requesti lopuksi  jsp-sivulle.
 
-# JSTL out, if ja forEach
+# JSP
 * Lisää listaukseen käytetyn jsp-sivun alkuun jstl-referenssi.
-* Muuta listaussivu sellaiseksi, että se tulostaa juuri lisätyn pizzan nimen käyttäen c:out-tagia.
-* Siirrä uuden pizzan lisäysilmoitus c:if-tagin sisään. Voit käyttää myös when-otherwise-tagiparia.
-* Muuta myös listaus jstl-tagien mukaiseksi. Käytä silmukassa apuna c:forEach-tagia ja tietojen tulostamisessa c:out-tageja.
+* Voit poistaa jsp-sivulta arraylistin luomiskoodin. ArrayList saapuu requestin mukana controllerilta jsp-sivulle.
+* Looppaa läpi controllerilta saapunut pizzalista käyttäen silmukassa apuna c:forEach-tagia ja tietojen tulostamisessa c:out-tageja.
+
+# Testaus
+* Testaa osoitetta: http://localhost:8080/PizzeriaAdmin/controller
