@@ -13,7 +13,7 @@
 # JSP
 * Lisää listaukseen käytetyn jsp-sivun alkuun jstl-referenssi.
 * Voit poistaa jsp-sivulta arraylistin luomiskoodin. ArrayList saapuu requestin mukana controllerilta jsp-sivulle.
-* Looppaa läpi controllerilta saapunut pizzalista käyttäen silmukassa apuna c:forEach-tagia ja tietojen tulostamisessa c:out-tageja.
+* Looppaa läpi controllerilta saapunut pizzalista käyttäen silmukkana c:forEach-tagia ja tietojen tulostamisessa c:out-tageja.
 
 # Testaus
 * Testaa osoitetta: http://localhost:8080/PizzeriaAdmin/controller
