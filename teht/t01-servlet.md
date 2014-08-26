@@ -40,7 +40,7 @@ lista.add(new Pizza(2, "Frutti di Mare", 9.90));
 //KÄYDÄÄN LISTA LÄPI JA TULOSTETAAN KUKIN PIZZA HTML-MUOTOILTUNA
 for(Pizza p : lista) {
 	wout.println("<p>");
-	wout.println("<b>" +p.getNimi()+"</b>");
+	wout.println("<b>" +p.getNimi() +"</b>");
 	wout.println("<br/>");
 	wout.println("Hinta: " + p.getHinta() +" EUR");
 	wout.println("</p>");
