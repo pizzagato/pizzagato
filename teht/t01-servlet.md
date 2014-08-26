@@ -30,14 +30,14 @@ Avaa Eclipse ja vaihda näkymäksi Java EE -perspektiivi
 * Luo doGet-metodin sisällä ArrayList, ja lisää siihen kolme erilaista pizzaa.
 * Tulosta doGet-metodin lopussa responseen collectionin sisältö käyttäen foreach-silmukkaa. Erottele pizzat toisistaan p-tageilla ja pizzan ominaisuudet toisistaan br-tageilla.
 
-## *Vinkki Servlettiin*
+## *Vinkki servlettiin*
 ```java
 //TEHDÄÄN LISTALLINEN OLIOITA
 List<Pizza> lista = new ArrayList<Pizza>();
-lista.add(new Pizza("Margarita", 7.90));
-lista.add(new Pizza("Frutti di Mare", 9.90));
+lista.add(new Pizza(1, "Margarita", 7.90));
+lista.add(new Pizza(2, "Frutti di Mare", 9.90));
 
-//KÄYDÄÄN LISTA LÄPI JA TULOSTETAAN KUKIN RIVI HTML-MUOTOILTUNA
+//KÄYDÄÄN LISTA LÄPI JA TULOSTETAAN KUKIN PIZZA HTML-MUOTOILTUNA
 for(Pizza p : lista) {
 	wout.println("<p>");
 	wout.println(p.getNimi());
