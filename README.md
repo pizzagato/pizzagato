@@ -28,7 +28,7 @@
 ### JSP
 
 * [Demo 2](demot/d02-jsp)
-* [Tehtävä 2](teht/t02-jsp.md)
+* [Tehtävä 2 - DL 1.9.](teht/t02-jsp.md)
 
 ### HTTP
 
