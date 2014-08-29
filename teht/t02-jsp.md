@@ -20,3 +20,70 @@
 * Testaa osoitetta http://localhost:8080/PizzeriaAdmin/list.jsp
 * Selaimen pitäisi näyttää html-muotoiltu pizzalista sekä toimiva linkki saman sivun rautalankamalliin.
 * Lisäyksen ja poiston ei kuulu tässä vaiheessa toimia.
+
+##Esimerkki CSS:n käytöstä
+
+###HTML
+```html
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+</head>
+<body>
+	<p>Hei</p>
+	
+	<div id="SpesiaaliDivi">A</div>
+	<div class="Sininen">B</div>
+	
+	<table>
+	<tr>
+	<td class="Sininen">a</td>
+	<td>b</td>
+	</tr>
+	<tr>
+	<td>c</td>
+	<td>d</td>
+	</tr>
+	</table>
+</body>
+</html>
+```
+
+###CSS
+```css
+/* Kaikkialla sama fonttityyli*/
+
+* {
+	font-family: Verdana;
+}
+div {
+	background-color: #EEEEEE;
+	padding: 10px;
+	margin: 20px;
+}
+table {
+	border: 2px;
+	border-color: black;
+	border-style: dashed;
+	height:300px;
+	width:300px;
+}
+td {
+	border: 1px;
+	border-color: black;
+	border-style: solid;
+}
+.Sininen {
+	background-color: #DDDDFF;
+}
+#SpesiaaliDivi {
+	position: fixed;
+    top: 5px;
+    right: 5px;
+    width: 50px;
+    height: 50px;
+}
+```
