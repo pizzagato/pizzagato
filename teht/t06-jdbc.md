@@ -3,8 +3,8 @@
 ## Tietokantapalvelin (MariaDB)
 
 * Kirjaudu SSH:lla sisään ryhmäsi protopalvelimelle (esim. Putty).
+  * RED: proto113.haaga-helia.fi  
   * GREEN: proto184.haaga-helia.fi
-  * RED: proto113.haaga-helia.fi
   * BLUE: proto114.haaga-helia.fi
 * Tarkista henkilökohtaisen tietokantasi salasana komennolla `cat MySQLPassword.txt`.
 * Kirjaudu sisään tietokantaan komennolla `mysql -u <kayttajatunnuksesi> -p`
