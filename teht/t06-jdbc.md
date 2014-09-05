@@ -21,10 +21,10 @@
 ## MariaDB JDBC Driver
 
 * Lataa MariaDB Client Library osoitteesta https://downloads.mariadb.org/client-java
-* Tallenna ladattu jar-tiedosto Eclipse-projektisi kansioon WebContent/WEB-INF/lib
+* Tallenna ladattu jar-tiedosto Eclipse-projektin kansioon WebContent/WEB-INF/lib
 
 ## Testiluokka
-* Luo projektiisi uusi pakkaus test
+* Luo Eclipse-projektiin uusi pakkaus test
 * Luo uusi Java-luokka pakkaukseen test ja anna sille nimeksi DBTest
 * Kirjoita DBTest-luokkaan main-metodi
 * Ohjelmoi main-metodin sisään sellainen koodi, joka tulostaa ajettaessa konsoliin pizza-taulun sisällön.
