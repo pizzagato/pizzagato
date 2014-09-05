@@ -7,7 +7,7 @@
 
 ## Servlet
 * Poista controllerin doGet-metodista kaikki tulostamiseen liittyvä koodi. Jätä jäljellä ainostaan ArrayListin luominen ja sen täyttäminen pizzoilla.
-* Lisää doGet-metodin loppuun sellainen koodi, että pizzalista listätään requestin atribuutiksi.
+* Lisää doGet-metodin loppuun sellainen koodi, että pizzalista lisätään requestin atribuutiksi.
 * Forwardoi requesti lopuksi  jsp-sivulle.
 
 # JSP
