@@ -53,20 +53,33 @@ public class ControllerServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+			if (request.getParameter("nimi")!=null) {
+				String nimi = request.getParameter("nimi");
+				String sHinta = request.getParameter("hinta");
+				Double hinta = Double.parseDouble(sHinta);
+				Pizza p = new Pizza(nimi, hinta);
+				try {
+					PizzaDAO pDao = new PizzaDAO();
+					pDao.lisaa(p);
+				} catch (DAOPoikkeus e) {
+					throw new ServletException(e);
+				}		
+			}else if (request.getParameter("poista") != null){
+				String poista = request.getParameter("poista");		
+				Pizza pois = new Pizza(poista);
+				try {
+					PizzaDAO pDao = new PizzaDAO();
+					pDao.poista(pois);
+				} catch (Exception e) {
+					throw new ServletException(e);
+				}
+			}
 		
-		String nimi = request.getParameter("nimi");
-		String sHinta = request.getParameter("hinta");
-		Double hinta = Double.parseDouble(sHinta);
-		Pizza p = new Pizza(nimi, hinta);
-		try {
-			PizzaDAO pDao = new PizzaDAO();
-			pDao.lisaa(p);
-		} catch (DAOPoikkeus e) {
-			throw new ServletException(e);
-		}
 		response.sendRedirect("ControllerServlet"); //redirect doGet
 
 	}
-
+	//
+	//
+	//
 }

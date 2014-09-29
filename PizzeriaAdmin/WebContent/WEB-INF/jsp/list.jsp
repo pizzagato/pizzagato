@@ -38,11 +38,18 @@
 		<tr>
 		<td class="pizzat"><c:out value="${p.nimi}"/></td>
 		<td class="pizzat"><c:out value="${p.hinta}"/></td>
-		<td><img alt="delete" src="img/delete.png" width="15" height="15"></td>
 		</tr>
 		</c:forEach>
 		</table>
-		
+		<form action="ControllerServlet" method="post">
+			<table>
+				<tr>
+					<td><label>Poista nimellä:<br></label>
+							<input type="text" name="poista" size="40"></td>
+							<td><button type="submit" class="submit">Poista</button></td>
+				</tr>
+			</table>
+		</form>
 		<br>
 		<a href="img/Rautalankamalli2.png">Rautalankamalli</a>
 		

@@ -34,6 +34,10 @@ public class Pizza {
 		this.nimi = nimi;
 		this.hinta = hinta;
 	}
+	public Pizza(String nimi){
+		super();
+		this.nimi = nimi;
+	}
 	@Override
 	public String toString() {
 		return "Pizza [id=" + id + ", nimi=" + nimi + ", hinta=" + hinta + "]";

@@ -89,6 +89,23 @@ public class PizzaDAO {
 			suljeYhteys(yhteys);
 		}
 	}
+	
+	public void poista(Pizza pois) throws DAOPoikkeus{
+		Connection yhteys = avaaYhteys();
+		try {
+			String sql = "DELETE from pizzat WHERE nimi = ?";
+			PreparedStatement lause = yhteys.prepareStatement(sql);
+			lause.setString(1, pois.getNimi());
+			lause.executeUpdate();
+			System.out.println("Poistettiin pizza tietokannasta: "+pois);
+		} catch (Exception e) {
+			throw new DAOPoikkeus("Pizzan poistoyritys aiheutti virheen", e);
+		}finally {
+			//LOPULTA AINA SULJETAAN YHTEYS
+			suljeYhteys(yhteys);
+		}
+		
+	}
 }
 
 
