@@ -22,12 +22,12 @@ public class PizzaDAO extends Yhteys {
 		Connection yhteys = avaaYhteys();
 		try {
 			//suoritetaan haku
-			String sql = "select id, nimi, hinta from pizzat";
+			String sql = "select pizza_id, nimi, hinta from Pizza";
 			Statement haku = yhteys.createStatement();
 			ResultSet tulokset = haku.executeQuery(sql);
 			//k‰yd‰‰n hakutulokset l‰pi
 			while(tulokset.next()) {
-				int id = tulokset.getInt("id");
+				int id = tulokset.getInt("pizza_id");
 				String nimi = tulokset.getString("nimi");
 				Double hinta = tulokset.getDouble("hinta");
 				//lis‰t‰‰n pizza listaan
@@ -51,7 +51,7 @@ public class PizzaDAO extends Yhteys {
 		try {
 			//suoritetaan haku
 			//alustetaan sql-lause
-			String sql = "insert into pizzat(nimi, hinta) values(?,?)";
+			String sql = "insert into Pizza(nimi, hinta) values(?,?)";
 			PreparedStatement lause = yhteys.prepareStatement(sql);
 			//t‰ytet‰‰n puuttuvat tiedot
 			lause.setString(1, p.getNimi());
@@ -71,7 +71,7 @@ public class PizzaDAO extends Yhteys {
 	public void poista(Pizza pois) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
-			String sql = "DELETE from pizzat WHERE nimi = ?";
+			String sql = "DELETE from Pizza WHERE nimi = ?";
 			PreparedStatement lause = yhteys.prepareStatement(sql);
 			lause.setString(1, pois.getNimi());
 			lause.executeUpdate();
