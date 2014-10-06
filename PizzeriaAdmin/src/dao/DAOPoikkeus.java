@@ -15,4 +15,3 @@ public class DAOPoikkeus extends Exception {
 		super(viesti, aiheuttaja);
 	}
 }
-//kommentti

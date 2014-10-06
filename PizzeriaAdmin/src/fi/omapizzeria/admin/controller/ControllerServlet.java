@@ -1,9 +1,7 @@
 package fi.omapizzeria.admin.controller;
 
 import java.io.IOException;
-//import java.io.PrintWriter;
 import java.util.ArrayList;
-//import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,9 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DAOPoikkeus;
-import dao.PizzaDAO;
 import fi.omapizzeria.admin.bean.Pizza;
+import fi.omapizzeria.admin.controller.AddService;
 
 /**
  * Servlet implementation class ControllerServlet
@@ -34,48 +31,26 @@ public class ControllerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		ArrayList<Pizza> pizzat;
-		try {
-			PizzaDAO pDao = new PizzaDAO();
-			pizzat = pDao.haeKaikki();
-		} catch(DAOPoikkeus e) {
-			throw new ServletException(e);
-		}
-		//requestiin talteen
+		SearchService search = new SearchService();
+		pizzat=search.haePizzat();
 		request.setAttribute("pizzat", pizzat);
 		
 		request.getRequestDispatcher("WEB-INF/jsp/list.jsp").forward(request, response);
 		
 
+	
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-			if (request.getParameter("nimi")!=null) {
-				String nimi = request.getParameter("nimi");
-				String sHinta = request.getParameter("hinta");
-				Double hinta = Double.parseDouble(sHinta);
-				Pizza p = new Pizza(nimi, hinta);
-				try {
-					PizzaDAO pDao = new PizzaDAO();
-					pDao.lisaa(p);
-				} catch (DAOPoikkeus e) {
-					throw new ServletException(e);
-				}		
-			}else if (request.getParameter("poista") != null){
-				String poista = request.getParameter("poista");		
-				Pizza pois = new Pizza(poista);
-				try {
-					PizzaDAO pDao = new PizzaDAO();
-					pDao.poista(pois);
-				} catch (Exception e) {
-					throw new ServletException(e);
-				}
-			}
-		
+		//if-else -rakenne, jolla selvitet‰‰n mist‰ kutsu on tullut
+		//kun on haluttu listaus:
+		AddService palvelu = new AddService();
+		palvelu.lisaaPoista(request, response);
 		response.sendRedirect("ControllerServlet"); //redirect doGet
 
 	}

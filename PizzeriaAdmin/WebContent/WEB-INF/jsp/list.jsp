@@ -2,7 +2,6 @@
 <%@page import="fi.omapizzeria.admin.bean.Pizza"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,10 +10,7 @@
 		<title>Pizzojen hallintasivu</title>
 	</head>
 	<body>
-		<p> <c:out value="${aAika}"/> 
-			<c:if test="${not empty param.added}">Uuden pizzan lis‰‰minen onnistui</c:if> 
-		</p>
-		
+	
 		<p>Pizzojen hallintasivu</p>
 		
 		<form action="ControllerServlet" method="post">
@@ -34,7 +30,7 @@
 		<br>
 		
 		<table>
-		<c:forEach items="${pizzat}" var="p">
+		<c:forEach items="${pizzat}" var="p"> <!--doGet-metodi-->
 		<tr>
 		<td class="pizzat"><c:out value="${p.nimi}"/></td>
 		<td class="pizzat"><c:out value="${p.hinta}"/></td>
@@ -52,8 +48,6 @@
 		</form>
 		<br>
 		<a href="img/Rautalankamalli2.png">Rautalankamalli</a>
-		
-
 		
 	</body>
 </html>
