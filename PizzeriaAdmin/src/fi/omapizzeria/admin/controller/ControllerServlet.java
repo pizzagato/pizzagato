@@ -31,16 +31,23 @@ public class ControllerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Pizzalistaan> pizzat;
-		SearchService search = new SearchService();
-		pizzat=search.haePizzat();
-		request.setAttribute("pitsut", pizzat);		
-		request.getRequestDispatcher("WEB-INF/jsp/list.jsp").forward(request, response);
 		
-
+			ArrayList<Pizzalistaan> pizzat;
+			SearchService search = new SearchService();
+			pizzat=search.haePizzat();
+			request.setAttribute("pitsut", pizzat);		
+			request.getRequestDispatcher("WEB-INF/jsp/list.jsp").forward(request, response);
+				
+		
+		//request.getRequestDispatcher("WEB-INF/jsp/etusivu.jsp").forward(request, response);
 	
 		
 	}
+	protected void doGet2(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("WEB-INF/jsp/etusivu.jsp").forward(request, response);
+
+	
+}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
