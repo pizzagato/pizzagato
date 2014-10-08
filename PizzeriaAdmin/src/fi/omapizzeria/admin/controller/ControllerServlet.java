@@ -35,8 +35,8 @@ public class ControllerServlet extends HttpServlet {
 			ArrayList<Pizzalistaan> pizzat;
 			SearchService search = new SearchService();
 			pizzat=search.haePizzat();
-			request.setAttribute("pitsut", pizzat);		
-			request.getRequestDispatcher("WEB-INF/jsp/list.jsp").forward(request, response);
+			request.setAttribute("pitsut", pizzat);
+			request.getRequestDispatcher("WEB-INF/jsp/etusivu.jsp").forward(request, response);
 				
 		
 		//request.getRequestDispatcher("WEB-INF/jsp/etusivu.jsp").forward(request, response);
@@ -44,7 +44,11 @@ public class ControllerServlet extends HttpServlet {
 		
 	}
 	protected void doGet2(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("WEB-INF/jsp/etusivu.jsp").forward(request, response);
+		ArrayList<Pizzalistaan> pizzat;
+		SearchService search = new SearchService();
+		pizzat=search.haePizzat();
+		request.setAttribute("pitsut", pizzat);		
+		request.getRequestDispatcher("WEB-INF/jsp/list.jsp").forward(request, response);
 
 	
 }

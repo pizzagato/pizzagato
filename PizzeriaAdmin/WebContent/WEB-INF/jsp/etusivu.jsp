@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+    <%%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,10 +19,12 @@
 <div id="container">
 	<div id="navi">
 		<ul class>
-			<li class="active"><a href="//localhost:8080/PizzaGatto/ControllerServlet">ETUSIVU</a> </li>
-			<li> <a href="sivusto/menu.html">MENU</a></li>
-			<li><a href="sivusto/tilaa.html">TILAA</a></li>	
-			<li><a href="sivusto/yht.html">YHTEYSTIEDOT</a></li>
+			<li class="active"><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/ControllerServlet">ETUSIVU</a> </li>
+			<li> <a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Menu">MENU</a></li>
+			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Tilaa">TILAA</a></li>	
+			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Yht">YHTEYSTIEDOT</a></li>
+			
+			<!-- muistilapuksi jos kaikki menee vituiksi <li><a href="//localhost:8080/PizzaGatto/Yht">YHTEYSTIEDOT</a></li> -->
 			
 		</ul>
 	<div id="logo"><img src="img/pizzalogo_mini.png" alt="Logo"></div>

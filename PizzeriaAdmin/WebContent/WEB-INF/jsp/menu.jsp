@@ -1,5 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="fi.omapizzeria.admin.bean.Pizza"%>
+<%@page import="fi.omapizzeria.admin.controller.ControllerServlet"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%--<!DOCTYPE html>
@@ -71,10 +72,10 @@
 <div id="container">
 	<div id="navi">
 		<ul class>
-			<li><a href="sivusto/etusivu.jsp">ETUSIVU</a></li>
-			<li class="active"><a href="list.jsp">MENU</a> </li>
-			<li><a href="sivusto/tilaa.html">TILAA</a> </li>	
-			<li><a href="sivusto/yht.html">YHTEYSTIEDOT</a></li>
+			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/ControllerServlet">ETUSIVU</a> </li>
+			<li class="active"><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Menu">MENU</a> </li>
+			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Tilaa">TILAA</a> </li>	
+			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Yht">YHTEYSTIEDOT</a></li>
 			
 		</ul>
 	<div id="logo"><img src="img/pizzalogo_mini.png" alt="Logo"></div>
