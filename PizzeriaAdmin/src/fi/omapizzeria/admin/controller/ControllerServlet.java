@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fi.omapizzeria.admin.bean.Pizza;
+import fi.omapizzeria.admin.bean.Pizzalistaan;
 import fi.omapizzeria.admin.controller.AddService;
 
 /**
@@ -31,11 +31,10 @@ public class ControllerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Pizza> pizzat;
+		ArrayList<Pizzalistaan> pizzat;
 		SearchService search = new SearchService();
 		pizzat=search.haePizzat();
-		request.setAttribute("pizzat", pizzat);
-		
+		request.setAttribute("pitsut", pizzat);		
 		request.getRequestDispatcher("WEB-INF/jsp/list.jsp").forward(request, response);
 		
 

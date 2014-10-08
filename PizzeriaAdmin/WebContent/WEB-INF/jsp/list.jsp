@@ -7,13 +7,13 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link href="css/styles.css" rel="stylesheet" type="text/css">
-		<title>Pizzojen hallintasivu</title>
+		<title>Pizzalista</title>
 	</head>
 	<body>
 	
-		<p>Pizzojen hallintasivu</p>
+		<p>Pizzalista:</p>
 		
-		<form action="ControllerServlet" method="post">
+		<%----<form action="ControllerServlet" method="post">
 			<table>
 				<tr>
 					<td><label>Nimi<br></label>
@@ -27,17 +27,25 @@
 			</table>
 			
 		</form>
+		 --%>
 		<br>
 		
 		<table>
-		<c:forEach items="${pizzat}" var="p"> <!--doGet-metodi-->
+		<c:set var="counter" value="0"/>
+		<c:forEach items="${pitsut}" var="p"> <!--doGet-metodi-->
 		<tr>
+		<c:set var="counter" value="${counter + 1}"/>
+		<td><c:out value="${counter}"/></td>
 		<td class="pizzat"><c:out value="${p.nimi}"/></td>
 		<td class="pizzat"><c:out value="${p.hinta}"/></td>
+		<c:forEach items="${p.taytenimi}" var="listNumber" varStatus="listStatus">
+		<td class="pizzat"> <c:out value="${listNumber}" /></td>
+		<%--<td class="pitsut"><c:out value="${p.taytenimi}"/></td>  --%>
+		</c:forEach>
 		</tr>
 		</c:forEach>
 		</table>
-		<form action="ControllerServlet" method="post">
+		<%--<form action="ControllerServlet" method="post">
 			<table>
 				<tr>
 					<td><label>Poista nimellä:<br></label>
@@ -48,6 +56,6 @@
 		</form>
 		<br>
 		<a href="img/Rautalankamalli2.png">Rautalankamalli</a>
-		
+		 --%>
 	</body>
 </html>

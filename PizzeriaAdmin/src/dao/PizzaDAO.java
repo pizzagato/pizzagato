@@ -6,64 +6,86 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
 import fi.omapizzeria.admin.bean.Pizza;
+import fi.omapizzeria.admin.bean.Pizzalistaan;
 
-public class PizzaDAO extends Yhteys {
-
-	
+public class PizzaDAO extends Yhteys {	
 	
 	public PizzaDAO() throws DAOPoikkeus {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public ArrayList<Pizza> haeKaikki() throws DAOPoikkeus{	
-		ArrayList<Pizza> pizzat = new ArrayList<Pizza>();
+	public ArrayList<Pizzalistaan> haeKaikki() throws DAOPoikkeus{
+		//ArrayList<Pizza> pizzat = new ArrayList<Pizza>();
+		ArrayList<Pizzalistaan> pitsut = new ArrayList<Pizzalistaan>();
 		Connection yhteys = avaaYhteys();
 		try {
-			//suoritetaan haku
-			String sql = "select pizza_id, nimi, hinta from Pizza";
-			Statement haku = yhteys.createStatement();
-			ResultSet tulokset = haku.executeQuery(sql);
-			//k‰yd‰‰n hakutulokset l‰pi
-			while(tulokset.next()) {
-				int id = tulokset.getInt("pizza_id");
-				String nimi = tulokset.getString("nimi");
-				Double hinta = tulokset.getDouble("hinta");
-				//lis‰t‰‰n pizza listaan
-				Pizza p = new Pizza(id, nimi, hinta);
-				pizzat.add(p);
+			//String sql = "select pizza_id, nimi, hinta from Pizza";
+			//Statement haku = yhteys.createStatement();
+			//ResultSet tulokset = haku.executeQuery(sql);
+			String sql2 = "Select Pizza.nimi, hinta, Tayte.nimi from Pizza LEFT JOIN Pizzatayte ON Pizza.pizza_id=Pizzatayte.pizza_id LEFT JOIN Tayte ON Pizzatayte.tayte_id=Tayte.tayte_id";
+			Statement haku2 = yhteys.createStatement();
+			ResultSet tulokset2 = haku2.executeQuery(sql2);
+			//while(tulokset.next()) {
+				//int id = tulokset.getInt("pizza_id");
+				//String nimi = tulokset.getString("nimi");
+				//Double hinta = tulokset.getDouble("hinta");
+				//Pizza p = new Pizza(id, nimi, hinta);
+				//pizzat.add(p);
+			//}
+			while (tulokset2.next()){
+				String nimi = tulokset2.getString("pizza.nimi");
+				Double hinta = tulokset2.getDouble("hinta");
+				String taytenimi = tulokset2.getString("tayte.nimi");
+				Pizzalistaan p = new Pizzalistaan(nimi, hinta);
+				p.setTayte(taytenimi);
+				boolean jatkuu = true;
+				
+				do{
+					if (tulokset2.next() && tulokset2.getString("pizza.nimi").equals(nimi)) {
+						taytenimi = tulokset2.getString("tayte.nimi");
+						if (taytenimi != null) {
+							p.setTayte(taytenimi);
+						}
+					}else{ 
+						tulokset2.previous();
+						jatkuu = false;
+					}
+					
+									
+				}while (tulokset2.getString("pizza.nimi").equals(nimi) && jatkuu); 
+				System.out.println(p);				
+	
+				pitsut.add(p);
+				
 			}
+			//for (int i = 0; i < pitsut.size(); i++) {
+				//System.out.println(pitsut.get(i));
+			//}
+			
 		} catch(Exception e) {
-			//JOTAIN VIRHETTƒ TAPAHTUI
 			throw new DAOPoikkeus("Tietokantahaku aiheutti virheen", e);
-		} finally {
-			//LOPULTA AINA SULJETAAN YHTEYS
+		}
+		finally {
 			suljeYhteys(yhteys);
 			}
-		System.out.println("HAETTIIN TIETOKANNASTA PIZZAT: " +pizzat.toString());
-		return pizzat;
+		//System.out.println("HAETTIIN TIETOKANNASTA PIZZAT: " +pizzat.toString());
+		return pitsut;
 	}
 	
 	public void lisaa(Pizza p) throws DAOPoikkeus{
-		//avataan yhteys
 		Connection yhteys = avaaYhteys();
 		try {
-			//suoritetaan haku
-			//alustetaan sql-lause
 			String sql = "insert into Pizza(nimi, hinta) values(?,?)";
 			PreparedStatement lause = yhteys.prepareStatement(sql);
-			//t‰ytet‰‰n puuttuvat tiedot
 			lause.setString(1, p.getNimi());
 			lause.setDouble(2, p.getHinta());
-			//suoritetaan lause
 			lause.executeUpdate();
 			System.out.println("LISƒTTIIN PIZZA TIETOKANTAAN: "+p);
 		} catch(Exception e) {
-			//JOTAIN VIRHETTƒ TAPAHTUI
 			throw new DAOPoikkeus("Pizzan lis‰‰misyritys aiheutti virheen", e);
 		}finally {
-			//LOPULTA AINA SULJETAAN YHTEYS
 			suljeYhteys(yhteys);
 		}
 	}
@@ -79,11 +101,8 @@ public class PizzaDAO extends Yhteys {
 		} catch (Exception e) {
 			throw new DAOPoikkeus("Pizzan poistoyritys aiheutti virheen", e);
 		}finally {
-			//LOPULTA AINA SULJETAAN YHTEYS
 			suljeYhteys(yhteys);
 		}
 		
 	}
 }
-
-
