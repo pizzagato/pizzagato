@@ -15,6 +15,10 @@ h1{
 	color: #122D08;
 	text-transform: uppercase;
 }
+h2{
+	font-size: 19px;
+	color: #0c3c11;
+}
 p{
 	font-size: 16px;
 }
@@ -127,5 +131,29 @@ footer img{
 	background: rgba(255,255,255,0.3);
 	padding: 10px;
 	box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
+	margin: auto;
 	margin-bottom: 300px;
+}
+#tekstiboxi table{
+	border-collapse: collapse;
+	width: 600px;
+}
+#tekstiboxi td{
+		padding: 2px;
+}
+#tekstiboxi td:nth-child(1){
+	width: 15px;
+}
+#tekstiboxi tr:nth-child(odd){
+	background-color: #759533;
+}
+#tekstiboxi tr:nth-child(even){
+	height: 50px;
+	vertical-align: top;
+}
+#tekstiboxi li{
+	list-style-type: none;
+	display: inline-block;
+	float: left;
+	padding-right: 5px;
 }

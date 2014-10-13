@@ -19,12 +19,12 @@
 <div id="container">
 	<div id="navi">
 		<ul class>
-			<li class="active"><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/ControllerServlet">ETUSIVU</a> </li>
+			<li class="active"><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Etusivu">ETUSIVU</a> </li>
 			<li> <a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Menu">MENU</a></li>
 			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Tilaa">TILAA</a></li>	
 			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Yht">YHTEYSTIEDOT</a></li>
 			
-			<!-- muistilapuksi jos kaikki menee vituiksi <li><a href="//localhost:8080/PizzaGatto/Yht">YHTEYSTIEDOT</a></li> -->
+			<!-- muistilapuksi jos kaikki menee vituiksi <li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Yht">YHTEYSTIEDOT</a></li> -->
 			
 		</ul>
 	<div id="logo"><img src="img/pizzalogo_mini.png" alt="Logo"></div>
@@ -37,30 +37,29 @@
 <div id="slide"><!-- Start WOWSlider.com BODY section id=wowslider-container1 -->
 	<div id="wowslider-container1">
 	<div class="ws_images"><ul>
-<li><a href="http://wowslider.com/vf"><img src="data1/images/kuva1..png" alt="full screen slider" title="kuva1" id="wows1_0"/></a></li>
-<li><img src="data1/images/kuva2..png" alt="kuva2" title="kuva2" id="wows1_1"/></li>
+<li><img src="data1/images/pizza1..png" alt="pizza1" title="pizza1" id="wows1_0"/></li>
+<li><a href="http://wowslider.com/vf"><img src="data1/images/pizza3..png" alt="full screen slider" title="pizza3" id="wows1_1"/></a></li>
+<li><img src="data1/images/pizza2..png" alt="pizza2" title="pizza2" id="wows1_2"/></li>
 </ul></div>
 <div class="ws_bullets"><div>
-<a href="#" title="kuva1">1</a>
-<a href="#" title="kuva2">2</a>
-</div></div><span class="wsl"><a href="http://wowslider.com/vs">jquery slideshow</a> by WOWSlider.com v6.6</span>
+<a href="#" title="pizza1">1</a>
+<a href="#" title="pizza3">2</a>
+<a href="#" title="pizza2">3</a>
+</div></div><span class="wsl"><a href="http://wowslider.com/vc">css slider</a> by WOWSlider.com v6.6</span>
 	<a href="#" class="ws_frame"></a>
 	<div class="ws_shadow"></div>
 	</div>
 	<script type="text/javascript" src="engine1//wowslider.js"></script>
 	<script type="text/javascript" src="engine1//script.js"></script>
 <!-- End WOWSlider.com BODY section -->
-
-
-
 </div>
 
 <div id="wrapper">
 	<div class="vasen">
 	<h1>Otsikko</h1>
-	<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae viverra nisl, vitae vulputate nunc. Nullam accumsan odio non diam semper, et sollicitudin dolor pulvinar. Sed sit amet egestas libero. Nullam tempor augue lacus, quis viverra magna mattis sed. Etiam a accumsan libero, quis molestie mauris. Maecenas orci est, dapibus pellentesque metus vitae, placerat laoreet purus. Mauris vestibulum et lectus eu rhoncus. Quisque ut ligula laoreet, euismod ante vel, facilisis nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+	<p> Pizzagatto on moderni italialaisperinteinen pizzeria ja illanistujaiskohde Helsingin Kalliossa. Pizzamme ovat leivottu italialaisia perinteit‰ noudattaen parhaista jauhoista. Taikinaa kohotamme 24 tuntia, joka tekee pizzoista keveit‰ ja maukkaita. K‰yt‰mme parhaita raaka-aineita taataksemme pizzojen maun ja laadun.</p>
 
-<p>Cras vitae cursus sem. Sed vulputate nulla et nisl lobortis maximus. Quisque suscipit enim vitae mauris consectetur volutpat. Aenean pretium risus at urna finibus, quis congue nulla commodo. Curabitur vel leo tristique, fermentum nisl a, consequat nunc. Duis id mi vitae orci consequat congue.</p>
+<p>Meille pizzat eiv‰t ole vain nopeaa ja helppoa ravintoa vaan innoittava kulinaarinen kokemus itsess‰‰n. Haluamme tarjota kaupunkilaisille mahdollisuuden pys‰hty‰ aitojen el‰mysten ‰‰reen ja nauttia ruoasta, juomasta, seurasta ja tunnelmasta. Kaikkea t‰t‰ on Pizzagatto. Tervetuloa!</p>
 
 	</div>
 	<div class="oikea">

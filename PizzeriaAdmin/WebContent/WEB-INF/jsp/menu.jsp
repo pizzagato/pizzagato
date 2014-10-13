@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="fi.omapizzeria.admin.bean.Pizza"%>
-<%@page import="fi.omapizzeria.admin.controller.ControllerServlet"%>
+<%@page import="fi.omapizzeria.admin.controller.EtusivuServlet"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%--<!DOCTYPE html>
@@ -72,7 +72,7 @@
 <div id="container">
 	<div id="navi">
 		<ul class>
-			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/ControllerServlet">ETUSIVU</a> </li>
+			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Etusivu">ETUSIVU</a> </li>
 			<li class="active"><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Menu">MENU</a> </li>
 			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Tilaa">TILAA</a> </li>	
 			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Yht">YHTEYSTIEDOT</a></li>
@@ -82,8 +82,8 @@
 	</div>
 
 </div>
-
-<p>Pizzalista:</p>
+	<div id="tekstiboxi">
+<h1>Pizzalista</h1>
 		
 		<%----<form action="ControllerServlet" method="post">
 			<table>
@@ -105,15 +105,15 @@
 		<table>
 		<c:set var="counter" value="0"/>
 		<c:forEach items="${pitsut}" var="p"> <!--doGet-metodi-->
-		<tr>
+		<tr><h2>
 		<c:set var="counter" value="${counter + 1}"/>
-		<td><c:out value="${counter}"/></td>
-		<td class="pizzat"><c:out value="${p.nimi}"/></td>
-		<td class="pizzat"><c:out value="${p.hinta}"/></td>
-		<c:forEach items="${p.taytenimi}" var="listNumber" varStatus="listStatus">
-		<td class="pizzat"> <c:out value="${listNumber}" /></td>
+		<td class="numerointi"><c:out value="${counter}"/></td>
+		<td class="pizzat" colspan="4"><c:out value="${p.nimi}"/></td>
+		<td class="pizzat"><c:out value="${p.hinta}"/></td></h2></tr><td></td>
+		<td class="pizzat"><c:forEach items="${p.taytenimi}" var="listNumber" varStatus="listStatus">
+		 <ul><li><c:out value="${listNumber}" /></li></ul>
 		<%--<td class="pitsut"><c:out value="${p.taytenimi}"/></td>  --%>
-		</c:forEach>
+		</c:forEach></td>
 		</tr>
 		</c:forEach>
 		</table>
@@ -129,6 +129,8 @@
 		<br>
 		<a href="img/Rautalankamalli2.png">Rautalankamalli</a>
 		 --%>
+		 
+</div>
 <div style="clear: both"></div>
 
 <footer>
