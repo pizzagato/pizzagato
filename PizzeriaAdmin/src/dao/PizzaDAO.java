@@ -31,7 +31,7 @@ public class PizzaDAO extends Yhteys {
 				p.setTayte(taytenimi);
 				boolean jatkuu = true;
 				
-				do{
+				do{//Lis‰t‰‰n t‰ytteet oikeaan pizzaan
 					if (selectTulokset.next() && selectTulokset.getString("pizza.nimi").equals(nimi)) {
 						taytenimi = selectTulokset.getString("tayte.nimi");
 						if (taytenimi != null) {
