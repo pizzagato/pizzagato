@@ -3,6 +3,10 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * Tämä luokka hoitaa tietokantayhteyden avaamisen käyttäen DBConnectionProperties-luokasta saatuja asetuksia
+ */
+
 public class Yhteys {
 	public Yhteys() throws DAOPoikkeus {
 		try {
@@ -11,7 +15,7 @@ public class Yhteys {
 			throw new DAOPoikkeus("Tietokannan ajuria ei kyetty lataamaan.", e);
 		}
 	}
-	
+	//Metodi yhteyden avaamiseen
 	public Connection avaaYhteys() throws DAOPoikkeus {
 		try {
 			return DriverManager.getConnection(
@@ -22,7 +26,7 @@ public class Yhteys {
 			throw new DAOPoikkeus("Tietokantayhteyden avaaminen epäonnistui", e);
 		}
 	}
-	
+	//Metodi yhteyden sulkemiseen
 	public void suljeYhteys(Connection yhteys) throws DAOPoikkeus {
 		try {
 			if (yhteys != null && !yhteys.isClosed())

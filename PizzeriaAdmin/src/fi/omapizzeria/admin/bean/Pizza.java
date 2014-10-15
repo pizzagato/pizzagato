@@ -1,5 +1,7 @@
 package fi.omapizzeria.admin.bean;
 
+//Vanha luokka, siirryt‰‰n Pizzalistaan. Viel‰ ei voi poistaa, Pizzalistaan puuttuu id.
+
 public class Pizza {
 	int id;
 	String nimi;

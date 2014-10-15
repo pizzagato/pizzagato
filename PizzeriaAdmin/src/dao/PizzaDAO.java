@@ -15,54 +15,40 @@ public class PizzaDAO extends Yhteys {
 	public PizzaDAO() throws DAOPoikkeus {
 		super();
 	}
-
+	//haeKaikki-metodi hakee tietokannasta kaikki pizzat
 	public ArrayList<Pizzalistaan> haeKaikki() throws DAOPoikkeus{
-		//ArrayList<Pizza> pizzat = new ArrayList<Pizza>();
 		ArrayList<Pizzalistaan> pitsut = new ArrayList<Pizzalistaan>();
-		Connection yhteys = avaaYhteys();
+		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
 		try {
-			//String sql = "select pizza_id, nimi, hinta from Pizza";
-			//Statement haku = yhteys.createStatement();
-			//ResultSet tulokset = haku.executeQuery(sql);
-			String sql2 = "Select Pizza.nimi, hinta, Tayte.nimi from Pizza LEFT JOIN Pizzatayte ON Pizza.pizza_id=Pizzatayte.pizza_id LEFT JOIN Tayte ON Pizzatayte.tayte_id=Tayte.tayte_id";
-			Statement haku2 = yhteys.createStatement();
-			ResultSet tulokset2 = haku2.executeQuery(sql2);
-			//while(tulokset.next()) {
-				//int id = tulokset.getInt("pizza_id");
-				//String nimi = tulokset.getString("nimi");
-				//Double hinta = tulokset.getDouble("hinta");
-				//Pizza p = new Pizza(id, nimi, hinta);
-				//pizzat.add(p);
-			//}
-			while (tulokset2.next()){
-				String nimi = tulokset2.getString("pizza.nimi");
-				Double hinta = tulokset2.getDouble("hinta");
-				String taytenimi = tulokset2.getString("tayte.nimi");
-				Pizzalistaan p = new Pizzalistaan(nimi, hinta);
+			String selectLause = "Select Pizza.nimi, hinta, Tayte.nimi from Pizza LEFT JOIN Pizzatayte ON Pizza.pizza_id=Pizzatayte.pizza_id LEFT JOIN Tayte ON Pizzatayte.tayte_id=Tayte.tayte_id";
+			Statement selectHaku = yhteys.createStatement(); //Syˆtt‰‰ SQL:‰‰n komennon, jolla valitaan pizzat
+			ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
+			while (selectTulokset.next()){ //Laitetaan tulokset omiin muuttujiinsa
+				String nimi = selectTulokset.getString("pizza.nimi");
+				Double hinta = selectTulokset.getDouble("hinta");
+				String taytenimi = selectTulokset.getString("tayte.nimi");
+				Pizzalistaan p = new Pizzalistaan(nimi, hinta); //Yhdistet‰‰n pizzoihin niiden ominaisuudet
 				p.setTayte(taytenimi);
 				boolean jatkuu = true;
 				
 				do{
-					if (tulokset2.next() && tulokset2.getString("pizza.nimi").equals(nimi)) {
-						taytenimi = tulokset2.getString("tayte.nimi");
+					if (selectTulokset.next() && selectTulokset.getString("pizza.nimi").equals(nimi)) {
+						taytenimi = selectTulokset.getString("tayte.nimi");
 						if (taytenimi != null) {
 							p.setTayte(taytenimi);
 						}
 					}else{ 
-						tulokset2.previous();
+						selectTulokset.previous();
 						jatkuu = false;
 					}
 					
 									
-				}while (tulokset2.getString("pizza.nimi").equals(nimi) && jatkuu); 
+				}while (selectTulokset.getString("pizza.nimi").equals(nimi) && jatkuu); 
 				System.out.println(p);				
 	
 				pitsut.add(p);
 				
 			}
-			//for (int i = 0; i < pitsut.size(); i++) {
-				//System.out.println(pitsut.get(i));
-			//}
 			
 		} catch(Exception e) {
 			throw new DAOPoikkeus("Tietokantahaku aiheutti virheen", e);
@@ -70,10 +56,9 @@ public class PizzaDAO extends Yhteys {
 		finally {
 			suljeYhteys(yhteys);
 			}
-		//System.out.println("HAETTIIN TIETOKANNASTA PIZZAT: " +pizzat.toString());
 		return pitsut;
 	}
-	
+	//AddServicen k‰ytt‰m‰ lis‰ysmetodi, jolla pizza lis‰t‰‰n tietokantaan. Ei k‰ytˆss‰.
 	public void lisaa(Pizza p) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
@@ -89,7 +74,7 @@ public class PizzaDAO extends Yhteys {
 			suljeYhteys(yhteys);
 		}
 	}
-	
+	//AddServicen k‰ytt‰m‰ poistometodi, jolla pizza poistetaan tietokannasta. Ei k‰ytˆss‰.
 	public void poista(Pizza pois) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {

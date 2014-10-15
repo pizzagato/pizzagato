@@ -9,34 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
-/**
- * Servlet implementation class Menu
- */
-@WebServlet("/Yht")
-public class YhtServlet extends HttpServlet {
+@WebServlet("/Yhteystiedot") //P‰‰te joka n‰kyy URLissa
+public class YhteystiedotServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public YhtServlet() {
+    public YhteystiedotServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    //Ohjaa yhteystietosivulle
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.getRequestDispatcher("WEB-INF/jsp/yht.html").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/jsp/yhteystiedot.html").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}

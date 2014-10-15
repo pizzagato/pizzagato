@@ -1,5 +1,5 @@
 package dao;
-
+//DaoPoikkeus-luokka palauttaa virheilmoituksia virheen sattuessa
 public class DAOPoikkeus extends Exception {
 	private static final long serialVersionUID = 1L;
 	public DAOPoikkeus() {

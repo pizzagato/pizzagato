@@ -2,6 +2,9 @@ package fi.omapizzeria.admin.bean;
 
 import java.util.ArrayList;
 
+//Pizza-luokka, jossa olevilla metodeilla luodaan Pizza-objekti ja asetetaan sille ominaisuuksia. Puuttuu vielä id.
+//Vaatii uudelleennimeämistä
+
 public class Pizzalistaan {
 	String nimi;
 	Double hinta;

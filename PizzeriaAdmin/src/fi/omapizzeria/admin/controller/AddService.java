@@ -18,7 +18,7 @@ public class AddService extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	
+	//Metodi, jolla admin-näkymässä lisätään ja poistetaan pizzoja tietokannasta. Ei käytössä.
 	public void lisaaPoista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getParameter("nimi")!=null) {
 			String nimi = request.getParameter("nimi");
@@ -30,7 +30,8 @@ public class AddService extends HttpServlet {
 				pDao.lisaa(p);
 			} catch (DAOPoikkeus e) {
 				throw new ServletException(e);
-			}		
+			}
+			//Pizza poistetaan
 		}else if (request.getParameter("poista") != null){
 			String poista = request.getParameter("poista");		
 			Pizza pois = new Pizza(poista);

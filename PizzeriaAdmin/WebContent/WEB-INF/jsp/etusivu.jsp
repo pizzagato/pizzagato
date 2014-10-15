@@ -22,9 +22,7 @@
 			<li class="active"><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Etusivu">ETUSIVU</a> </li>
 			<li> <a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Menu">MENU</a></li>
 			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Tilaa">TILAA</a></li>	
-			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Yht">YHTEYSTIEDOT</a></li>
-			
-			<!-- muistilapuksi jos kaikki menee vituiksi <li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Yht">YHTEYSTIEDOT</a></li> -->
+			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Yhteystiedot">YHTEYSTIEDOT</a></li>
 			
 		</ul>
 	<div id="logo"><img src="img/pizzalogo_mini.png" alt="Logo"></div>
@@ -65,8 +63,8 @@
 	<div class="oikea">
 	<h1>AUKIOLOAJAT</h1>
 	<table>
-	<tr><td>MA-PE</td><td>35-54656</td></tr>
-	<tr><td>LA</td><td>459-35</td></tr>
+	<tr><td>MA-PE</td><td>09-23</td></tr>
+	<tr><td>LA</td><td>10-23</td></tr>
 	<tr><td>SU</td><td>Suljettu</td><tr>
 	</table>
 	</div>
