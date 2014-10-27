@@ -54,7 +54,6 @@
 
 <div id="wrapper">
 	<div class="vasen">
-	<h1>Otsikko</h1>
 	<p> Pizzagatto on moderni italialaisperinteinen pizzeria ja illanistujaiskohde Helsingin Kalliossa. Pizzamme ovat leivottu italialaisia perinteit‰ noudattaen parhaista jauhoista. Taikinaa kohotamme 24 tuntia, joka tekee pizzoista keveit‰ ja maukkaita. K‰yt‰mme parhaita raaka-aineita taataksemme pizzojen maun ja laadun.</p>
 
 <p>Meille pizzat eiv‰t ole vain nopeaa ja helppoa ravintoa vaan innoittava kulinaarinen kokemus itsess‰‰n. Haluamme tarjota kaupunkilaisille mahdollisuuden pys‰hty‰ aitojen el‰mysten ‰‰reen ja nauttia ruoasta, juomasta, seurasta ja tunnelmasta. Kaikkea t‰t‰ on Pizzagatto. Tervetuloa!</p>
@@ -67,6 +66,10 @@
 	<tr><td>LA</td><td>10-23</td></tr>
 	<tr><td>SU</td><td>Suljettu</td><tr>
 	</table>
+	
+	<h1>Kotiinkuljetus</h1>
+	<p>Kuljetamme kaikki annokset X euron lis‰maksua vastaan X kilometrin s‰teell‰. Toimitusaika noin 30-60 minuuttia. </p>
+	<p>Tilaukset viimeist‰‰n puoli tuntia ennen ravintolan sulkeutumista.</p>
 	</div>
 </div>
 
@@ -78,7 +81,6 @@
 	</div>
 
 	<div id="oikeafooter">
-	Tilaa uutiskirje <input type="text" name="subscribe"> <button>Tilaa</button>
 	</div>
 
 </footer>

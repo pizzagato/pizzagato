@@ -1,5 +1,6 @@
 *{
-	font-family: arial, sans-serif;
+	font-family: verdana, sans-serif;
+	font-size: 14px;
 }
 body{
 	background: url("tekstuuri5.jpg");
@@ -11,17 +12,21 @@ body{
 	position: relative;
 }
 h1{
-	font-size: 24px;
-	color: #122D08;
+	font-size: 20px;
+	color: #446304;
 	text-transform: uppercase;
+	padding-left: 10px;
 }
 h2{
-	font-size: 19px;
-	color: #0c3c11;
+	font-size: 18px;
+	color: #576E27;
+	margin-top: 0px;
 }
 p{
-	font-size: 16px;
+	font-size: 14px;
+	padding-left: 10px;
 }
+/* navigaatio ja logo */
 #navi{
 	margin-top: -10px;
 	margin-left: -10px;
@@ -50,6 +55,7 @@ p{
 	margin-left: 100px;
 }
 #navi a{
+	font-size: 18px;
 	padding-top: 40px;
 	display: block;
 	height: 60px;
@@ -72,11 +78,13 @@ p{
 	margin-left: -90px;
 	z-index: 3;
 }
+/* slideshow */
 #slide{
 	position:relative;
 	z-index: 1;
 	margin: auto;
 }
+/* sisältö ja etusivun palstat */
 #wrapper{
 	margin: auto;
 	margin-top: 20px;
@@ -87,16 +95,16 @@ p{
 .vasen{
 	float: left;
 	width: 420px;
-	height: 500px;
-	background: rgba(255,255,255,0.3);
+	height: 300px;
+	background: rgba(255,255,255,0.45);
 	box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
 	padding: 10px;
 }
 .oikea{
 	float: right;
 	width: 420px;
-	height: 200px;
-	background: rgba(255,255,255,0.3);
+	height: 400px;
+	background: rgba(255,255,255,0.45);
 	padding: 10px;
 	box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
 	margin-bottom: 400px;
@@ -104,6 +112,10 @@ p{
 .oikea td{
 	width: 80px;
 }
+.oikea table{
+	padding-left: 10px;
+}
+/* footer ja sen sisältö */
 footer{
 	position: fixed;
    	bottom:0;
@@ -125,13 +137,15 @@ footer img{
 	float:right;
 	margin-right: 15px;
 }
+/* sisältöboksi kaikilla muilla sivuilla paitsi etusivulla */
 #tekstiboxi{
 	width: 900px;
 	min-height: 400px;
-	background: rgba(255,255,255,0.3);
-	padding: 10px;
+	background: rgba(255,255,255,0.45);
+	padding: 15px;
 	box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
 	margin: auto;
+	margin-top: -30px;
 	margin-bottom: 300px;
 }
 #tekstiboxi table{
@@ -144,9 +158,6 @@ footer img{
 #tekstiboxi td:nth-child(1){
 	width: 15px;
 }
-#tekstiboxi tr:nth-child(odd){
-	background-color: #759533;
-}
 #tekstiboxi tr:nth-child(even){
 	height: 50px;
 	vertical-align: top;
@@ -156,4 +167,85 @@ footer img{
 	display: inline-block;
 	float: left;
 	padding-right: 5px;
+}
+/* tilauslomake */
+#tuotenimi{
+	float: left;
+	width: 300px;
+}
+#tuotekpl{
+	float: left;
+	width: 300px;
+}
+#pizzahinta{
+	float: left;
+}
+fieldset{
+	border: 1px dashed rgb(185,175,175);
+	margin-bottom: 10px;
+	padding-left: 20px;
+}
+label.numerointi{
+	display: inline-block;
+	min-width: 20px;
+}
+label.tilaustiedot{
+	display: inline-block;
+	width: 100px;
+
+}
+input[type="checkbox"]{
+	margin-left: 26px;
+}
+input[type="number"]{
+	width: 50px;
+}
+input[type="text"]{
+	margin-bottom: 5px;
+}
+input[type="email"]{
+	margin-bottom: 5px;
+}
+select{
+	min-width: 160px;
+}
+#lisays{
+	margin-left: 25px;
+}
+.pnro{
+	display: inline-block;
+	width: 60px;
+}
+.osoite{
+	margin-right: 20px;
+}
+textarea{
+	display: block;
+	width: 400px;
+	height: 150px;
+	resize: none;
+	margin-top: 5px;
+
+}
+.tilausnappi{
+	margin-top: 10px;
+	cursor:pointer; 
+	padding:5px 25px; 
+	background:#527A00; 
+	border:0px solid #527A00;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+
+	-webkit-box-shadow: 0 0 2px rgba(0,0,0, .5);
+	-moz-box-shadow: 0 0 2px rgba(0,0,0, .5);
+	box-shadow: 0 0 2px rgba(0,0,0, .5);
+	color:#f3f3f3;
+	font-size:1.1em;
+}
+.tilausnappi:hover, .tilausnappi:focus{
+	background-color: #759533;
+	-webkit-box-shadow: 0 0 1px rgba(0,0,0, .5);
+	-moz-box-shadow: 0 0 1px rgba(0,0,0, .5);
+	box-shadow: 0 0 1px rgba(0,0,0, .5);
 }
