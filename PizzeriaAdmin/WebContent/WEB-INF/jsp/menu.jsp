@@ -71,7 +71,7 @@
 <body>
 <div id="container">
 	<div id="navi">
-		<ul class>
+		<ul>
 			<li><a href="//localhost:8080/PizzaGatto/Etusivu">ETUSIVU</a> </li>
 			<li class="active"><a href="//localhost:8080/PizzaGatto/Menu">MENU</a> </li>
 			<li><a href="//localhost:8080/PizzaGatto/Tilaa">TILAA</a> </li>	
@@ -82,8 +82,10 @@
 	</div>
 
 </div>
+<div id="wrapper">
 	<div id="tekstiboxi">
-<h1>Pizzalista</h1>
+<div id="menuotsikko">Menu</div>
+<div class="divider"></div>
 		
 		<%----<form action="ControllerServlet" method="post">
 			<table>
@@ -100,23 +102,32 @@
 			
 		</form>
 		 --%>
-		<br>
 		
-		<table>
+		
+		<ul class="menulista">
 		<c:set var="counter" value="0"/>
 		<c:forEach items="${pitsut}" var="p"> <!--doGet-metodi-->
-		<tr><h2>
 		<c:set var="counter" value="${counter + 1}"/>
-		<td class="numerointi"><c:out value="${counter}"/></td>
-		<td class="pizzat" colspan="4"><c:out value="${p.nimi}"/></td>
-		<td class="pizzat"><c:out value="${p.hinta}"/></td></h2></tr><td></td>
-		<td class="pizzat"><c:forEach items="${p.taytenimi}" var="listNumber" varStatus="listStatus">
-		 <ul><li><c:out value="${listNumber}" /></li></ul>
+		<li class="nimihinta">
+			<span>
+				<c:out value="${counter}."/>
+				<c:out value="${p.nimi}"/>
+			</span>
+			<span>
+				<c:out value="${p.hinta}"/>
+			</span>
+		</li>
+		<li class="taytelista">
+		<c:forEach items="${p.taytenimi}" var="listNumber" varStatus="listStatus">
+		<c:out value="${listNumber}" />
 		<%--<td class="pitsut"><c:out value="${p.taytenimi}"/></td>  --%>
-		</c:forEach></td>
-		</tr>
+	
 		</c:forEach>
-		</table>
+		</c:forEach>
+		</li>
+		</ul>
+		<div class="divider"></div>
+		
 		<%--<form action="ControllerServlet" method="post">
 			<table>
 				<tr>
@@ -132,14 +143,14 @@
 		 
 </div>
 <div style="clear: both"></div>
-
+</div>
 <footer>
 	<div id="vasenfooter">
 	<img src="img/tekstilogo1.png" alt="tekstilogo"> 
 	</div>
 
 	<div id="oikeafooter">
-	Tilaa uutiskirje <input type="text" name="subscribe"> <button>Tilaa</button>
+	
 	</div>
 </footer>
 </div>

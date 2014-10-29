@@ -1,11 +1,14 @@
 *{
 	font-family: verdana, sans-serif;
-	font-size: 14px;
+}
+html{
+	overflow-y: scroll;
 }
 body{
 	background: url("tekstuuri5.jpg");
-	color: #0A0F00;
+	color: #1C1C1B;
 	height: 100%;
+	font-size: 14px;
 }
 #container{
 	min-height: 100%;
@@ -89,7 +92,6 @@ p{
 	margin: auto;
 	margin-top: 20px;
 	width: 900px;
-	height: 700px;
 	padding-bottom: 50px;
 }
 .vasen{
@@ -107,7 +109,7 @@ p{
 	background: rgba(255,255,255,0.45);
 	padding: 10px;
 	box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
-	margin-bottom: 400px;
+	margin-bottom: 125px;
 }
 .oikea td{
 	width: 80px;
@@ -119,7 +121,7 @@ p{
 footer{
 	position: fixed;
    	bottom:0;
-    	left: 0; 
+    left: 0; 
 	width: 100%;
 	height: 30px;
 	background: #638719;
@@ -139,39 +141,55 @@ footer img{
 }
 /* sisältöboksi kaikilla muilla sivuilla paitsi etusivulla */
 #tekstiboxi{
-	width: 900px;
 	min-height: 400px;
 	background: rgba(255,255,255,0.45);
 	padding: 15px;
 	box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
 	margin: auto;
+	margin-bottom: 50px;
 	margin-top: -30px;
-	margin-bottom: 300px;
 }
-#tekstiboxi table{
-	border-collapse: collapse;
-	width: 600px;
+/* menu */
+ul.menulista {
+	margin: auto;
+	max-width: 700px;
+    padding: 0;
+    list-style: none;
+    padding-bottom: 35px;
 }
-#tekstiboxi td{
-		padding: 2px;
-}
-#tekstiboxi td:nth-child(1){
-	width: 15px;
-}
-#tekstiboxi tr:nth-child(even){
-	height: 50px;
-	vertical-align: top;
-}
-#tekstiboxi li{
-	list-style-type: none;
-	display: inline-block;
+ul.menulista li:before{
 	float: left;
-	padding-right: 5px;
+}
+ul.menulista span + span {
+    float: right;
+}
+li.nimihinta{
+	font-size: 18px;
+	font-weight: bold;
+	color: #576E27;
+}
+.taytelista{
+	font-style: italic;
+	padding-left: 28px;
+}
+#menuotsikko{
+	font-size: 30px;
+	width: 300px;
+	margin-left: 393px;
+	margin-top: 40px;
+	margin-bottom: 15px;
+}
+.divider{
+	border-top: 4px dotted #446304;
+	height: 4px;
+  	width: 150px;
+  	margin: auto;
+  	padding-bottom: 20px;
 }
 /* tilauslomake */
 #tuotenimi{
 	float: left;
-	width: 300px;
+	width: 350px;
 }
 #tuotekpl{
 	float: left;
