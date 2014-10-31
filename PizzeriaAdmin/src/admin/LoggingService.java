@@ -23,9 +23,12 @@ public class LoggingService {
 		
 		for (int i = 0; i < maxTries; i++) {
 			ArrayList<String> idPassword = windowService.loginWindow();
+			for (int j = 0; j < idPassword.size(); j++) {
+				System.out.println(idPassword.get(j));
+			}
 			if (idPassword.size() == 0) {
 				return false;
-			} else if (idPassword.equals(legitIdPassword)) {
+			} else if (idPassword.get(0).equals(legitIdPassword[0]) && idPassword.get(1).equals(legitIdPassword[1])) {
 				return true;
 			}
 		}

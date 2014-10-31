@@ -14,7 +14,7 @@ import dao.DAOPoikkeus;
 public class BanningService {
 	private final static DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy HH:mm:ss");
 	private WindowsService windowService = new WindowsService();
-	private final static int banLength = 60; //bannin pituus minuutteina
+	private final static int banLength = 0; //bannin pituus minuutteina
 	private ArrayList<Ip> ips = new ArrayList<Ip>(); //Lista bannatyista osoitteista
 	private AdminDAO ip = null;
 	
