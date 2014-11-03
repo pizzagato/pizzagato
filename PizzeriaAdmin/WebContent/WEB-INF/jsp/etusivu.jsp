@@ -70,6 +70,15 @@
 	<h1>Kotiinkuljetus</h1>
 	<p>Kuljetamme kaikki annokset X euron lisämaksua vastaan X kilometrin säteellä. Toimitusaika noin 30-60 minuuttia. </p>
 	<p>Tilaukset viimeistään puoli tuntia ennen ravintolan sulkeutumista.</p>
+	
+	<div id="someiconit">
+	<p><img src='img/fbicon.png' onmouseover="this.src='img/fbicon_h.png';" onmouseout="this.src='img/fbicon.png';" />
+
+	<img src='img/twittericon.png' onmouseover="this.src='img/twittericon_h.png';" onmouseout="this.src='img/twittericon.png';" />
+
+	<img src='img/instaicon.png' onmouseover="this.src='img/instaicon_h.png';" onmouseout="this.src='img/instaicon.png';" />
+	</p>
+	</div>
 	</div>
 </div>
 

@@ -97,7 +97,7 @@ p{
 .vasen{
 	float: left;
 	width: 420px;
-	height: 300px;
+	height: 265px;
 	background: rgba(255,255,255,0.45);
 	box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
 	padding: 10px;
@@ -105,7 +105,7 @@ p{
 .oikea{
 	float: right;
 	width: 420px;
-	height: 400px;
+	height: 370px;
 	background: rgba(255,255,255,0.45);
 	padding: 10px;
 	box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
@@ -116,6 +116,13 @@ p{
 }
 .oikea table{
 	padding-left: 10px;
+	padding-bottom: 20px;
+}
+#someiconit{
+	margin-top: 30px;
+}
+#someiconit img{
+	padding-right: 15px;
 }
 /* footer ja sen sisältö */
 footer{
@@ -141,13 +148,15 @@ footer img{
 }
 /* sisältöboksi kaikilla muilla sivuilla paitsi etusivulla */
 #tekstiboxi{
+	position: relative;
 	min-height: 400px;
 	background: rgba(255,255,255,0.45);
 	padding: 15px;
 	box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
 	margin: auto;
 	margin-bottom: 50px;
-	margin-top: -30px;
+	margin-top: -20px;
+
 }
 /* menu */
 ul.menulista {
@@ -155,7 +164,7 @@ ul.menulista {
 	max-width: 700px;
     padding: 0;
     list-style: none;
-    padding-bottom: 35px;
+    padding-bottom: 40px;
 }
 ul.menulista li:before{
 	float: left;
@@ -170,21 +179,43 @@ li.nimihinta{
 }
 .taytelista{
 	font-style: italic;
-	padding-left: 28px;
+	padding-left: 35px;
+}
+.juomakoko{
+	font-style: italic;
+	color: #1C1C1B;
+	font-size: 14px;
+	display: inline;
+	font-weight: normal;
 }
 #menuotsikko{
-	font-size: 30px;
+	font-size: 50px;
 	width: 300px;
-	margin-left: 393px;
-	margin-top: 40px;
-	margin-bottom: 15px;
+	margin-left: 360px;
+	margin-top: 65px;
+	margin-bottom: 45px;
 }
 .divider{
 	border-top: 4px dotted #446304;
 	height: 4px;
-  	width: 150px;
+  	width: 190px;
   	margin: auto;
-  	padding-bottom: 20px;
+  	padding-bottom: 30px;
+}
+#polaroid{
+	position: absolute;
+	left: -35px;
+	top: 5px;
+	z-index: 1;
+}
+#polaroid2{
+	position: relative;
+	left: 680px;
+	top: -255px;
+}
+#filleri{
+	display: block;
+	height: 90px;
 }
 /* tilauslomake */
 #tuotenimi{

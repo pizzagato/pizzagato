@@ -84,6 +84,7 @@
 </div>
 <div id="wrapper">
 	<div id="tekstiboxi">
+<div id="polaroid"><img src="img/pizza123456.png" alt="pizzakuva"></div>
 <div id="menuotsikko">Menu</div>
 <div class="divider"></div>
 		
@@ -129,7 +130,7 @@
 		</li>
 		</ul>
 		
-		
+		<div class="divider"></div>
 		
 		
 				<ul class="menulista">
@@ -144,9 +145,10 @@
 			<span>
 				<c:out value="${j.hinta}"/>
 			</span>
-			<span>
-				<c:out value="${j.koko}"/>
-			</span>
+			
+			<div class="juomakoko"><c:out value="${j.koko}"/></div>
+			<br><br>
+			<li class="taytelista"></li>
 		</li>
 
 		</c:forEach>
@@ -156,6 +158,10 @@
 		
 		
 		<div class="divider"></div>
+		<div id="filleri"></div>
+		</div>
+		<div id="polaroid2"><img src="img/polaroid2.png" alt="pizzakuva2"></div>
+		
 		
 		<%--<form action="ControllerServlet" method="post">
 			<table>
@@ -170,7 +176,7 @@
 		<a href="img/Rautalankamalli2.png">Rautalankamalli</a>
 		 --%>
 		 
-</div>
+
 <div style="clear: both"></div>
 </div>
 <footer>
