@@ -120,12 +120,41 @@
 		<li class="taytelista">
 		<c:forEach items="${p.taytenimi}" var="listNumber" varStatus="listStatus">
 		<c:out value="${listNumber}" />
+		
+		
 		<%--<td class="pitsut"><c:out value="${p.taytenimi}"/></td>  --%>
 	
 		</c:forEach>
 		</c:forEach>
 		</li>
 		</ul>
+		
+		
+		
+		
+				<ul class="menulista">
+		<c:set var="counter" value="0"/>
+		<c:forEach items="${juomat}" var="j"> <!--doGet-metodi-->
+		<c:set var="counter" value="${counter + 1}"/>
+		<li class="nimihinta">
+			<span>
+				<c:out value="${counter}."/>
+				<c:out value="${j.nimi}"/>
+			</span>
+			<span>
+				<c:out value="${j.hinta}"/>
+			</span>
+			<span>
+				<c:out value="${j.koko}"/>
+			</span>
+		</li>
+
+		</c:forEach>
+		</ul>
+		
+		
+		
+		
 		<div class="divider"></div>
 		
 		<%--<form action="ControllerServlet" method="post">

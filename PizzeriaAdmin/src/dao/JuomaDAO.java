@@ -17,20 +17,19 @@ public class JuomaDAO extends Yhteys {
 	public JuomaDAO() throws DAOPoikkeus {
 		super();
 	}
-	//haeKaikki-metodi hakee tietokannasta kaikki pizzat
-	public ArrayList<Juoma> haeJuomat() throws DAOPoikkeus{
+	
+	private ArrayList<Juoma> haeJuomat(String selectLause) throws DAOPoikkeus {
 		ArrayList<Juoma> juomat = new ArrayList<Juoma>();
 		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
 		try {
-			String selectLause = "Select nimi, hinta, koko, tyyppi from Juoma";
-			Statement selectHaku = yhteys.createStatement(); //Syöttää SQL:ään komennon, jolla valitaan pizzat
+			Statement selectHaku = yhteys.createStatement(); //Syöttää SQL:ään komennon, jolla valitaan juomat
 			ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
 			while (selectTulokset.next()){ //Laitetaan tulokset omiin muuttujiinsa
 				String nimi = selectTulokset.getString("nimi");
 				Double hinta = selectTulokset.getDouble("hinta");
 				String koko = selectTulokset.getString("koko");
 				String tyyppi = selectTulokset.getString("tyyppi");
-				Juoma j = new Juoma(nimi,hinta, koko, tyyppi); //Yhdistetään pizzoihin niiden ominaisuudet
+				Juoma j = new Juoma(nimi,hinta, koko, tyyppi); 
 				juomat.add(j);
 			
 				
@@ -44,6 +43,28 @@ public class JuomaDAO extends Yhteys {
 			}
 		return juomat;
 	}
+	
+	
+	
+	
+	public ArrayList<Juoma> haeJuomatTilaus() throws DAOPoikkeus{
+		ArrayList<Juoma> juomat = new ArrayList<Juoma>();
+			String selectLause = "Select nimi, hinta, koko, tyyppi from Juoma where tyyppi='virvoitusjuoma'";
+			juomat = haeJuomat(selectLause);
+		
+		return juomat;
+	}
+	
+	
+	public ArrayList<Juoma> haeJuomatMenu() throws DAOPoikkeus{
+		ArrayList<Juoma> juomat = new ArrayList<Juoma>();
+			String selectLause = "Select nimi, hinta, koko, tyyppi from Juoma";
+			juomat = haeJuomat(selectLause);
+			
+		return juomat;
+	}
+	
+	
 	//AddServicen käyttämä lisäysmetodi, jolla pizza lisätään tietokantaan. Ei käytössä.
 	public void lisaa(Juoma j) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();

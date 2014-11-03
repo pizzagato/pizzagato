@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.DAOPoikkeus;
+import dao.JuomaDAO;
+import fi.omapizzeria.admin.bean.Juoma;
 import fi.omapizzeria.admin.bean.Pizzalistaan;
 
 @WebServlet("/Menu") //P‰‰te joka n‰kyy URLissa
@@ -26,6 +29,12 @@ public class MenuServlet extends HttpServlet {
 		SearchService search = new SearchService();
 		pizzat=search.haePizzat();
 		request.setAttribute("pitsut", pizzat);
+		
+		ArrayList<Juoma> juomat = new ArrayList<Juoma>();
+		juomat=search.haeJuomat();
+		request.setAttribute("juomat", juomat);
+		request.setAttribute("pitsut", pizzat);
+		
 		request.getRequestDispatcher("WEB-INF/jsp/menu.jsp").forward(request, response);
 	}
 

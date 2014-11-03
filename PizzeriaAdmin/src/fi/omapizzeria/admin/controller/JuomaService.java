@@ -16,7 +16,7 @@ public class JuomaService {
 		ArrayList<Juoma> juomat;
 		try {
 			JuomaDAO JDao = new JuomaDAO(); //Luodaan PizzaDAO-olio
-			juomat = JDao.haeJuomat();
+			juomat = JDao.haeJuomatTilaus();
 		} catch(DAOPoikkeus e) {
 			throw new ServletException(e);
 		}
