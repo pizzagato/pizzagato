@@ -17,7 +17,7 @@ public class BanningService {
 	
 	/*----------BANNIN PITUUS MINUUTTEINA-------------*/
 	/*|*/											/*|*/
-	/*|*/ private final static int banLength = 60;  /*|*/
+	/*|*/ private final static int banLength = 30;  /*|*/
 	/*|*/											/*|*/
 	/*------------------------------------------------*/
 	
