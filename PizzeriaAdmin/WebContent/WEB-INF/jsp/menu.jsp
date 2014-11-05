@@ -120,7 +120,7 @@
 			</span>
 		</li>
 		<li class="taytelista">
-		<c:forEach items="${p.taytenimi}" var="listNumber" varStatus="listStatus">
+		<c:forEach items="${p.taytteet}" var="listNumber" varStatus="listStatus">
 		<c:out value="${listNumber}" />
 		
 		

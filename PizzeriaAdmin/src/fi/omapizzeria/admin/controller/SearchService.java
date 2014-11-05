@@ -9,16 +9,16 @@ import dao.DAOPoikkeus;
 import dao.JuomaDAO;
 import dao.PizzaDAO;
 import fi.omapizzeria.admin.bean.Juoma;
-import fi.omapizzeria.admin.bean.Pizzalistaan;
+import fi.omapizzeria.admin.bean.Pizza;
 
 public class SearchService {
 
 	//Hakee tietokannasta pizzat käyttäen PizzaDAO:n metodia
-	public ArrayList<Pizzalistaan> haePizzat() throws ServletException, IOException {
-		ArrayList<Pizzalistaan> pizzat;
+	public ArrayList<Pizza> haePizzat() throws ServletException, IOException {
+		ArrayList<Pizza> pizzat;
 		try {
 			PizzaDAO pDao = new PizzaDAO(); //Luodaan PizzaDAO-olio
-			pizzat = pDao.haeKaikki();
+			pizzat = pDao.haeKaikkiPizzatTaytteilla();
 		} catch(DAOPoikkeus e) {
 			throw new ServletException(e);
 		}

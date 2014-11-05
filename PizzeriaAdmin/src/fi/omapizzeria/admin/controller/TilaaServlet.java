@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fi.omapizzeria.admin.bean.Pizza;
 import fi.omapizzeria.admin.bean.Tilaus;
 import fi.omapizzeria.admin.bean.Juoma;
-import fi.omapizzeria.admin.bean.Pizzalistaan;
 
 @WebServlet("/Tilaa") //P‰‰te joka n‰kyy URLissa
 public class TilaaServlet extends HttpServlet {
@@ -28,7 +28,7 @@ public class TilaaServlet extends HttpServlet {
 
     //Ohjaa tilaussivulle
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Pizzalistaan> pizzat;
+		ArrayList<Pizza> pizzat;
 		SearchService search = new SearchService();
 		pizzat=search.haePizzat();
 		request.setAttribute("pitsut", pizzat);

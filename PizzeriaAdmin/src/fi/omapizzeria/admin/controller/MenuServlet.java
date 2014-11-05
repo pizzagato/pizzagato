@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.DAOPoikkeus;
 import dao.JuomaDAO;
 import fi.omapizzeria.admin.bean.Juoma;
-import fi.omapizzeria.admin.bean.Pizzalistaan;
+import fi.omapizzeria.admin.bean.Pizza;
 
 @WebServlet("/Menu") //P‰‰te joka n‰kyy URLissa
 public class MenuServlet extends HttpServlet {
@@ -25,7 +25,7 @@ public class MenuServlet extends HttpServlet {
 
     //Ohjaa menusivulle ja hakee sit‰ varten pizzalistan
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Pizzalistaan> pizzat;
+		ArrayList<Pizza> pizzat;
 		SearchService search = new SearchService();
 		pizzat=search.haePizzat();
 		request.setAttribute("pitsut", pizzat);

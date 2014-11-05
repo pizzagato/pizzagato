@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 
 import fi.omapizzeria.admin.bean.Pizza;
-import fi.omapizzeria.admin.bean.Pizzalistaan;
+import fi.omapizzeria.admin.bean.Tayte;
 
 public class PizzaDAO extends Yhteys {	
 	
@@ -16,8 +16,8 @@ public class PizzaDAO extends Yhteys {
 		super();
 	}
 	//haeKaikki-metodi hakee tietokannasta kaikki pizzat
-	public ArrayList<Pizzalistaan> haeKaikki() throws DAOPoikkeus{
-		ArrayList<Pizzalistaan> pitsut = new ArrayList<Pizzalistaan>();
+	public ArrayList<Pizza> haeKaikkiPizzatTaytteilla() throws DAOPoikkeus{
+		ArrayList<Pizza> pitsut = new ArrayList<Pizza>();
 		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
 		try {
 			String selectLause = "Select Pizza.nimi, hinta, Tayte.nimi from Pizza LEFT JOIN Pizzatayte ON Pizza.pizza_id=Pizzatayte.pizza_id LEFT JOIN Tayte ON Pizzatayte.tayte_id=Tayte.tayte_id";
@@ -26,24 +26,26 @@ public class PizzaDAO extends Yhteys {
 			while (selectTulokset.next()){ //Laitetaan tulokset omiin muuttujiinsa
 				String nimi = selectTulokset.getString("pizza.nimi");
 				Double hinta = selectTulokset.getDouble("hinta");
-				String taytenimi = selectTulokset.getString("tayte.nimi");
-				Pizzalistaan p = new Pizzalistaan(nimi, hinta); //Yhdistet‰‰n pizzoihin niiden ominaisuudet
-				p.setTayte(taytenimi);
-				boolean jatkuu = true;
+				String taytenimi = selectTulokset.getString("tayte.nimi");				
+				Pizza p = new Pizza(nimi, hinta); //Yhdistet‰‰n pizzoihin niiden ominaisuudet
+				Tayte t = new Tayte(taytenimi);
+				p.addTayte(t);
+				boolean oliSamaaPizzaa = true;
 				
 				do{//Lis‰t‰‰n t‰ytteet oikeaan pizzaan
 					if (selectTulokset.next() && selectTulokset.getString("pizza.nimi").equals(nimi)) {
 						taytenimi = selectTulokset.getString("tayte.nimi");
 						if (taytenimi != null) {
-							p.setTayte(taytenimi);
+							Tayte tx = new Tayte(taytenimi);
+							p.addTayte(tx);
 						}
 					}else{ 
 						selectTulokset.previous();
-						jatkuu = false;
+						oliSamaaPizzaa = false;
 					}
 					
 									
-				}while (selectTulokset.getString("pizza.nimi").equals(nimi) && jatkuu); 
+				}while (selectTulokset.getString("pizza.nimi").equals(nimi) && oliSamaaPizzaa); 
 				System.out.println(p);				
 	
 				pitsut.add(p);
