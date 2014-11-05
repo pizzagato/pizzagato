@@ -2,6 +2,7 @@
 <%@page import="fi.omapizzeria.admin.bean.Pizza"%>
 <%@page import="fi.omapizzeria.admin.controller.EtusivuServlet"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%--<!DOCTYPE html>
 <html>
@@ -115,7 +116,7 @@
 				<c:out value="${p.nimi}"/>
 			</span>
 			<span>
-				<c:out value="${p.hinta}"/>
+				<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${p.hinta}" />
 			</span>
 		</li>
 		<li class="taytelista">
@@ -143,7 +144,7 @@
 				<c:out value="${j.nimi}"/>
 			</span>
 			<span>
-				<c:out value="${j.hinta}"/>
+				<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${j.hinta}" />
 			</span>
 			
 			<div class="juomakoko"><c:out value="${j.koko}"/></div>
