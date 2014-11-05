@@ -1,7 +1,5 @@
 package fi.omapizzeria.admin.bean;
 
-import java.text.DecimalFormat;
-
 public class Juoma {
 
 	int id;
