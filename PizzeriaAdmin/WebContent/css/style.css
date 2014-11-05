@@ -116,7 +116,7 @@ p{
 }
 .oikea table{
 	padding-left: 10px;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 }
 #someiconit{
 	margin-top: 30px;
@@ -189,16 +189,14 @@ li.nimihinta{
 	font-weight: normal;
 }
 #menuotsikko{
-	font-size: 50px;
-	width: 300px;
-	margin-left: 360px;
+	margin-left: 336px;
 	margin-top: 65px;
 	margin-bottom: 45px;
 }
 .divider{
 	border-top: 4px dotted #446304;
 	height: 4px;
-  	width: 190px;
+  	width: 210px;
   	margin: auto;
   	padding-bottom: 30px;
 }

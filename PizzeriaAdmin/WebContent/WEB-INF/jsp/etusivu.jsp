@@ -72,7 +72,7 @@
 	<p>Tilaukset viimeistään puoli tuntia ennen ravintolan sulkeutumista.</p>
 	
 	<div id="someiconit">
-	<p><img src='img/fbicon.png' onmouseover="this.src='img/fbicon_h.png';" onmouseout="this.src='img/fbicon.png';" />
+	<p><a href="http://localhost:8080/PizzaGatto/Etusivu"></a><img src='img/fbicon.png' onmouseover="this.src='img/fbicon_h.png';" onmouseout="this.src='img/fbicon.png';" /></a>
 
 	<img src='img/twittericon.png' onmouseover="this.src='img/twittericon_h.png';" onmouseout="this.src='img/twittericon.png';" />
 

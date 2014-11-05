@@ -47,24 +47,24 @@
 				</div>
 			<div id="tuotekpl"><label>Kpl</label>
 					<input type=number min="1" max="99" required></input></div>
-			<div id="hinta"><label>Hinta</label></div>
+			<div id="hinta">Lis‰ysnappi</div>
 			
 			<br style="clear: left;" />
-			<div id="lisays"><a href="#">t‰h‰n linkki jolla lis‰t‰‰n uusi select kentt‰?</a></div>
+			
 	</fieldset>
 	<fieldset>
 	
 		<h2>Juomat</h2>
 		<div id="tuotenimi"><label class="numerointi">1.</label>
 				<select name="juoma">
-  					<option value="" disabled selected>Valitse tuote</option>
+  					<option value="" selected>Valitse tuote</option>
   					<c:forEach items="${juomat}" var="j">
   					<option><c:out value="${j.nimi}"></c:out></option>
   					</c:forEach>
 				</select></div>
 			<div id="tuotekpl"><label>Kpl</label>
-					<input type=number min="1" max="99"></input></div>
-			<div id="hinta"><label>Hinta</label> $$$</div>
+					<input type=number min="0" max="99"></input></div>
+			<div id="hinta">Lis‰ysnappi</div>
 			<br style="clear: left;" />
 	</fieldset>
 	<fieldset>

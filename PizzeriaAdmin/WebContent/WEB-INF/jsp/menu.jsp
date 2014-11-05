@@ -85,7 +85,7 @@
 <div id="wrapper">
 	<div id="tekstiboxi">
 <div id="polaroid"><img src="img/pizza123456.png" alt="pizzakuva"></div>
-<div id="menuotsikko">Menu</div>
+<div id="menuotsikko"><img src="img/menu.png" alt="Menu"></div>
 <div class="divider"></div>
 		
 		<%----<form action="ControllerServlet" method="post">
