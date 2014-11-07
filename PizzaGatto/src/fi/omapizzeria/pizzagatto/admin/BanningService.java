@@ -18,7 +18,7 @@ public class BanningService {
 	/*|*/												/*|*/
 	/*|*/ private final static int banLength = 0;   	/*|*/
 	/*|*/ 												/*|*/
-	/*|*/ private final static int triesLifetime = 30;	/*|*/
+	/*|*/ private final static int triesLifetime = 60;	/*|*/
 	/*|*/												/*|*/
 	/*-----------------------------------------------------*/
 	

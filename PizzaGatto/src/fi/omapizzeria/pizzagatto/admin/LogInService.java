@@ -49,11 +49,12 @@ public class LogInService {
 		 * Tämä puolestaan on reikiä täynnä. Kai.
 		 */
 		if (namepassword.get(0).equals(legitId) && namepassword.get(1).equals(legitPassword)) {
+			banService.removeAttempter(ipAddress);
 			return 1;
 		}
-		
 		for (int i = 0; i < banService.getAttempterIps().size(); i++) {
-			if (banService.getAttempterIps().get(i).getIp().equals(ipAddress)) {
+			 if (banService.getAttempterIps().get(i).getIp().equals(ipAddress)) {
+				
 				try {
 					ip = new AdminDAO();
 					ip.riseAttempterTries(ipAddress);
@@ -64,7 +65,7 @@ public class LogInService {
 					banService.banUser(ipAddress);
 					banService.removeAttempter(ipAddress);
 					return 0;
-				}
+				} 
 			}
 		}
 		return 2;			

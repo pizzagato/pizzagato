@@ -60,17 +60,26 @@ public class Dimmu extends HttpServlet {
 		 
 		
 		LogInService logService = new LogInService();
-		if (logService.tryLogin(ipAddress, namepassword) == 1) {
-			request.getRequestDispatcher("WEB-INF/jsp/jumalanpuutarha.jsp").forward(request, response);
-		} else if (logService.tryLogin(ipAddress, namepassword) == 0) {
+		
+		switch (logService.tryLogin(ipAddress, namepassword)) {
+		case 0:
 			request.setAttribute("reason", getsBanned);
 			request.getRequestDispatcher("WEB-INF/jsp/error.jsp").forward(request, response);
-		} else if (logService.tryLogin(ipAddress, namepassword) == 2) {
+			break;
+			
+		case 1:
+			request.getRequestDispatcher("WEB-INF/jsp/menunmuokkaus.jsp").forward(request, response);
+			break;
+			
+		case 2:
 			request.setAttribute("reason", wrong);
 			request.getRequestDispatcher("WEB-INF/jsp/error.jsp").forward(request, response);
-		} else {
+			break;
+
+		default:
 			request.setAttribute("reason", uhoh);
 			request.getRequestDispatcher("WEB-INF/jsp/error.jsp").forward(request, response);
+			break;
 		}
 		
     }
