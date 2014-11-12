@@ -1,5 +1,7 @@
 package fi.omapizzeria.pizzagatto.admin;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -8,10 +10,10 @@ import fi.omapizzeria.pizzagatto.dao.DAOPoikkeus;
 
 public class LogInService {
 	private BanningService banService = new BanningService();
-	private AdminDAO ip;
+	private AdminDAO admindao;
 	private String[] legitIdPassword = new String[2];
-	private final static String legitId = "admin"; //Vaatii salauksen
-	private final static String legitPassword = "salasana"; //Vaatii salauksen
+	private final static String legitId = "kissa"; //Vaatii salauksen
+	private final static String legitPassword = "siika"; //Vaatii salauksen
 	
 	/*------------------TÄRKEITÄ TIETOJA-------------------*/
 	/*|*/												/*|*/
@@ -29,9 +31,9 @@ public class LogInService {
 	 * mahdollinen bannaus toteutetaan BanningService-luokan metodilla
 	 */
 	
-	public int tryLogin(String ipAddress, ArrayList<String> namepassword) throws ServletException {
-		legitIdPassword[0] = legitId;
-		legitIdPassword[1] = legitPassword;
+	public int tryLogin(String ipAddress, ArrayList<String> namepassword) throws ServletException, NoSuchAlgorithmException, UnsupportedEncodingException {
+		AdminUser ad = new AdminUser(legitId, legitPassword);
+		
 		boolean dontAdd = false; //Kello 3:40 purkkaviritelmän huipentuma
 
 		
@@ -48,7 +50,7 @@ public class LogInService {
 		/*
 		 * Tämä puolestaan on reikiä täynnä. Kai.
 		 */
-		if (namepassword.get(0).equals(legitId) && namepassword.get(1).equals(legitPassword)) {
+		if (ad.vertaaSalasanaa(namepassword.get(1))) {
 			banService.removeAttempter(ipAddress);
 			return 1;
 		}
@@ -56,8 +58,8 @@ public class LogInService {
 			 if (banService.getAttempterIps().get(i).getIp().equals(ipAddress)) {
 				
 				try {
-					ip = new AdminDAO();
-					ip.riseAttempterTries(ipAddress);
+					admindao = new AdminDAO();
+					admindao.riseAttempterTries(ipAddress);
 				} catch (DAOPoikkeus e) {
 					throw new ServletException(e);
 				}
@@ -71,3 +73,5 @@ public class LogInService {
 		return 2;			
 	}
 }
+
+//namepassword.get(0).equals(legitId) && namepassword.get(1).equals(legitPassword)

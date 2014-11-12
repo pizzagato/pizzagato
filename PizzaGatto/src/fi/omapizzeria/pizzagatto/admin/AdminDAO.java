@@ -125,6 +125,29 @@ public class AdminDAO extends Yhteys {
 		
 	}
 	
+	public ArrayList<String> getAdmin() throws DAOPoikkeus{
+		ArrayList<String> admin = new ArrayList<String>();
+		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
+		try {
+			String selectLause = "Select nimi, password from Admin";
+			Statement selectHaku = yhteys.createStatement(); //Syöttää SQL:ään komennon, jolla ip-osoitteet haetaan
+			ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
+			while (selectTulokset.next()){ //Laitetaan tulokset omiin muuttujiinsa
+				String nimi = selectTulokset.getString("nimi");
+				String password = selectTulokset.getString("password");
+				admin.add(nimi);
+				admin.add(password);
+			}
+			
+		} catch(Exception e) {
+			throw new DAOPoikkeus("Adminin tietokantahaku aiheutti virheen", e);
+		}
+		finally {
+			suljeYhteys(yhteys);
+		}
+		return admin;
+	}
+	
 	public void removeAttempter(String ipAddress) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
