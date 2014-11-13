@@ -90,7 +90,8 @@ public class AdminUser {
 
 		String kryptattuSalasana = Salaaja.salaa(password, getSalt(),
 				SALAUS_ALGORITMI, SALAUS_KIERROKSIA);
-		System.out.println(kryptattuSalasana + " ja toinen " + this.passwordHash);
+		
+		System.out.println("Oikea salasana: " + this.passwordHash + " ja syötetty salasana: " + kryptattuSalasana);
 
 		return kryptattuSalasana.equals(this.passwordHash);
 	}

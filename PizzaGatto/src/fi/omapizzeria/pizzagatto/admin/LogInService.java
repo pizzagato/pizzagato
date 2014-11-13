@@ -11,9 +11,6 @@ import fi.omapizzeria.pizzagatto.dao.DAOPoikkeus;
 public class LogInService {
 	private BanningService banService = new BanningService();
 	private AdminDAO admindao;
-	private String[] legitIdPassword = new String[2];
-	private final static String legitId = "kissa"; //Vaatii salauksen
-	private final static String legitPassword = "siika"; //Vaatii salauksen
 	
 	/*------------------TÄRKEITÄ TIETOJA-------------------*/
 	/*|*/												/*|*/
@@ -31,8 +28,12 @@ public class LogInService {
 	 * mahdollinen bannaus toteutetaan BanningService-luokan metodilla
 	 */
 	
-	public int tryLogin(String ipAddress, ArrayList<String> namepassword) throws ServletException, NoSuchAlgorithmException, UnsupportedEncodingException {
-		AdminUser ad = new AdminUser(legitId, legitPassword);
+	public int tryLogin(String ipAddress, ArrayList<String> namepassword) throws ServletException, NoSuchAlgorithmException, UnsupportedEncodingException, DAOPoikkeus {
+		admindao = new AdminDAO();
+		ArrayList <String> legit = new ArrayList<String>(admindao.getAdmin());
+		System.out.println(legit.get(0) + "  " + legit.get(1));
+		AdminUser ad = new AdminUser(namepassword.get(0), namepassword.get(1));
+		
 		
 		boolean dontAdd = false; //Kello 3:40 purkkaviritelmän huipentuma
 

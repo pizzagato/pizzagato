@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Dimmu")
+import fi.omapizzeria.pizzagatto.dao.DAOPoikkeus;
+
+@WebServlet("/Admin")
 public class AdminKirjautumisServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -84,6 +86,9 @@ public class AdminKirjautumisServlet extends HttpServlet {
 				break;
 			}
 		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DAOPoikkeus e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

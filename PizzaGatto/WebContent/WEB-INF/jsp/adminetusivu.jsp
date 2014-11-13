@@ -11,7 +11,7 @@
 
 
 	<div id="login">
-		<form action="Dimmu" method="post">
+		<form action="Admin" method="post">
 			<h1>Sisäänkirjautuminen</h1>
 			<table>
 				<tr>
