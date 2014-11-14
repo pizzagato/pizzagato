@@ -24,4 +24,20 @@ public class JuomaService {
 	
 		return juomat;
 	}
+	
+	public ArrayList<Juoma> haeJuotavatAdmin() throws ServletException, IOException {
+		ArrayList<Juoma> juomat;
+		try {
+			JuomaDAO JDao = new JuomaDAO(); //Luodaan JuomaDAO-olio
+			juomat = JDao.haeJuomatMenu();
+		} catch(DAOPoikkeus e) {
+			throw new ServletException(e);
+		}
+		
+		
+		
+		
+	
+		return juomat;
+	}
 }

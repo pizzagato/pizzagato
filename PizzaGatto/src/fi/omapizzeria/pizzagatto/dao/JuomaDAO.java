@@ -92,7 +92,7 @@ public class JuomaDAO extends Yhteys {
 			PreparedStatement lause = yhteys.prepareStatement(sql);
 			lause.setString(1, pois.getNimi());
 			lause.executeUpdate();
-			System.out.println("Poistettiin pizza tietokannasta: "+pois);
+			System.out.println("Poistettiin juoma tietokannasta: "+pois);
 		} catch (Exception e) {
 			throw new DAOPoikkeus("Pizzan poistoyritys aiheutti virheen", e);
 		}finally {

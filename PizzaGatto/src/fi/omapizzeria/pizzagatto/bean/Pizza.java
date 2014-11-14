@@ -2,62 +2,73 @@ package fi.omapizzeria.pizzagatto.bean;
 
 import java.util.ArrayList;
 
-//Pizza-luokka, jossa olevilla metodeilla luodaan Pizza-objekti ja asetetaan sille ominaisuuksia. Puuttuu vielä id.
-//Vaatii uudelleennimeämistä
-
-public class Pizza {
-	int id;
-	String nimi;
-	Double hinta;
+public class Pizza extends Tuote{	
 	ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
+	int status;
+
 	public Pizza() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public Pizza(int id, String nimi, Double hinta){
-		super();
-		this.id = id;
-		this.nimi = nimi;
-		this.hinta = hinta;
-		this.taytteet = new ArrayList<Tayte>();
+
+	public Pizza(int id, String nimi, Double hinta) {
+		super(id, nimi, hinta);
 	}
 	public Pizza(String nimi, Double hinta){
 		super();
 		this.nimi = nimi;
 		this.hinta = hinta;
-		this.taytteet = new ArrayList<Tayte>();
 	}
-	public int getId() {
-		return id;
+	public Pizza(String nimi){
+		super();
+		this.nimi = nimi;
 	}
+
+	public Pizza(ArrayList<Tayte> taytteet) {
+		super();
+		this.taytteet = taytteet;
+	}
+	
+	public Pizza(String nimi, Double hinta, ArrayList<Tayte> taytteet,
+			int status) {
+		super();
+		this.nimi = nimi;
+		this.hinta = hinta;
+		this.taytteet = taytteet;
+		this.status = status;
+	}
+	public Pizza(String nimi, int status) {
+		super();
+		this.nimi = nimi;
+		this.status = status;
+	}
+
 	public ArrayList<Tayte> getTaytteet() {
 		return taytteet;
 	}
-	public void addTayte(Tayte t) {
-		this.taytteet.add(t);
-	}
+
 	public void setTaytteet(ArrayList<Tayte> taytteet) {
 		this.taytteet = taytteet;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getNimi() {
-		return nimi;
-	}
-	public void setNimi(String nimi) {
-		this.nimi = nimi;
-	}
-	public Double getHinta() {
-		return hinta;
-	}
-	public void setHinta(Double hinta) {
-		this.hinta = hinta;
-	}
-	@Override
-	public String toString() {
-		return "Pizzalistaan [id=" + id + ", nimi=" + nimi + ", hinta=" + hinta
-				+ ", taytteet=" + taytteet + "]";
+	
+	public void addTayte(Tayte t) {
+		this.taytteet.add(t);
 	}
 	
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "Pizza id=" + id + ", nimi= " + nimi + " taytteet= " + taytteet
+				+ ", hinta= " + hinta;
+	}
+
+	
+
+
 }
+	

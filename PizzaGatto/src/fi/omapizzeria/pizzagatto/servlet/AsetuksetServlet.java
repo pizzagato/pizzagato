@@ -1,29 +1,23 @@
 package fi.omapizzeria.pizzagatto.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fi.omapizzeria.pizzagatto.bean.Asiakastiedot;
-import fi.omapizzeria.pizzagatto.bean.Pizza;
-import fi.omapizzeria.pizzagatto.bean.Tilaus;
-
 /**
- * Servlet implementation class VahvistusServlet
+ * Servlet implementation class AsetuksetServlet
  */
-@WebServlet("/Vahvistus")
-public class VahvistusServlet extends HttpServlet {
+@WebServlet("/Asetukset")
+public class AsetuksetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VahvistusServlet() {
+    public AsetuksetServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,21 +25,8 @@ public class VahvistusServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		Tilaus at = (Tilaus) request.getSession().getAttribute("tilaus");
-		request.setAttribute("tilaus",at);
-		Asiakastiedot asTied = at.getAsiakastiedot();
-		request.setAttribute("asiakastiedot", asTied);
-		
-		
-		
-		request.getRequestDispatcher("WEB-INF/jsp/vahvistus.jsp").forward(request, response);
-		
-		
-		
+		request.getRequestDispatcher("WEB-INF/jsp/asetukset.jsp").forward(request, response);
 	}
 
 	/**

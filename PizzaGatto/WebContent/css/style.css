@@ -51,6 +51,9 @@ p{
 	padding-top: 0px;
 	font-size: 18px;
 }
+#navi li{
+	margin-left: -5px;
+}
 #navi li:nth-child(2) {
 	margin-right: 100px;
 }
@@ -149,7 +152,7 @@ footer img{
 /* sisältöboksi kaikilla muilla sivuilla paitsi etusivulla */
 #tekstiboxi{
 	position: relative;
-	min-height: 400px;
+	min-height: 380px;
 	background: rgba(255,255,255,0.45);
 	padding: 15px;
 	box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
@@ -295,4 +298,31 @@ textarea{
 	-webkit-box-shadow: 0 0 1px rgba(0,0,0, .5);
 	-moz-box-shadow: 0 0 1px rgba(0,0,0, .5);
 	box-shadow: 0 0 1px rgba(0,0,0, .5);
+}
+
+/*yhteystietosivu*/
+
+.divider2{
+	border-right: 4px dotted #446304;
+	float: left;
+	height: 330px;
+	margin-top: 26px;
+	margin-left: 35px;
+}
+
+#texti{
+	float: left;
+	width: 330px;
+	height: 265px;0,
+	padding: 500px;	
+}
+
+.map{
+	position: absolute;
+	left: 430px;
+	top: 40px;
+	
+}
+.aukiolo {
+	margin-left: 10px;
 }

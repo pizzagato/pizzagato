@@ -1,79 +1,56 @@
 package fi.omapizzeria.pizzagatto.bean;
 
+import java.util.ArrayList;
+
 public class Tilaus {
-	
-	String nimi;
-	String puhelin;
-	String spost;
-	String osoite;
-	String pstnro;
-	String lisatoiveet;
+	int id;
+	Asiakastiedot asiakastiedot;
+	ArrayList<Tilausrivi> tilausrivi;
+	double kokonaishinta;
 	public Tilaus() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public Tilaus(String nimi, String puhelin, String spost,
-			String osoite, String pstnro, String lisatoiveet) {
+	public Tilaus(int id, Asiakastiedot asiakastiedot,
+			ArrayList<Tilausrivi> tilausrivi, double kokonaishinta) {
 		super();
-		this.nimi = nimi;
-		this.puhelin = puhelin;
-		this.spost = spost;
-		this.osoite = osoite;
-		this.pstnro = pstnro;
-		this.lisatoiveet = lisatoiveet;
+		this.id = id;
+		this.asiakastiedot = asiakastiedot;
+		this.tilausrivi = tilausrivi;
+		this.kokonaishinta = kokonaishinta;
 	}
-	public Tilaus(String nimi, String spost, String osoite,
-			String pstnro, String lisatoiveet) {
-		super();
-		this.nimi = nimi;
-		this.spost = spost;
-		this.osoite = osoite;
-		this.pstnro = pstnro;
-		this.lisatoiveet = lisatoiveet;
+	public Tilaus (Asiakastiedot asiakastiedot, ArrayList<Tilausrivi> tilausrivi, double kokonaishinta){
+		this.asiakastiedot = asiakastiedot;
+		this.tilausrivi = tilausrivi;
+		this.kokonaishinta = kokonaishinta;
 	}
-	public String getNimi() {
-		return nimi;
+	public int getId() {
+		return id;
 	}
-	public void setNimi(String nimi) {
-		this.nimi = nimi;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String getPuhelin() {
-		return puhelin;
+	public Asiakastiedot getAsiakastiedot() {
+		return asiakastiedot;
 	}
-	public void setPuhelin(String puhelin) {
-		this.puhelin = puhelin;
+	public void setAsiakastiedot(Asiakastiedot asiakastiedot) {
+		this.asiakastiedot = asiakastiedot;
 	}
-	public String getSpost() {
-		return spost;
+	public ArrayList<Tilausrivi> getTilausrivi() {
+		return tilausrivi;
 	}
-	public void setSpost(String spost) {
-		this.spost = spost;
+	public void setTilausrivi(ArrayList<Tilausrivi> tilausrivi) {
+		this.tilausrivi = tilausrivi;
 	}
-	public String getOsoite() {
-		return osoite;
+	public double getKokonaishinta() {
+		return kokonaishinta;
 	}
-	public void setOsoite(String osoite) {
-		this.osoite = osoite;
-	}
-	public String getPstnro() {
-		return pstnro;
-	}
-	public void setPstnro(String pstnro) {
-		this.pstnro = pstnro;
-	}
-	public String getLisatoiveet() {
-		return lisatoiveet;
-	}
-	public void setLisatoiveet(String lisatoiveet) {
-		this.lisatoiveet = lisatoiveet;
+	public void setKokonaishinta(double kokonaishinta) {
+		this.kokonaishinta = kokonaishinta;
 	}
 	@Override
 	public String toString() {
-		return "Asiakastiedot [nimi=" + nimi + ", puhelin=" + puhelin
-				+ ", spost=" + spost + ", osoite=" + osoite + ", pstnro="
-				+ pstnro + ", lisatoiveet=" + lisatoiveet + "]";
+		return "Asiakastiedot: " + asiakastiedot.getNimi() + ", " + asiakastiedot.getOsoite() + ", " + asiakastiedot.getPstnro() + ", " + asiakastiedot.getPuhelin() + ", " + asiakastiedot.getSpost() + ", " + asiakastiedot.getLisatoiveet()
+				+ ". Tilauksen tiedot: " + tilausrivi + ", kokonaishinta: " + kokonaishinta;
 	}
 	
-	
-
 }

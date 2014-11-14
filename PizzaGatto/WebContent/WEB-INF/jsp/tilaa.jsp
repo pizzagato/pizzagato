@@ -3,7 +3,7 @@
     
     <%@page import="java.util.ArrayList"%>
 <%@page import="fi.omapizzeria.pizzagatto.bean.Pizza"%>
-<%@page import="fi.omapizzeria.pizzagatto.servlet.TilaaServlet"%>
+<%@page import="fi.omapizzeria.pizzagatto.servlet.TilausServlet"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
     <!DOCTYPE html>
@@ -46,7 +46,7 @@
 				
 				</div>
 			<div id="tuotekpl"><label>Kpl</label>
-					<input type=number min="1" max="99" required></input></div>
+					<input type=number min="1" max="99" name="tuotekpl" required></input></div>
 			<div id="hinta">Lisäysnappi</div>
 			
 			<br style="clear: left;" />
@@ -62,8 +62,8 @@
   					<option><c:out value="${j.nimi}"></c:out></option>
   					</c:forEach>
 				</select></div>
-			<div id="tuotekpl"><label>Kpl</label>
-					<input type=number min="0" max="99"></input></div>
+			<div id="tuotekpl2"><label>Kpl</label>
+					<input type=number min="0" max="99" name="tuotekpl2"></input></div>
 			<div id="hinta">Lisäysnappi</div>
 			<br style="clear: left;" />
 	</fieldset>
@@ -82,7 +82,7 @@
  	</fieldset>
  	<fieldset>
  	<label>Lisätoiveet</label>
- 	<textarea>
+ 	<textarea class=tilaustiedot name=lisatoiveet>
  	</textarea>
  	
  	 <input type="submit" class="tilausnappi" value="Tilaa">

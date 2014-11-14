@@ -2,17 +2,23 @@ package fi.omapizzeria.pizzagatto.bean;
 
 public class Tilausrivi {
 	int id;
-	Pizza pizza;
+	Tuote tuote;
 	int kpl;
 	double kokonaishinta;
 	public Tilausrivi() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Tilausrivi(int id, Pizza pizza, int kpl, double kokonaishinta) {
+	public Tilausrivi(int id, Tuote tuote, int kpl, double kokonaishinta) {
 		super();
 		this.id = id;
-		this.pizza = pizza;
+		this.tuote = tuote;
+		this.kpl = kpl;
+		this.kokonaishinta = kokonaishinta;
+	}
+	public Tilausrivi(Tuote tuote, int kpl, double kokonaishinta){
+		super();
+		this.tuote = tuote;
 		this.kpl = kpl;
 		this.kokonaishinta = kokonaishinta;
 	}
@@ -22,11 +28,11 @@ public class Tilausrivi {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Pizza getPizza() {
-		return pizza;
+	public Tuote getTuote() {
+		return tuote;
 	}
-	public void setPizza(Pizza pizza) {
-		this.pizza = pizza;
+	public void setTuote(Tuote tuote) {
+		this.tuote = tuote;
 	}
 	public int getKpl() {
 		return kpl;
@@ -42,10 +48,9 @@ public class Tilausrivi {
 	}
 	@Override
 	public String toString() {
-		return "Tilausrivi [id=" + id + ", pizza=" + pizza + ", kpl=" + kpl
-				+ ", kokonaishinta=" + kokonaishinta + "]";
+		return tuote.getNimi() + ", " + kpl + "kpl"
+				+ ", kokonaishinta: " + kokonaishinta;
 	}
-	
 }
-
+	
 

@@ -15,18 +15,21 @@ public class AdminDAO extends Yhteys {
 		super();
 	}
 	
-	//getBanned-metodi hakee tietokannasta kaikki bannatut ip-osoitteet ja bannausajan
+	/*
+	 * Hakee tietokannasta kaikki bannatut ip-osoitteet ja bannausajan
+	 */
+	
 	public ArrayList<Ip> getAllBanned() throws DAOPoikkeus{
 		ArrayList<Ip> bannedIps = new ArrayList<Ip>();
-		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
+		Connection yhteys = avaaYhteys();
 		try {
 			String selectLause = "Select ip, aika from banned";
-			Statement selectHaku = yhteys.createStatement(); //Syˆtt‰‰ SQL:‰‰n komennon, jolla ip-osoitteet haetaan
+			Statement selectHaku = yhteys.createStatement();
 			ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
-			while (selectTulokset.next()){ //Laitetaan tulokset omiin muuttujiinsa
+			while (selectTulokset.next()){
 				String ip = selectTulokset.getString("ip");
 				String aika = selectTulokset.getString("aika");
-				Ip i = new Ip(ip, aika); //Yhdistet‰‰n Ip-olioon tiedot
+				Ip i = new Ip(ip, aika);
 				bannedIps.add(i);
 			}
 			
@@ -38,19 +41,23 @@ public class AdminDAO extends Yhteys {
 		}
 		return bannedIps;
 	}
-	//Hakee kaikki, jotka ovat koittaneet kirjautua
+	
+	/*
+	 * Hakee kaikkien kirjautujayritt‰jien ip-osoitteet 
+	 */
+	
 	public ArrayList<Ip> getAllAttempters() throws DAOPoikkeus{
 		ArrayList<Ip> attempterIps = new ArrayList<Ip>();
-		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
+		Connection yhteys = avaaYhteys();
 		try {
 			String selectLause = "Select ip, aika, tries from Attempters";
-			Statement selectHaku = yhteys.createStatement(); //Syˆtt‰‰ SQL:‰‰n komennon, jolla ip-osoitteet haetaan
+			Statement selectHaku = yhteys.createStatement();
 			ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
-			while (selectTulokset.next()){ //Laitetaan tulokset omiin muuttujiinsa
+			while (selectTulokset.next()){
 				String ip = selectTulokset.getString("ip");
 				String aika = selectTulokset.getString("aika");
 				int tries = selectTulokset.getInt("tries");
-				Ip i = new Ip(ip, aika, tries); //Yhdistet‰‰n Ip-olioon tiedot
+				Ip i = new Ip(ip, aika, tries);
 				attempterIps.add(i);
 			}
 			
@@ -62,7 +69,11 @@ public class AdminDAO extends Yhteys {
 		}
 		return attempterIps;
 	}
-	//Metodi jolla bannataan ip
+	
+	/*
+	 * Bannaa k‰ytt‰j‰n ip-osoitteen
+	 */
+	
 	public void banaaniVasara(Ip i) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
@@ -77,6 +88,10 @@ public class AdminDAO extends Yhteys {
 			suljeYhteys(yhteys);
 		}
 	}
+	
+	/*
+	 * Lis‰‰ uuden k‰ytt‰j‰n kirjautujayritt‰jien tauluun
+	 */
 	
 	public void addAttempter(Ip i) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
@@ -94,12 +109,15 @@ public class AdminDAO extends Yhteys {
 		}
 	}
 	
+	/*
+	 * Kasvattaa kirjautumisyritt‰j‰n yrityskertoja yhdell‰
+	 */
 	
 	public void riseAttempterTries(String ipAddress) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
 			String sql = "Update Attempters set tries=tries+1 where ip = ?";
-			PreparedStatement lause = yhteys.prepareStatement(sql); //Syˆtt‰‰ SQL:‰‰n komennon, jolla ip-osoitteet haetaan
+			PreparedStatement lause = yhteys.prepareStatement(sql);
 			lause.setString(1, ipAddress);
 			lause.executeUpdate();
 		} catch(Exception e) {
@@ -109,7 +127,10 @@ public class AdminDAO extends Yhteys {
 		}
 	}
 	
-	//Metodi jolla bannattu IP poistetaan listalta
+	/*
+	 * Poistaa ip-osoitteen bannattujen listalta
+	 */
+	
 	public void removeBanned(String ipAddress) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
@@ -125,18 +146,24 @@ public class AdminDAO extends Yhteys {
 		
 	}
 	
+	/*
+	 * hakee Admin-taulusta adminin
+	 */
+	
 	public ArrayList<String> getAdmin() throws DAOPoikkeus{
 		ArrayList<String> admin = new ArrayList<String>();
 		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
 		try {
-			String selectLause = "Select nimi, password from Admin";
+			String selectLause = "Select nimi, password, salt from Admin";
 			Statement selectHaku = yhteys.createStatement(); //Syˆtt‰‰ SQL:‰‰n komennon, jolla ip-osoitteet haetaan
 			ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
 			while (selectTulokset.next()){ //Laitetaan tulokset omiin muuttujiinsa
 				String nimi = selectTulokset.getString("nimi");
 				String password = selectTulokset.getString("password");
+				String salt = selectTulokset.getString("salt");
 				admin.add(nimi);
 				admin.add(password);
+				admin.add(salt);
 			}
 			
 		} catch(Exception e) {
@@ -147,6 +174,10 @@ public class AdminDAO extends Yhteys {
 		}
 		return admin;
 	}
+	
+	/*
+	 * Poistaa kirjautumisyritt‰j‰n yritt‰jien taulusta
+	 */
 	
 	public void removeAttempter(String ipAddress) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();

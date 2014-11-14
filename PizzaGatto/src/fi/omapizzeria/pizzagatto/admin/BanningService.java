@@ -22,7 +22,7 @@ public class BanningService {
 	/*|*/												/*|*/
 	/*-----------------------------------------------------*/
 	
-	private ArrayList<Ip> bannedIps = new ArrayList<Ip>(); //Lista bannatyista osoitteista
+	private ArrayList<Ip> bannedIps = new ArrayList<Ip>();
 	private ArrayList<Ip> attempterIps = new ArrayList<Ip>();
 	private AdminDAO ip = null;
 	
@@ -39,6 +39,10 @@ public class BanningService {
 		}
 		return bannedIps;
 	}
+	
+	/*
+	 * Hakee kirjautumisyritt‰jien osoitteet
+	 */
 	
 	public ArrayList<Ip> getAttempterIps() throws ServletException {
 		try {
@@ -73,17 +77,17 @@ public class BanningService {
 	}
 	
 	/*
-	 * Hakee ip-listasta jokainen bannauksen ajan. Jos ip on ollut listalla halutun ajan, se poistetaan
+	 * Hakee banned-taulusta jokainen bannauksen ajan. Jos ip on ollut listalla halutun ajan, se poistetaan
 	 */
 	
 	public void unBan() throws ServletException {
 		bannedIps = getBannedIps();
 		for (int i = 0; i < bannedIps.size(); i++) {
-			DateTime bannedTime = formatter.parseDateTime(bannedIps.get(i).getAika()); //Haetaan listasta jokaisen ip:n bannausaika
-			DateTime currentTime = new DateTime(); //Verrokiksi nykyinen aika
-			Minutes diff = Minutes.minutesBetween(bannedTime, currentTime); //Verrataan aikoja kesken‰‰n, erotus minuutteina
-			int timeDifference = diff.getMinutes(); //muutetaan int-muotoon
-			if (timeDifference >= banLength) { //Jos aikaero (eli bannattuna oltu aika) on isompi kuin haluttu bannin pituus otetaan bannattu ip listalta pois
+			DateTime bannedTime = formatter.parseDateTime(bannedIps.get(i).getAika());
+			DateTime currentTime = new DateTime();
+			Minutes diff = Minutes.minutesBetween(bannedTime, currentTime);
+			int timeDifference = diff.getMinutes();
+			if (timeDifference >= banLength) {
 				try {
 					ip.removeBanned(bannedIps.get(i).getIp());
 				} catch (DAOPoikkeus e) {
@@ -93,14 +97,18 @@ public class BanningService {
 		}
 	}
 	
+	/*
+	 * Hakee Attempters-taulusta jokainen yritt‰j‰n ensimm‰isen kirjautumisyrityksen ajan. Jos ip on ollut listalla halutun ajan, se poistetaan
+	 */
+	
 	public void clearAttempts() throws ServletException {
 		attempterIps = getAttempterIps();
 		for (int i = 0; i < attempterIps.size(); i++) {
-			DateTime bannedTime = formatter.parseDateTime(attempterIps.get(i).getAika()); //Haetaan listasta jokaisen ip:n bannausaika
-			DateTime currentTime = new DateTime(); //Verrokiksi nykyinen aika
-			Minutes diff = Minutes.minutesBetween(bannedTime, currentTime); //Verrataan aikoja kesken‰‰n, erotus minuutteina
-			int timeDifference = diff.getMinutes(); //muutetaan int-muotoon
-			if (timeDifference >= triesLifetime) { //Jos aikaero (eli bannattuna oltu aika) on isompi kuin haluttu bannin pituus otetaan bannattu ip listalta pois
+			DateTime bannedTime = formatter.parseDateTime(attempterIps.get(i).getAika());
+			DateTime currentTime = new DateTime();
+			Minutes diff = Minutes.minutesBetween(bannedTime, currentTime);
+			int timeDifference = diff.getMinutes();
+			if (timeDifference >= triesLifetime) {
 				try {
 					ip.removeAttempter(attempterIps.get(i).getIp());
 				} catch (DAOPoikkeus e) {
@@ -109,6 +117,10 @@ public class BanningService {
 			}
 		}
 	}
+	
+	/*
+	 * Poistaa kirjautumisyritt‰jien taulusta metodille l‰htetetyn ip-osoitteen
+	 */
 	
 	public void removeAttempter(String ipAddress) throws ServletException {
 		try {
@@ -119,6 +131,10 @@ public class BanningService {
 		}
 		
 	}
+	
+	/*
+	 * Lis‰‰ kirjautumisyritt‰jien tauluun metodille l‰htetetyn ip-osoitteen
+	 */
 	
 	public void addAttempter(String ipAddress) throws ServletException {
 		try {

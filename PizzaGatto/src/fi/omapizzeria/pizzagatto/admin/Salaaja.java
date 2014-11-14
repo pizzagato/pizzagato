@@ -7,6 +7,10 @@ import java.security.SecureRandom;
 
 import javax.xml.bind.DatatypeConverter;
 
+/*
+ * Koodi ei ole omaa luomusta, vaan kustomoitu Jaakon lähettämästä demosta
+ */
+
 /**
  * Tätä luokkaa voi käyttää apuna salasanojen yksisuuntaisessa salaamisessa.
  * Luokka tarjoaa myös palvelun suolan generoimiseen.

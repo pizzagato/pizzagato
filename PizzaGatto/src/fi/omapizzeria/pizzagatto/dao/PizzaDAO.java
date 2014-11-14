@@ -93,4 +93,42 @@ public class PizzaDAO extends Yhteys {
 		}
 		
 	}
+	
+	public void muutaPizza(Pizza p)throws DAOPoikkeus{
+		Connection yhteys = avaaYhteys();
+		try {
+			String sql="UPDATE Pizza set status= ? WHERE nimi = ?";
+			PreparedStatement lause = yhteys.prepareStatement(sql);
+			lause.setInt(1, p.getStatus());
+			lause.setString(2, p.getNimi());
+			lause.executeUpdate();
+			System.out.println("Muutettiin Pizzan "+p+" Status");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			suljeYhteys(yhteys);
+		}
+	}
+	
+	public void lisaaPizztayte(Pizza pt) throws DAOPoikkeus{
+		Connection yhteys = avaaYhteys();
+		int key=0;
+		try {
+			String sql=" START TRANSACTION; insert into Pizza(nimi, hinta, status) values(?,?,?); insert into Pizzatayte(pizza_id, tayte_id) values(?,?),(?,?),(?,?),(?,?),(?,?); COMMIT;";
+			PreparedStatement lause = yhteys.prepareStatement(sql);
+			
+			
+			lause.setString(1, pt.getNimi());
+			lause.setDouble(2, pt.getHinta());
+			lause.setInt(3,pt.getStatus());
+			
+			
+			
+			lause.executeUpdate();		
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally{
+			suljeYhteys(yhteys);
+		}
+	}
 }

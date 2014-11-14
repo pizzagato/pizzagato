@@ -26,10 +26,10 @@
 	</div>
 
 </div>
-homo t‰s ois n‰‰ pitsut<br>
+vahvistus<br>
 <br>
-t make<br>
-<c:out value="${pitsu}"></c:out>
+tilaus:<br>
+<c:out value="${tilaus}"></c:out>
 <br>
 <c:out value="${juoma}"></c:out>
 <br>

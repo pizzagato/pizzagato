@@ -21,7 +21,6 @@ public class Ip {
 
 	public Ip() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Ip(String ip, String aika) {

@@ -3,6 +3,9 @@ package fi.omapizzeria.pizzagatto.admin;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
+/*
+ * Koodi ei ole omaa luomusta, vaan kustomoitu Jaakon lähettämästä demosta
+ */
 
 public class AdminUser {
 
@@ -39,6 +42,19 @@ public class AdminUser {
 		// generoidaan suola
 		String suola = Salaaja.generoiSuola();
 		setSalt(suola);
+		// kryptataan salasana
+		String kryptattuSalasana = Salaaja.salaa(password, getSalt(),
+				SALAUS_ALGORITMI, SALAUS_KIERROKSIA);
+		setPasswordHash(kryptattuSalasana);
+	}
+	
+	public AdminUser(String username, String password, String salt)
+			throws NoSuchAlgorithmException, UnsupportedEncodingException {
+		super();
+		this.username = username;
+		setSalt(salt);
+
+
 		// kryptataan salasana
 		String kryptattuSalasana = Salaaja.salaa(password, getSalt(),
 				SALAUS_ALGORITMI, SALAUS_KIERROKSIA);
@@ -90,8 +106,6 @@ public class AdminUser {
 
 		String kryptattuSalasana = Salaaja.salaa(password, getSalt(),
 				SALAUS_ALGORITMI, SALAUS_KIERROKSIA);
-		
-		System.out.println("Oikea salasana: " + this.passwordHash + " ja syötetty salasana: " + kryptattuSalasana);
 
 		return kryptattuSalasana.equals(this.passwordHash);
 	}

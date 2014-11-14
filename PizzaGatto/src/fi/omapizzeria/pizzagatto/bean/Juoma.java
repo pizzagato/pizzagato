@@ -1,52 +1,31 @@
 package fi.omapizzeria.pizzagatto.bean;
 
-public class Juoma {
-
-	int id;
-	String nimi;
-	double hinta;
+public class Juoma extends Tuote {
 	String koko;
 	String tyyppi;
-	
 	public Juoma() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Juoma(int id, String nimi, double hinta, String koko, String tyyppi) {
+	public Juoma(int id, String nimi, Double hinta) {
+		super(id, nimi, hinta);
+		// TODO Auto-generated constructor stub
+	}
+	public Juoma(String koko, String tyyppi) {
 		super();
-		this.id = id;
+		this.koko = koko;
+		this.tyyppi = tyyppi;
+	}
+	public Juoma(String nimi, Double hinta, String koko, String tyyppi){
+		super();
 		this.nimi = nimi;
 		this.hinta = hinta;
 		this.koko = koko;
 		this.tyyppi = tyyppi;
 	}
-	
-	public Juoma(String nimi, double hinta, String koko, String tyyppi
-			) {
+	public Juoma(String nimi){
 		super();
 		this.nimi = nimi;
-		this.hinta = hinta;
-		this.koko = koko;
-		this.tyyppi = tyyppi;
-		
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getNimi() {
-		return nimi;
-	}
-	public void setNimi(String nimi) {
-		this.nimi = nimi;
-	}
-	public double getHinta() {
-		return hinta;
-	}
-	public void setHinta(double hinta) {
-		this.hinta = hinta;
 	}
 	public String getKoko() {
 		return koko;
@@ -62,12 +41,8 @@ public class Juoma {
 	}
 	@Override
 	public String toString() {
-		return "Juoma [id=" + id + ", nimi=" + nimi + ", hinta=" + hinta
-				+ ", koko=" + koko + ", tyyppi=" + tyyppi + "]";
+		return nimi + " koko=" + koko + ", tyyppi=" + tyyppi + "]";
 	}
-	
-	
-	
 }
 
 

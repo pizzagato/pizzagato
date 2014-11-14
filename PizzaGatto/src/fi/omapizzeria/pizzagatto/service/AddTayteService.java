@@ -8,10 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fi.omapizzeria.pizzagatto.bean.Pizza;
+import fi.omapizzeria.pizzagatto.bean.Tayte;
 import fi.omapizzeria.pizzagatto.dao.DAOPoikkeus;
 import fi.omapizzeria.pizzagatto.dao.PizzaDAO;
+import fi.omapizzeria.pizzagatto.dao.TayteDAO;
 
-public class AddService extends HttpServlet {
+public class AddTayteService extends HttpServlet {
 
 	/**
 	 * 
@@ -19,32 +21,54 @@ public class AddService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	//Metodi, jolla admin-näkymässä lisätään ja poistetaan pizzoja tietokannasta. Ei käytössä.
-/*	public void lisaaPoista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/**public void lisaaPoistaTayte(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getParameter("nimi")!=null) {
 			String nimi = request.getParameter("nimi");
-			String sHinta = request.getParameter("hinta");
-			Double hinta = Double.parseDouble(sHinta);
-			Pizza p = new Pizza(nimi, hinta);
+			
+			Tayte t = new Tayte(nimi);
 			try {
-				PizzaDAO pDao = new PizzaDAO();
-				pDao.lisaa(p);
+				TayteDAO tDao = new TayteDAO();
+				tDao.lisaa(t);
 			} catch (DAOPoikkeus e) {
 				throw new ServletException(e);
 			}
 			//Pizza poistetaan
 		}else if (request.getParameter("poista") != null){
 			String poista = request.getParameter("poista");		
-			Pizza pois = new Pizza(poista);
+			Tayte pois = new Tayte(poista);
 			try {
-				PizzaDAO pDao = new PizzaDAO();
-				pDao.poista(pois);
+				TayteDAO tDao = new TayteDAO();
+				tDao.poista(pois);
 			} catch (Exception e) {
 				throw new ServletException(e);
 			}
 		}
 	}
+	
+	
 	*/
 	
+	public void poistaTayte(String poista) throws ServletException, IOException{
+		Tayte pois = new Tayte(poista);
+		try {
+			TayteDAO tDao = new TayteDAO();
+			tDao.poista(pois);
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
+		
+	}
+	
+	public void lisaaTayte(String taytenimi)throws ServletException, IOException{
+		Tayte t = new Tayte(taytenimi);
+		try {
+			TayteDAO tDao = new TayteDAO();
+			tDao.lisaa(t);
+		} catch (DAOPoikkeus e) {
+			throw new ServletException(e);
+		}
+		
+	}
 	
 	
 	

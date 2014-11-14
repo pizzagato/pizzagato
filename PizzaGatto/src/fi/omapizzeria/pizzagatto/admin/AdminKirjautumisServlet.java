@@ -21,10 +21,20 @@ public class AdminKirjautumisServlet extends HttpServlet {
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
+    	/*
+    	 * Virhetekstit
+    	 */
+    	
     	String alreadyBanned = "Pääsy estetty. Koita uudelleen myöhemmin.";
     	String getsBanned = "Yritit kirjautua liian monta kertaa sisään. Pääsysi on estetty.";
     	String wrong = "Tunnukset on väärät.";
     	String uhoh = "Jokin on pahasti vialla. Ota yhteyttä Jouniin.";
+    	
+    	/*
+    	 * Käyttäjän syöttämät tunnukset
+    	 */
+    	
     	String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		if (username.equals(null) || password.equals(null)) {
@@ -35,35 +45,43 @@ public class AdminKirjautumisServlet extends HttpServlet {
 		namepassword.add(username);
 		namepassword.add(password);
 		
-	  	//Poistaa vanhat bannit
+	  	/*
+	  	 * Poistaa vanhat bannit
+	  	 */
 		 
-		
 		BanningService banService = new BanningService();
 		banService.unBan();
 		
-		
-		 //Ottaa ylös käyttäjän ip-osoitteen
+		 /*
+		  * Ottaa ylös käyttäjän ip-osoitteen
+		  */
 		 
-		
 		String ipAddress = request.getHeader("X-FORWARDED-FOR");
 		if (ipAddress == null) {
 			ipAddress = request.getRemoteAddr();
 		}
 		
 		
-		//Tarkistaa onko käyttäjän ip-osoite bannattujen listalla. Jos on, servlet sammuu
+		/*
+		 * Tarkastaa, onko käyttäjän ip-osoite bannattujen listalla. Jos on, näytetään virhesivu
+		 */
 		 
 		if (banService.userBanStatus(ipAddress) == false) {
 			request.setAttribute("reason", alreadyBanned);
 			request.getRequestDispatcher("WEB-INF/jsp/error.jsp").forward(request, response);
 		}
 		
+		/*
+		 * Poistetaan vanhentuneen kirjautumisyritykset
+		 */
 		
 		banService.clearAttempts();
-		 
+		
+		/*
+		 * Käyttäjä pääsee kirjautumisruutuun ja voi kokeilla kirjautumista
+		 */
 		
 		LogInService logInService = new LogInService();
-		
 		try {
 			switch (logInService.tryLogin(ipAddress, namepassword)) {
 			case 0:
@@ -86,19 +104,15 @@ public class AdminKirjautumisServlet extends HttpServlet {
 				break;
 			}
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (DAOPoikkeus e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("WEB-INF/jsp/adminetusivu.jsp").forward(request, response);
 	}
-	
 	
 } 
 
