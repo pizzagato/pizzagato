@@ -32,7 +32,7 @@ public class MenuServlet extends HttpServlet {
 		request.setAttribute("pitsut", pizzat);
 		
 		ArrayList<Juoma> juomat = new ArrayList<Juoma>();
-		juomat=search.haeJuomat();
+		juomat=search.haeJuotavatMenu();
 		request.setAttribute("juomat", juomat);
 		request.setAttribute("pitsut", pizzat);
 		

@@ -46,13 +46,9 @@ public class PizzaDAO extends Yhteys {
 					}
 					
 									
-				}while (selectTulokset.getString("pizza.nimi").equals(nimi) && oliSamaaPizzaa); 
-				System.out.println(p);				
-	
+				}while (selectTulokset.getString("pizza.nimi").equals(nimi) && oliSamaaPizzaa); 			
 				pitsut.add(p);
-				
 			}
-			
 		} catch(Exception e) {
 			throw new DAOPoikkeus("Tietokantahaku aiheutti virheen", e);
 		}
@@ -117,13 +113,10 @@ public class PizzaDAO extends Yhteys {
 			String sql=" START TRANSACTION; insert into Pizza(nimi, hinta, status) values(?,?,?); insert into Pizzatayte(pizza_id, tayte_id) values(?,?),(?,?),(?,?),(?,?),(?,?); COMMIT;";
 			PreparedStatement lause = yhteys.prepareStatement(sql);
 			
-			
 			lause.setString(1, pt.getNimi());
 			lause.setDouble(2, pt.getHinta());
 			lause.setInt(3,pt.getStatus());
-			
-			
-			
+				
 			lause.executeUpdate();		
 		} catch (Exception e) {
 			// TODO: handle exception

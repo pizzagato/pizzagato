@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fi.omapizzeria.pizzagatto.dao.DAOPoikkeus;
+import fi.omapizzeria.pizzagatto.service.SearchService;
 
 @WebServlet("/Admin")
 public class AdminKirjautumisServlet extends HttpServlet {
@@ -90,7 +92,11 @@ public class AdminKirjautumisServlet extends HttpServlet {
 				break;
 				
 			case 1:
-				request.getRequestDispatcher("WEB-INF/jsp/menunmuokkaus.jsp").forward(request, response);
+		    	SearchService search = new SearchService();
+		    	request.setAttribute("pitsut", search.haePizzat()); 
+		    	request.setAttribute("juomat", search.haeJuotavatMenu());
+		    	request.setAttribute("taytteet", search.haeTaytteet());
+		    	request.getRequestDispatcher("WEB-INF/jsp/menunmuokkaus.jsp").forward(request, response);
 				break;
 				
 			case 2:

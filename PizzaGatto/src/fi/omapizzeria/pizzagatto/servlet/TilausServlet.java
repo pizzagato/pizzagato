@@ -15,7 +15,6 @@ import fi.omapizzeria.pizzagatto.bean.Juoma;
 import fi.omapizzeria.pizzagatto.bean.Pizza;
 import fi.omapizzeria.pizzagatto.bean.Tilaus;
 import fi.omapizzeria.pizzagatto.bean.Tilausrivi;
-import fi.omapizzeria.pizzagatto.service.JuomaService;
 import fi.omapizzeria.pizzagatto.service.SearchService;
 import fi.omapizzeria.pizzagatto.dao.DAOPoikkeus;
 import fi.omapizzeria.pizzagatto.dao.TilausDAO;
@@ -37,8 +36,7 @@ public class TilausServlet extends HttpServlet {
 		request.setAttribute("pitsut", pizzat);
 		
 		ArrayList<Juoma> juomat;
-		JuomaService jj= new JuomaService();
-		juomat=jj.haeJuotavat();
+		juomat=search.haeJuotavatTilaus();
 		request.setAttribute("juomat",juomat);	
 		request.getRequestDispatcher("WEB-INF/jsp/tilaa.jsp").forward(request, response);		
 	}

@@ -12,66 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 import fi.omapizzeria.pizzagatto.bean.Juoma;
 import fi.omapizzeria.pizzagatto.bean.Pizza;
 import fi.omapizzeria.pizzagatto.bean.Tayte;
-import fi.omapizzeria.pizzagatto.dao.PizzaDAO;
 import fi.omapizzeria.pizzagatto.service.AddJuomaService;
 import fi.omapizzeria.pizzagatto.service.AddPizzaService;
 import fi.omapizzeria.pizzagatto.service.AddTayteService;
-import fi.omapizzeria.pizzagatto.service.JuomaService;
 import fi.omapizzeria.pizzagatto.service.SearchService;
-import fi.omapizzeria.pizzagatto.service.TayteService;
 
-/**
- * Servlet implementation class MenunMuokkausServlet
- */
 @WebServlet("/MenunMuokkaus")
 public class MenunMuokkausServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public MenunMuokkausServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//tuodaan pizzat, juomat ja taytteet sivulle
-		
-		//pizzat
-		ArrayList<Pizza> pizzat;
-		SearchService search = new SearchService();
-		pizzat=search.haePizzat();
-		request.setAttribute("pitsut", pizzat);
-		
-		
-		//juomat
-		ArrayList<Juoma> juomat;
-		JuomaService jj= new JuomaService();
-		juomat=jj.haeJuotavatAdmin();
-		request.setAttribute("juomat",juomat);
-		
-		//taytteet
-		ArrayList<Tayte> taytteet;
-		TayteService tt = new TayteService();
-		taytteet=tt.haeTaytteet();
-		request.setAttribute("taytteet",taytteet);
-		
-		
-		
-		
-		
-		
-		 
-		request.getRequestDispatcher("WEB-INF/jsp/menunmuokkaus.jsp").forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// pizzan setit
 	//poista pizza	
@@ -168,8 +121,12 @@ public class MenunMuokkausServlet extends HttpServlet {
 	
 	
 	
-	
-	response.sendRedirect("/PizzaGatto/MenunMuokkaus");
+
+	SearchService search = new SearchService();
+	request.setAttribute("pitsut", search.haePizzat()); 
+	request.setAttribute("juomat", search.haeJuotavatMenu());
+	request.setAttribute("taytteet", search.haeTaytteet());
+	request.getRequestDispatcher("WEB-INF/jsp/menunmuokkaus.jsp").forward(request, response);
 	
 	}
 	

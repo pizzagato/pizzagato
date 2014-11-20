@@ -72,9 +72,9 @@
 		<label class="tilaustiedot">Nimi</label>
 			<input type="text" name="nimi" maxlength="40" required><br>
 		<label class="tilaustiedot">Puhelin</label>
-			<input type="text" name="puhnro" maxlength="10" required ><br>
+			<input type="text" name="puhnro" maxlength="10"><br>
 		<label class="tilaustiedot">Sähköposti</label>
-			<input type="email" name="email"><br>
+			<input type="email" name="email" required><br>
 		<label class="tilaustiedot">Osoite</label>
 			<input type="text" class="osoite" name="osoite" maxlength="30" required>
 		<label class="tilaustiedot">Postinumero</label>
@@ -82,8 +82,7 @@
  	</fieldset>
  	<fieldset>
  	<label>Lisätoiveet</label>
- 	<textarea class=tilaustiedot name=lisatoiveet>
- 	</textarea>
+ 	<textarea class=tilaustiedot name=lisatoiveet></textarea>
  	
  	 <input type="submit" class="tilausnappi" value="Tilaa">
  	</fieldset>
