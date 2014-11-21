@@ -1,5 +1,6 @@
 package fi.omapizzeria.pizzagatto.dao;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,8 +9,11 @@ import java.util.ArrayList;
 
 
 
+
+
 import fi.omapizzeria.pizzagatto.bean.Pizza;
 import fi.omapizzeria.pizzagatto.bean.Tayte;
+import fi.omapizzeria.pizzagatto.bean.Tuote;
 
 public class PizzaDAO extends Yhteys {	
 	
@@ -106,22 +110,60 @@ public class PizzaDAO extends Yhteys {
 		}
 	}
 	
-	public void lisaaPizztayte(Pizza pt) throws DAOPoikkeus{
+	public void lisaaPizztayte(Pizza pt, int [] taytteet) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
-		int key=0;
+		String sql="insert into Pizza(nimi, hinta, status) values(?,?,?)";
+		String sql2="insert into Pizzatayte(tayte_id, pizza_id) values(last_insert_id(),?)";
 		try {
-			String sql=" START TRANSACTION; insert into Pizza(nimi, hinta, status) values(?,?,?); insert into Pizzatayte(pizza_id, tayte_id) values(?,?),(?,?),(?,?),(?,?),(?,?); COMMIT;";
-			PreparedStatement lause = yhteys.prepareStatement(sql);
+			
+			PreparedStatement lause = yhteys.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement lause2 = yhteys.prepareStatement(sql2);
 			
 			lause.setString(1, pt.getNimi());
 			lause.setDouble(2, pt.getHinta());
 			lause.setInt(3,pt.getStatus());
-				
-			lause.executeUpdate();		
+			
+			lause.executeUpdate();
+			
+			lause2.setInt(1, taytteet[0]);
+			
+			lause2.executeUpdate();
+			
+			
+			
+			
+			//for (int i = 0; i < taytteet.length; i++) {
+			//	lause2 = yhteys.prepareStatement(sql2);
+				//lause2.setInt(1,taytteet[i]);
+				//lause2.executeUpdate();
+			//}
+			
+
+			
+			
+			
+			//lause2.setInt(3,tayte2);
+			//lause2.setInt(4,lastid);
+			//lause2.setInt(5,tayte3);
+			//lause2.setInt(6,lastid);
+			//lause2.setInt(7,tayte4);
+			//lause2.setInt(8,lastid);
+			//lause2.setInt(9, tayte5);
+			//lause2.setInt(10,lastid);
+			
+			
+			
+			
+			
+		
+			
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}finally{
 			suljeYhteys(yhteys);
 		}
 	}
+	
+	
 }

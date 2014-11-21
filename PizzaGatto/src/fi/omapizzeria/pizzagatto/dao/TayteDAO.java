@@ -28,13 +28,14 @@ public class TayteDAO extends Yhteys {
 		ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
 		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
 		try {
-			String selectLause = "Select nimi from Tayte";
+			String selectLause = "Select tayte_id, nimi from Tayte";
 			Statement selectHaku = yhteys.createStatement(); //Syöttää SQL:ään komennon, jolla valitaan juomat
 			ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
 			while (selectTulokset.next()){ //Laitetaan tulokset omiin muuttujiinsa
 				String nimi = selectTulokset.getString("nimi");
+				int id = selectTulokset.getInt("tayte_id");
 				
-				Tayte t= new Tayte(nimi); 
+				Tayte t= new Tayte(id, nimi); 
 				taytteet.add(t);
 			
 				

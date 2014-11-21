@@ -26,7 +26,7 @@
 	</div>
 <div id="wrapper">
 	<div id="tekstiboxi">
-	<form>
+	<form action="MenunMuokkaus" method="post">
 		<fieldset>
 		<h2>Lis‰‰ pizza</h2>
 		
@@ -42,34 +42,34 @@
 		<div class="taytevalinta">
 			<label>T‰ytteet</label><br>
 			<select name="pizzatayte1" required>
-  					<option value="1" selected disabled>--</option>
+  					<option selected disabled>--</option>
   					<c:forEach items="${taytteet}" var="t">
-  					<option><c:out value="${t.nimi}"></c:out>
+  					<option value="${t.id}"><c:out value="${t.nimi}"></c:out>
   					</option>
   					</c:forEach>
 			</select>
 			<select name="pizzatayte2" required>
-  					<option value="1" selected disabled>--</option>
+  					<option selected disabled>--</option>
   					<c:forEach items="${taytteet}" var="t">
-  					<option><c:out value="${t.nimi}"></c:out></option>
+  					<option value="${t.id}"><c:out value="${t.nimi}"></c:out></option>
   					</c:forEach>
 			</select>
 			<select name="pizzatayte3">
-  					<option value="1" selected>--</option>
+  					<option selected>--</option>
   					<c:forEach items="${taytteet}" var="t">
-  					<option><c:out value="${t.nimi}"></c:out></option>
+  					<option value="${t.id}"><c:out value="${t.nimi}"></c:out></option>
   					</c:forEach>
 			</select>
 			<select name="pizzatayte4">
-  					<option value="1" selected>--</option>
+  					<option selected>--</option>
   					<c:forEach items="${taytteet}" var="t">
-  					<option><c:out value="${t.nimi}"></c:out></option>
+  					<option value="${t.id}"><c:out value="${t.nimi}"></c:out></option>
   					</c:forEach>
 			</select>
 			<select name="pizzatayte5">
-  					<option value="1" selected>--</option>
+  					<option selected>--</option>
   					<c:forEach items="${taytteet}" var="t">
-  					<option><c:out value="${t.nimi}"></c:out></option>
+  					<option value="${t.id}"><c:out value="${t.nimi}"></c:out></option>
   					</c:forEach>
 			</select>
 		</div>

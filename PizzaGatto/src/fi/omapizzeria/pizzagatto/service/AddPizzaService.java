@@ -1,6 +1,7 @@
 package fi.omapizzeria.pizzagatto.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fi.omapizzeria.pizzagatto.bean.Pizza;
+import fi.omapizzeria.pizzagatto.bean.Tayte;
+import fi.omapizzeria.pizzagatto.bean.Tuote;
 import fi.omapizzeria.pizzagatto.dao.DAOPoikkeus;
 import fi.omapizzeria.pizzagatto.dao.PizzaDAO;
 
@@ -72,15 +75,22 @@ public class AddPizzaService extends HttpServlet {
 		
 	}
 	
-	public void lisaaPizza(Pizza pt)  throws ServletException, IOException{
+	public void lisaaPizztayte(String pizzanimi, double pizzahinta, int status, int tayte1, int tayte2, int tayte3, int tayte4, int tayte5)  throws ServletException, IOException{
 		try {
+			
+			
+			int [] taytteet = {tayte1, tayte2, tayte3, tayte4, tayte5};
+			
+			
+			
+			Pizza pt = new Pizza(pizzanimi, pizzahinta, status);
+			
 			PizzaDAO pDao = new PizzaDAO();
-			pDao.lisaa(pt);
+			pDao.lisaaPizztayte(pt, taytteet);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
-	
 	
 	
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import fi.omapizzeria.pizzagatto.bean.Juoma;
 import fi.omapizzeria.pizzagatto.bean.Pizza;
 import fi.omapizzeria.pizzagatto.bean.Tayte;
+import fi.omapizzeria.pizzagatto.bean.Tuote;
 import fi.omapizzeria.pizzagatto.service.AddJuomaService;
 import fi.omapizzeria.pizzagatto.service.AddPizzaService;
 import fi.omapizzeria.pizzagatto.service.AddTayteService;
@@ -46,35 +47,36 @@ public class MenunMuokkausServlet extends HttpServlet {
 	
 	}
 	//uuden pizzan lisäys täytteineen
-	String pizzanimi=request.getParameter("pizzanimi");
-	String pizzahinta=request.getParameter("pizzahinta");
-	String pizzatayte1=request.getParameter("pizzatayte1");
-	String pizzatayte2=request.getParameter("pizzatayte2");
-	String pizzatayte3=request.getParameter("pizzatayte3");
-	String pizzatayte4=request.getParameter("pizzatayte4");
-	String pizzatayte5=request.getParameter("pizzatayte5");
-	double pizzhinta;
-	int statusnumero=1;
-	
-	if(pizzanimi != null && pizzahinta != null && pizzatayte1 != null &&
-		pizzatayte2 != null && pizzatayte3 != null && pizzatayte4 !=null &&
-		pizzatayte5 != null){
-		pizzhinta=Double.parseDouble(pizzahinta);
-		Tayte tayte1 = new Tayte(pizzatayte1);
-		Tayte tayte2 = new Tayte(pizzatayte2);
-		Tayte tayte3 = new Tayte(pizzatayte3);
-		Tayte tayte4 = new Tayte(pizzatayte4);
-		Tayte tayte5 = new Tayte(pizzatayte5);
-		ArrayList<Tayte> pizzataytteet = new ArrayList<Tayte>();
-		pizzataytteet.add(tayte1);
-		pizzataytteet.add(tayte2);
-		pizzataytteet.add(tayte3);
-		pizzataytteet.add(tayte4);
-		pizzataytteet.add(tayte5);
+	//uuden pizzan lisäys täytteineen
+		String pizzanimi=request.getParameter("pizzanimi");
+		String pizzahinta=request.getParameter("pizzahinta");
+		String pizzatayte1=request.getParameter("pizzatayte1");
+		String pizzatayte2=request.getParameter("pizzatayte2");
+		String pizzatayte3=request.getParameter("pizzatayte3");
+		String pizzatayte4=request.getParameter("pizzatayte4");
+		String pizzatayte5=request.getParameter("pizzatayte5");
+
+		int pizzt1;
+		int pizzt2;
+		int pizzt3;
+		int pizzt4;
+		int pizzt5;
+		double pizzhinta;
+		int statusnumero=1;
 		
-		Pizza pizza = new Pizza(pizzanimi, pizzhinta, pizzataytteet, statusnumero);
-		ad.lisaaPizza(pizza);
-	}
+		if(pizzanimi != null && pizzahinta != null && pizzatayte1 != null &&
+			pizzatayte2 != null && pizzatayte3 != null && pizzatayte4 !=null &&
+			pizzatayte5 != null){
+			pizzhinta=Double.parseDouble(pizzahinta);
+			pizzt1=Integer.parseInt(pizzatayte1);
+			pizzt2=Integer.parseInt(pizzatayte2);
+			pizzt3=Integer.parseInt(pizzatayte3);
+			pizzt4=Integer.parseInt(pizzatayte4);
+			pizzt5=Integer.parseInt(pizzatayte5);
+
+			
+			ad.lisaaPizztayte(pizzanimi, pizzhinta, statusnumero, pizzt1, pizzt2, pizzt3, pizzt4, pizzt5);
+		}
 	
 	//--------------------------------------------------------------------
 	// juoman setit

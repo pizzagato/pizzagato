@@ -15,6 +15,14 @@ public class Tayte {
 		this.id = id;
 		this.nimi = nimi;
 	}
+	
+	
+	public Tayte(int id) {
+		super();
+		this.id = id;
+	}
+
+
 	public Tayte(String nimi){
 		super();
 		this.nimi=nimi;

@@ -13,6 +13,9 @@ public class Tuote {
 		this.nimi = nimi;
 		this.hinta = hinta;
 	}
+	
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -35,5 +38,6 @@ public class Tuote {
 	public String toString() {
 		return "Tuote id=" + id + ", nimi=" + nimi + ", hinta=" + hinta ;
 	}
+	
 
 }

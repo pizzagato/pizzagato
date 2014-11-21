@@ -22,11 +22,28 @@ public class Pizza extends Tuote{
 		super();
 		this.nimi = nimi;
 	}
+	
+	
+
+	public Pizza( String nimi, Double hinta, int status) {
+		super(status,nimi, hinta);
+		this.status = status;
+	}
+	
+	public Pizza( String nimi, Double hinta, int status, ArrayList<Tayte> taytteet) {
+		super(status,nimi, hinta);
+		this.status = status;
+		this.taytteet = taytteet;
+	}
+	
+	
+	
 
 	public Pizza(ArrayList<Tayte> taytteet) {
 		super();
 		this.taytteet = taytteet;
 	}
+	
 	
 	public Pizza(String nimi, Double hinta, ArrayList<Tayte> taytteet,
 			int status) {
@@ -41,8 +58,10 @@ public class Pizza extends Tuote{
 		this.nimi = nimi;
 		this.status = status;
 	}
+	
+	
 
-	public ArrayList<Tayte> getTaytteet() {
+	public ArrayList<Tayte> getTaytteet(int i) {
 		return taytteet;
 	}
 
