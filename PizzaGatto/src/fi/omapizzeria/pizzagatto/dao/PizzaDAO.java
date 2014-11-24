@@ -82,7 +82,9 @@ public class PizzaDAO extends Yhteys {
 		Connection yhteys = avaaYhteys();
 		try {
 			String sql = "DELETE from Pizza WHERE nimi = ?";
+			String sql2="DELETE from Pizzatayte WHERE tayte_id=? and pizza_id=?";
 			PreparedStatement lause = yhteys.prepareStatement(sql);
+			PreparedStatement lause2 = yhteys.prepareStatement(sql2);
 			lause.setString(1, pois.getNimi());
 			lause.executeUpdate();
 			System.out.println("Poistettiin pizza tietokannasta: "+pois);
@@ -113,44 +115,37 @@ public class PizzaDAO extends Yhteys {
 	public void lisaaPizztayte(Pizza pt, int [] taytteet) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		String sql="insert into Pizza(nimi, hinta, status) values(?,?,?)";
-		String sql2="insert into Pizzatayte(tayte_id, pizza_id) values(last_insert_id(),?)";
+		String sql2="insert into Pizzatayte(tayte_id, pizza_id) values(?,?)";
+		String sql3="select MAX(pizza_id) from Pizza";
+		int maxid=0;
 		try {
 			
-			PreparedStatement lause = yhteys.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement lause = yhteys.prepareStatement(sql);
 			PreparedStatement lause2 = yhteys.prepareStatement(sql2);
-			
+			PreparedStatement lause3 = yhteys.prepareStatement(sql3);
 			lause.setString(1, pt.getNimi());
 			lause.setDouble(2, pt.getHinta());
 			lause.setInt(3,pt.getStatus());
 			
 			lause.executeUpdate();
-			
-			lause2.setInt(1, taytteet[0]);
-			
-			lause2.executeUpdate();
+			lause3.executeUpdate();
 			
 			
+			ResultSet setit = lause3.getResultSet();
+			if(setit.next()){
+				maxid=setit.getInt(1);
+			}
+			
+			for (int i = 0; i < taytteet.length; i++) {
+				lause2.setInt(1,taytteet[i]);
+				lause2.setInt(2,maxid);
+				lause2.executeUpdate();
+			}
 			
 			
-			//for (int i = 0; i < taytteet.length; i++) {
-			//	lause2 = yhteys.prepareStatement(sql2);
-				//lause2.setInt(1,taytteet[i]);
-				//lause2.executeUpdate();
-			//}
+			
 			
 
-			
-			
-			
-			//lause2.setInt(3,tayte2);
-			//lause2.setInt(4,lastid);
-			//lause2.setInt(5,tayte3);
-			//lause2.setInt(6,lastid);
-			//lause2.setInt(7,tayte4);
-			//lause2.setInt(8,lastid);
-			//lause2.setInt(9, tayte5);
-			//lause2.setInt(10,lastid);
-			
 			
 			
 			

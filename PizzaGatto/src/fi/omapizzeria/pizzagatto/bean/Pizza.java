@@ -61,7 +61,7 @@ public class Pizza extends Tuote{
 	
 	
 
-	public ArrayList<Tayte> getTaytteet(int i) {
+	public ArrayList<Tayte> getTaytteet() {
 		return taytteet;
 	}
 
