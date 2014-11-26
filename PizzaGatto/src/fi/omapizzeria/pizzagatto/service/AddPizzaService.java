@@ -75,14 +75,10 @@ public class AddPizzaService extends HttpServlet {
 		
 	}
 	
-	public void lisaaPizztayte(String pizzanimi, double pizzahinta, int status, int tayte1, int tayte2, int tayte3, int tayte4, int tayte5)  throws ServletException, IOException{
+	public void lisaaPizztayte(String pizzanimi, double pizzahinta, int status, ArrayList<Integer> taytteet)  throws ServletException, IOException{
 		try {
 			
-			
-			int [] taytteet = {tayte1, tayte2, tayte3, tayte4, tayte5};
-			
-			
-			
+		
 			Pizza pt = new Pizza(pizzanimi, pizzahinta, status);
 			
 			PizzaDAO pDao = new PizzaDAO();

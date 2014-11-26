@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 
 
+
 import fi.omapizzeria.pizzagatto.bean.Pizza;
 import fi.omapizzeria.pizzagatto.bean.Tayte;
 import fi.omapizzeria.pizzagatto.bean.Tuote;
@@ -116,7 +117,7 @@ public class PizzaDAO extends Yhteys {
 		}
 	}
 	
-	public void lisaaPizztayte(Pizza pt, int [] taytteet) throws DAOPoikkeus{
+	public void lisaaPizztayte(Pizza pt, ArrayList<Integer> taytteet) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		String sql="insert into Pizza(nimi, hinta, status) values(?,?,?)";
 		String sql2="insert into Pizzatayte(tayte_id, pizza_id) values(?,?)";
@@ -140,11 +141,15 @@ public class PizzaDAO extends Yhteys {
 				maxid=setit.getInt(1);
 			}
 			
-			for (int i = 0; i < taytteet.length; i++) {
-				lause2.setInt(1,taytteet[i]);
+			for (int i = 0; i < taytteet.size(); i++) {
+				
+					
+				
+				lause2.setInt(1,taytteet.get(i));
 				lause2.setInt(2,maxid);
 				lause2.executeUpdate();
-			}
+				}
+			
 			
 			
 			

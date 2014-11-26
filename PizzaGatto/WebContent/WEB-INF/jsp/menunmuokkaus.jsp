@@ -42,32 +42,32 @@
 		<div class="taytevalinta">
 			<label>Täytteet</label><br>
 			<select name="pizzatayte1" >
-  					<option selected></option>
+  					<option value="1" selected disabled>--</option>
   					<c:forEach items="${taytteet}" var="t">
   					<option value="${t.id}"><c:out value="${t.nimi}"></c:out>
   					</option>
   					</c:forEach>
 			</select>
 			<select name="pizzatayte2" >
-  					<option selected></option>
+  					<option value="1" selected disabled>--</option>
   					<c:forEach items="${taytteet}" var="t">
   					<option value="${t.id}"><c:out value="${t.nimi}"></c:out></option>
   					</c:forEach>
 			</select>
 			<select name="pizzatayte3">
-  					<option selected></option>
+  					<option value="1" selected disabled>--</option>
   					<c:forEach items="${taytteet}" var="t">
   					<option value="${t.id}"><c:out value="${t.nimi}"></c:out></option>
   					</c:forEach>
 			</select>
 			<select name="pizzatayte4">
-  					<option selected></option>
+  					<option value="1" selected disabled>--</option>
   					<c:forEach items="${taytteet}" var="t">
   					<option value="${t.id}"><c:out value="${t.nimi}"></c:out></option>
   					</c:forEach>
 			</select>
 			<select name="pizzatayte5">
-  					<option selected></option>
+  					<option value="1" selected disabled>--</option>
   					<c:forEach items="${taytteet}" var="t">
   					<option value="${t.id}"><c:out value="${t.nimi}"></c:out></option>
   					</c:forEach>
@@ -137,21 +137,21 @@
 		<div class="tuotenimi">
 			<label>Pizza</label><br>
 			<select name="poistapizza">
-  					<option selected></option>
+  				<option value="1" selected disabled>--</option>
   					<c:forEach items="${pitsut}" var="p">
   					<option value="${p.id}"><c:out value="${p.nimi}"></c:out></option>
   					</c:forEach>
 			</select><br>
 			<label>Juoma</label><br>
 			<select name="poistajuoma">
-  					<option selected></option>
+  					<option value="1" selected disabled>--</option>
   					<c:forEach items="${juomat}" var="j">
   					<option value="${j.id}"><c:out value="${j.nimi}"></c:out></option>
   					</c:forEach>
 			</select><br>
 			<label>Täyte</label><br>
 			<select name="poistatayte">
-  					<option selected></option>
+  					<option value="1" selected disabled>--</option>
   					<c:forEach items="${taytteet}" var="t">
   					<option value="${t.id}"><c:out value="${t.nimi}"></c:out></option>
   					</c:forEach>
@@ -166,7 +166,7 @@
 		<div class="tuotenimi">
 			<label>Pizza</label><br>
 			<select name="pizzanstatus">
-  					<option value="1" selected></option>
+  					<option value="1" selected disabled>--</option>
   					<c:forEach items="${pitsut}" var="p">
   					<option value="${p.id}"><c:out value="${p.nimi}"></c:out></option>
   					</c:forEach>

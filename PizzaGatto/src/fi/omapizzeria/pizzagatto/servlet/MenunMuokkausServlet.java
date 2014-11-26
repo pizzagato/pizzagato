@@ -68,32 +68,26 @@ public class MenunMuokkausServlet extends HttpServlet {
 	//uuden pizzan lis‰ys t‰ytteineen
 	String pizzanimi=request.getParameter("pizzanimi");
 	String pizzahinta=request.getParameter("pizzahinta");
-	String pizzatayte1=request.getParameter("pizzatayte1");
-	String pizzatayte2=request.getParameter("pizzatayte2");
-	String pizzatayte3=request.getParameter("pizzatayte3");
-	String pizzatayte4=request.getParameter("pizzatayte4");
-	String pizzatayte5=request.getParameter("pizzatayte5");
+	double pizzhinta;
+	int statusnumero=1;
+	
+	
+	ArrayList<Integer> taytteet = new ArrayList<Integer>();
 	
 
-		int pizzt1;
-		int pizzt2;
-		int pizzt3;
-		int pizzt4;
-		int pizzt5;
-		double pizzhinta;
-		int statusnumero=1;
-		
 		if(request.getParameter("Lis‰‰Pizza") != null){
 			try {
 				pizzhinta=Double.parseDouble(pizzahinta);
-				pizzt1=Integer.parseInt(pizzatayte1);
-				pizzt2=Integer.parseInt(pizzatayte2);
-				pizzt3=Integer.parseInt(pizzatayte3);
-				pizzt4=Integer.parseInt(pizzatayte4);
-				pizzt5=Integer.parseInt(pizzatayte5);
-
+				for (int i = 0; i < 5; i++) {
+					String tayte=request.getParameter("pizzatayte"+(i+1));
+					if(tayte != null){
+						taytteet.add(Integer.parseInt(tayte));
+					}
+				}
+			
 				
-				ad.lisaaPizztayte(pizzanimi, pizzhinta, statusnumero, pizzt1, pizzt2, pizzt3, pizzt4, pizzt5);
+				
+				ad.lisaaPizztayte(pizzanimi, pizzhinta, statusnumero,taytteet);
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
@@ -108,12 +102,12 @@ public class MenunMuokkausServlet extends HttpServlet {
 		String poistajuoma=request.getParameter("poistajuoma");
 		int juomanum;
 	AddJuomaService jd = new AddJuomaService();
-if(request.getParameter("Poista") != null){
-	   try {
+	if(request.getParameter("Poista") != null){
+		try {
 		juomanum=Integer.parseInt(poistajuoma);
 		jd.poistaJuoma(juomanum);
 		
-	} catch (Exception e) {
+			} catch (Exception e) {
 		// TODO: handle exception
 		}
 			}
