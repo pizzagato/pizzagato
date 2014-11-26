@@ -25,14 +25,15 @@ public class PizzaDAO extends Yhteys {
 		ArrayList<Pizza> pitsut = new ArrayList<Pizza>();
 		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
 		try {
-			String selectLause = "Select Pizza.nimi, hinta, Tayte.nimi from Pizza LEFT JOIN Pizzatayte ON Pizza.pizza_id=Pizzatayte.pizza_id LEFT JOIN Tayte ON Pizzatayte.tayte_id=Tayte.tayte_id";
+			String selectLause = "Select Pizza.nimi,Pizza.pizza_id, hinta, Tayte.nimi from Pizza LEFT JOIN Pizzatayte ON Pizza.pizza_id=Pizzatayte.pizza_id LEFT JOIN Tayte ON Pizzatayte.tayte_id=Tayte.tayte_id";
 			Statement selectHaku = yhteys.createStatement(); //Syˆtt‰‰ SQL:‰‰n komennon, jolla valitaan pizzat
 			ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
 			while (selectTulokset.next()){ //Laitetaan tulokset omiin muuttujiinsa
+				int id = selectTulokset.getInt("pizza_id");
 				String nimi = selectTulokset.getString("pizza.nimi");
 				Double hinta = selectTulokset.getDouble("hinta");
 				String taytenimi = selectTulokset.getString("tayte.nimi");				
-				Pizza p = new Pizza(nimi, hinta); //Yhdistet‰‰n pizzoihin niiden ominaisuudet
+				Pizza p = new Pizza(id,nimi, hinta); //Yhdistet‰‰n pizzoihin niiden ominaisuudet
 				Tayte t = new Tayte(taytenimi);
 				p.addTayte(t);
 				boolean oliSamaaPizzaa = true;
@@ -81,12 +82,15 @@ public class PizzaDAO extends Yhteys {
 	public void poista(Pizza pois) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
-			String sql = "DELETE from Pizza WHERE nimi = ?";
-			String sql2="DELETE from Pizzatayte WHERE tayte_id=? and pizza_id=?";
+			String sql="DELETE from Pizzatayte WHERE pizza_id = ?";
+			String sql2 = "DELETE from Pizza WHERE pizza_id = ?";
 			PreparedStatement lause = yhteys.prepareStatement(sql);
 			PreparedStatement lause2 = yhteys.prepareStatement(sql2);
-			lause.setString(1, pois.getNimi());
+			
+			lause.setInt(1, pois.getId());
+			lause2.setInt(1,pois.getId());
 			lause.executeUpdate();
+			lause2.executeUpdate();
 			System.out.println("Poistettiin pizza tietokannasta: "+pois);
 		} catch (Exception e) {
 			throw new DAOPoikkeus("Pizzan poistoyritys aiheutti virheen", e);

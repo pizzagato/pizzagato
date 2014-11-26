@@ -41,40 +41,40 @@
 		<br style="clear: left;" />
 		<div class="taytevalinta">
 			<label>T‰ytteet</label><br>
-			<select name="pizzatayte1" required>
-  					<option selected disabled>--</option>
+			<select name="pizzatayte1" >
+  					<option selected></option>
   					<c:forEach items="${taytteet}" var="t">
   					<option value="${t.id}"><c:out value="${t.nimi}"></c:out>
   					</option>
   					</c:forEach>
 			</select>
-			<select name="pizzatayte2" required>
-  					<option selected disabled>--</option>
+			<select name="pizzatayte2" >
+  					<option selected></option>
   					<c:forEach items="${taytteet}" var="t">
   					<option value="${t.id}"><c:out value="${t.nimi}"></c:out></option>
   					</c:forEach>
 			</select>
 			<select name="pizzatayte3">
-  					<option selected>--</option>
+  					<option selected></option>
   					<c:forEach items="${taytteet}" var="t">
   					<option value="${t.id}"><c:out value="${t.nimi}"></c:out></option>
   					</c:forEach>
 			</select>
 			<select name="pizzatayte4">
-  					<option selected>--</option>
+  					<option selected></option>
   					<c:forEach items="${taytteet}" var="t">
   					<option value="${t.id}"><c:out value="${t.nimi}"></c:out></option>
   					</c:forEach>
 			</select>
 			<select name="pizzatayte5">
-  					<option selected>--</option>
+  					<option selected></option>
   					<c:forEach items="${taytteet}" var="t">
   					<option value="${t.id}"><c:out value="${t.nimi}"></c:out></option>
   					</c:forEach>
 			</select>
 		</div>
 		<br style="clear: left;" />
-		<input type="submit" class="tilausnappi" value="Lis‰‰">		
+		<button type="submit" class="tilausnappi" name="Lis‰‰Pizza">Lis‰‰ pizza</button>		
 		</fieldset>
 	</form>
 	<form action="MenunMuokkaus" method="post">
@@ -116,7 +116,7 @@
 				</select>
 		</div>
 			<br style="clear: left;" />
-		<input type="submit" class="tilausnappi" value="Lis‰‰">	
+		<button type="submit" class="tilausnappi" name="Lis‰‰Juoma">Lis‰‰ juoma</button>	
 		</fieldset>
 	</form>
 	<form action="MenunMuokkaus" method="post">
@@ -128,7 +128,7 @@
 		</div>
 
 		<br style="clear: left;" />
-		<input type="submit" class="tilausnappi2" value="Lis‰‰">
+		<button type="submit" class="tilausnappi2" name="Lis‰‰T‰yte">Lis‰‰ t‰yte</button>
  		</fieldset>
 	</form>
 	<form action="MenunMuokkaus" method="post">
@@ -137,27 +137,27 @@
 		<div class="tuotenimi">
 			<label>Pizza</label><br>
 			<select name="poistapizza">
-  					<option value="1" selected>--</option>
+  					<option selected>--</option>
   					<c:forEach items="${pitsut}" var="p">
-  					<option><c:out value="${p.nimi}"></c:out></option>
+  					<option value="${p.id}"><c:out value="${p.nimi}"></c:out></option>
   					</c:forEach>
 			</select><br>
 			<label>Juoma</label><br>
 			<select name="poistajuoma">
-  					<option value="1" selected>--</option>
+  					<option selected>--</option>
   					<c:forEach items="${juomat}" var="j">
   					<option><c:out value="${j.nimi}"></c:out></option>
   					</c:forEach>
 			</select><br>
 			<label>T‰yte</label><br>
 			<select name="poistatayte">
-  					<option value="1" selected>--</option>
+  					<option selected>--</option>
   					<c:forEach items="${taytteet}" var="t">
-  					<option><c:out value="${t.nimi}"></c:out></option>
+  					<option value="${t.id}"><c:out value="${t.nimi}"></c:out></option>
   					</c:forEach>
 			</select></div>
 		<br style="clear: left;" />
-		<input type="submit" class="tilausnappi2" value="Poista">
+		<button type="submit" class="tilausnappi2" name="Poista">Poista</button>
 		</fieldset>
 	</form>	
 	<form action="MenunMuokkaus" method="post">
@@ -177,7 +177,7 @@
 			<input type="radio" name="status" value="0">Ei k‰ytˆss‰
 		
 		<br style="clear: left;" />
-		<input type="submit" class="tilausnappi2" value="Muuta">
+		<button  type="submit" class="tilausnappi2" name="Muuta">Muuta status</button>
 		</fieldset>
 	</form>
 	

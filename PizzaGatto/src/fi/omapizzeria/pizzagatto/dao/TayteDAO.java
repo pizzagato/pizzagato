@@ -74,10 +74,16 @@ public class TayteDAO extends Yhteys {
 	public void poista(Tayte pois) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
-			String sql = "DELETE from Tayte WHERE nimi = ?";
+			String sql = "DELETE from Pizzatayte where tayte_id=?";
+			String sql2 = "DELETE from Tayte WHERE tayte_id = ?";
+			
 			PreparedStatement lause = yhteys.prepareStatement(sql);
-			lause.setString(1, pois.getNimi());
+			PreparedStatement lause2 = yhteys.prepareStatement(sql2);
+			
+			lause.setInt(1, pois.getId());
+			lause2.setInt(1, pois.getId());
 			lause.executeUpdate();
+			lause2.executeUpdate();
 			System.out.println("Poistettiin tayte tietokannasta: "+pois);
 		} catch (Exception e) {
 			throw new DAOPoikkeus("Taytteen poistoyritys aiheutti virheen", e);

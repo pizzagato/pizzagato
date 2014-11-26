@@ -27,34 +27,51 @@ public class MenunMuokkausServlet extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		
+	
+	
+		
+		
+		
 	// pizzan setit
 	//poista pizza	
 	
 	String poistapizza=request.getParameter("poistapizza");
+	
+	
 	AddPizzaService ad = new AddPizzaService();
-	if(poistapizza != null){
-		ad.poistaPizza(poistapizza);
+	int poistpizz;
+	if(request.getParameter("Poista") != null && poistapizza != null){
+		poistpizz=Integer.parseInt(poistapizza);
+		ad.poistaPizza(poistpizz);
 	}
 	//muuta pizzan status
 	String muutapizza=request.getParameter("pizzanstatus");
 	String status=request.getParameter("status");
 	int statusint;
 	
-	if(muutapizza != null && status != null){
+	if(request.getParameter("Muuta") != null && muutapizza != null && status != null){
 		 statusint=Integer.parseInt(status);
 	
 	ad.muutaStatus(muutapizza, statusint);
 	
 	}
 	//uuden pizzan lis‰ys t‰ytteineen
-	//uuden pizzan lis‰ys t‰ytteineen
-		String pizzanimi=request.getParameter("pizzanimi");
-		String pizzahinta=request.getParameter("pizzahinta");
-		String pizzatayte1=request.getParameter("pizzatayte1");
-		String pizzatayte2=request.getParameter("pizzatayte2");
-		String pizzatayte3=request.getParameter("pizzatayte3");
-		String pizzatayte4=request.getParameter("pizzatayte4");
-		String pizzatayte5=request.getParameter("pizzatayte5");
+	String pizzanimi=request.getParameter("pizzanimi");
+	String pizzahinta=request.getParameter("pizzahinta");
+	String pizzatayte1=request.getParameter("pizzatayte1");
+	String pizzatayte2=request.getParameter("pizzatayte2");
+	String pizzatayte3=request.getParameter("pizzatayte3");
+	String pizzatayte4=request.getParameter("pizzatayte4");
+	String pizzatayte5=request.getParameter("pizzatayte5");
+	System.out.println(pizzanimi);
+	System.out.println(pizzahinta);
+	System.out.println(pizzatayte1);
+	System.out.println(pizzatayte2);
+	System.out.println(pizzatayte3);
+	System.out.println(pizzatayte4);
+	System.out.println(pizzatayte5);
 
 		int pizzt1;
 		int pizzt2;
@@ -64,9 +81,7 @@ public class MenunMuokkausServlet extends HttpServlet {
 		double pizzhinta;
 		int statusnumero=1;
 		
-		if(pizzanimi != null && pizzahinta != null && pizzatayte1 != null &&
-			pizzatayte2 != null && pizzatayte3 != null && pizzatayte4 !=null &&
-			pizzatayte5 != null){
+		if(request.getParameter("Lis‰‰Pizza") != null){
 			pizzhinta=Double.parseDouble(pizzahinta);
 			pizzt1=Integer.parseInt(pizzatayte1);
 			pizzt2=Integer.parseInt(pizzatayte2);
@@ -84,7 +99,7 @@ public class MenunMuokkausServlet extends HttpServlet {
 	
 	String poistajuoma=request.getParameter("poistajuoma");
 	AddJuomaService jd = new AddJuomaService();
-	if(poistajuoma != null){
+	if(request.getParameter("Poista") != null && poistajuoma != null){
 		jd.poistaJuoma(poistajuoma);
 	}
 	
@@ -96,7 +111,7 @@ public class MenunMuokkausServlet extends HttpServlet {
 	String koko =request.getParameter("juomakoko");
 	String tyyppi=request.getParameter("juomatyyppi");
 	double desjuomahinta;
-	if(juomanimi != null && juomahinta != null && koko != null && tyyppi != null){
+	if(request.getParameter("Lis‰‰Juoma") != null){
 		desjuomahinta=Double.parseDouble(juomahinta);
 		jd.lisaaJuoma(juomanimi, desjuomahinta, koko, tyyppi);
 	}
@@ -106,21 +121,18 @@ public class MenunMuokkausServlet extends HttpServlet {
 	//taytteen setit
 	// poista tayte
 	String poistatayte=request.getParameter("poistatayte");
+	int poist;
 	AddTayteService tj = new AddTayteService();
-	if(poistatayte != null){
-		tj.poistaTayte(poistatayte);
+	if(request.getParameter("Poista") != null && poistatayte != null){
+		poist=Integer.parseInt(poistatayte);
+		tj.poistaTayte(poist);
 	}
 		
 	//lis‰‰ t‰yte
 	String taytenimi=request.getParameter("tayte");
-	if(taytenimi != null){
+	if(request.getParameter("Lis‰‰T‰yte") != null){
 		tj.lisaaTayte(taytenimi);
 	}
-	
-	
-	
-	
-	
 	
 	
 

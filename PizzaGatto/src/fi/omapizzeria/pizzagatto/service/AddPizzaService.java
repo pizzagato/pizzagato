@@ -48,7 +48,7 @@ public class AddPizzaService extends HttpServlet {
 	}
 	*/
 	
-	public void poistaPizza(String poista) throws ServletException, IOException{
+	public void poistaPizza(int poista) throws ServletException, IOException{
 		Pizza pois = new Pizza(poista);
 		try {
 			PizzaDAO pDao = new PizzaDAO();

@@ -48,7 +48,7 @@ public class AddTayteService extends HttpServlet {
 	
 	*/
 	
-	public void poistaTayte(String poista) throws ServletException, IOException{
+	public void poistaTayte(int poista) throws ServletException, IOException{
 		Tayte pois = new Tayte(poista);
 		try {
 			TayteDAO tDao = new TayteDAO();

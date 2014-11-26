@@ -13,6 +13,10 @@ public class Pizza extends Tuote{
 	public Pizza(int id, String nimi, Double hinta) {
 		super(id, nimi, hinta);
 	}
+	public Pizza(int id, String nimi, Double hinta, int status) {
+		super(id, nimi, hinta);
+	}
+	
 	public Pizza(String nimi, Double hinta){
 		super();
 		this.nimi = nimi;
@@ -21,6 +25,9 @@ public class Pizza extends Tuote{
 	public Pizza(String nimi){
 		super();
 		this.nimi = nimi;
+	}
+	public Pizza(int id){
+		this.id=id;
 	}
 	
 	
