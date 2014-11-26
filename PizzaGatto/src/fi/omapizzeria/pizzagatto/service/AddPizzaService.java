@@ -60,7 +60,7 @@ public class AddPizzaService extends HttpServlet {
 	}
 	
 	
-	public void muutaStatus(String poista, int status) throws ServletException, IOException{
+	public void muutaStatus(int poista, int status) throws ServletException, IOException{
 		
 		
 		Pizza p = new Pizza(poista,status);

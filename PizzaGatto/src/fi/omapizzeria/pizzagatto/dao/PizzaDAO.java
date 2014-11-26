@@ -103,10 +103,10 @@ public class PizzaDAO extends Yhteys {
 	public void muutaPizza(Pizza p)throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
-			String sql="UPDATE Pizza set status= ? WHERE nimi = ?";
+			String sql="UPDATE Pizza set status= ? WHERE pizza_id = ?";
 			PreparedStatement lause = yhteys.prepareStatement(sql);
 			lause.setInt(1, p.getStatus());
-			lause.setString(2, p.getNimi());
+			lause.setInt(2, p.getId());
 			lause.executeUpdate();
 			System.out.println("Muutettiin Pizzan "+p+" Status");
 		} catch (Exception e) {

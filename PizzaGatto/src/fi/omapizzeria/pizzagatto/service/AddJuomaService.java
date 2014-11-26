@@ -57,7 +57,7 @@ public class AddJuomaService extends HttpServlet {
 	}
 **/
 	
-	public void poistaJuoma(String poista) throws ServletException, IOException{
+	public void poistaJuoma(int poista) throws ServletException, IOException{
 		Juoma pois = new Juoma(poista);
 		try {
 			JuomaDAO jDao = new JuomaDAO();

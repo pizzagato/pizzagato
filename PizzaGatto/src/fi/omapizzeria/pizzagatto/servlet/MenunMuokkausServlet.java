@@ -51,11 +51,13 @@ public class MenunMuokkausServlet extends HttpServlet {
 	String muutapizza=request.getParameter("pizzanstatus");
 	String status=request.getParameter("status");
 	int statusint;
+	int pizzaid;
 	if(request.getParameter("Muuta") != null && muutapizza != null && status != null){
 	try {
 		 statusint=Integer.parseInt(status);
+		 pizzaid=Integer.parseInt(muutapizza);
 			
-			ad.muutaStatus(muutapizza, statusint);
+			ad.muutaStatus(pizzaid, statusint);
 	} catch (Exception e) {
 		// TODO: handle exception
 		}
@@ -103,12 +105,13 @@ public class MenunMuokkausServlet extends HttpServlet {
 	// poista juoma
 	
 	
-	
+		String poistajuoma=request.getParameter("poistajuoma");
+		int juomanum;
 	AddJuomaService jd = new AddJuomaService();
 if(request.getParameter("Poista") != null){
 	   try {
-		String poistajuoma=request.getParameter("poistajuoma");
-		jd.poistaJuoma(poistajuoma);
+		juomanum=Integer.parseInt(poistajuoma);
+		jd.poistaJuoma(juomanum);
 		
 	} catch (Exception e) {
 		// TODO: handle exception

@@ -30,6 +30,10 @@ public class Pizza extends Tuote{
 		this.id=id;
 	}
 	
+	public Pizza(int id, int status){
+		this.id=id;
+		this.status=status;
+	}
 	
 
 	public Pizza( String nimi, Double hinta, int status) {

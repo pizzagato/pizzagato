@@ -146,7 +146,7 @@
 			<select name="poistajuoma">
   					<option selected></option>
   					<c:forEach items="${juomat}" var="j">
-  					<option><c:out value="${j.nimi}"></c:out></option>
+  					<option value="${j.id}"><c:out value="${j.nimi}"></c:out></option>
   					</c:forEach>
 			</select><br>
 			<label>Täyte</label><br>
@@ -168,7 +168,7 @@
 			<select name="pizzanstatus">
   					<option value="1" selected></option>
   					<c:forEach items="${pitsut}" var="p">
-  					<option><c:out value="${p.nimi}"></c:out></option>
+  					<option value="${p.id}"><c:out value="${p.nimi}"></c:out></option>
   					</c:forEach>
 			</select>
 		</div>
