@@ -13,10 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 public class YhteystiedotServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public YhteystiedotServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
     //Ohjaa yhteystietosivulle
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,8 +20,6 @@ public class YhteystiedotServlet extends HttpServlet {
 		request.getRequestDispatcher("WEB-INF/jsp/yhteystiedot.html").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+
 
 }
