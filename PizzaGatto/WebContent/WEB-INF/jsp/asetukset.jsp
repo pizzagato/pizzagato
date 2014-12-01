@@ -48,6 +48,8 @@
 			
 		<br style="clear: left;" />
 		<input type="submit" class="tilausnappi2" value="Tallenna">	
+	</fieldset>¨
+	</form>
 	</div>
 </div>
 

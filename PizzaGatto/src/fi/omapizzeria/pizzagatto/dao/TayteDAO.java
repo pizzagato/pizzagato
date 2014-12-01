@@ -28,13 +28,14 @@ public class TayteDAO extends Yhteys {
 		ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
 		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
 		try {
-			String selectLause = "Select nimi from Tayte";
+			String selectLause = "Select tayte_id, nimi from Tayte";
 			Statement selectHaku = yhteys.createStatement(); //Syöttää SQL:ään komennon, jolla valitaan juomat
 			ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
 			while (selectTulokset.next()){ //Laitetaan tulokset omiin muuttujiinsa
 				String nimi = selectTulokset.getString("nimi");
+				int id = selectTulokset.getInt("tayte_id");
 				
-				Tayte t= new Tayte(nimi); 
+				Tayte t= new Tayte(id, nimi); 
 				taytteet.add(t);
 			
 				
@@ -62,7 +63,6 @@ public class TayteDAO extends Yhteys {
 			PreparedStatement lause = yhteys.prepareStatement(sql);
 			lause.setString(1, t.getNimi());
 			lause.executeUpdate();
-			System.out.println("LISÄTTIIN Tayte TIETOKANTAAN: "+t);
 		} catch(Exception e) {
 			throw new DAOPoikkeus("Taytteen lisäämisyritys aiheutti virheen", e);
 		}finally {
@@ -73,11 +73,16 @@ public class TayteDAO extends Yhteys {
 	public void poista(Tayte pois) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
-			String sql = "DELETE from Tayte WHERE nimi = ?";
+			String sql = "DELETE from Pizzatayte where tayte_id=?";
+			String sql2 = "DELETE from Tayte WHERE tayte_id = ?";
+			
 			PreparedStatement lause = yhteys.prepareStatement(sql);
-			lause.setString(1, pois.getNimi());
+			PreparedStatement lause2 = yhteys.prepareStatement(sql2);
+			
+			lause.setInt(1, pois.getId());
+			lause2.setInt(1, pois.getId());
 			lause.executeUpdate();
-			System.out.println("Poistettiin tayte tietokannasta: "+pois);
+			lause2.executeUpdate();
 		} catch (Exception e) {
 			throw new DAOPoikkeus("Taytteen poistoyritys aiheutti virheen", e);
 		}finally {

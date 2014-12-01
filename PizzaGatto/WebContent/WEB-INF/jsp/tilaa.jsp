@@ -9,13 +9,15 @@
     <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="css/style.css"> 
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel='stylesheet' media='screen and (min-width: 650px) and (max-width: 1024px)' href='css/tabletstyle.css' />
+	<link rel='stylesheet' media='screen and (min-width: 300px) and (max-width: 650px)' href='css/mobilestyle.css' />
 	<title>Pizza Gatto</title>
 </head>
 <body>
 <div id="container">	
 	<div id="navi">
-		<ul class>
+		<ul>
 			<li><a href="//localhost:8080/PizzaGatto/Etusivu">ETUSIVU</a> </li>
 			<li><a href="//localhost:8080/PizzaGatto/Menu">MENU</a> </li>
 			<li class="active"><a href="//localhost:8080/PizzaGatto/Tilaa">TILAA</a></li>	
@@ -70,13 +72,13 @@
 	<fieldset>
 	<h2>Tilaajan tiedot</h2>
 		<label class="tilaustiedot">Nimi</label>
-			<input type="text" name="nimi" maxlength="40" required><br>
+			<input type="text" name="nimi" pattern="[A-ZÅÄÖa-zåäö-\s]+" maxlength="40" required><br>
 		<label class="tilaustiedot">Puhelin</label>
 			<input type="text" name="puhnro" maxlength="10"><br>
 		<label class="tilaustiedot">Sähköposti</label>
 			<input type="email" name="email" required><br>
 		<label class="tilaustiedot">Osoite</label>
-			<input type="text" class="osoite" name="osoite" maxlength="30" required>
+			<input type="text" class="osoite" name="osoite" maxlength="40" required>
 		<label class="tilaustiedot">Postinumero</label>
 			<input type="text" pattern="[0-9]*" class="pnro" name="pnro" maxlength="5" required>
  	</fieldset>
@@ -102,7 +104,6 @@
 	</div>
 
 </footer>
-</div>
 </body>
 
 

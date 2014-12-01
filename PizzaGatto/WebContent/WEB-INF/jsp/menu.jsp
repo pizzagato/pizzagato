@@ -3,11 +3,15 @@
 <%@page import="fi.omapizzeria.pizzagatto.servlet.EtusivuServlet"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="css/style.css"> 
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel='stylesheet' media='screen and (min-width: 650px) and (max-width: 1024px)' href='css/tabletstyle.css' />
+	<link rel='stylesheet' media='screen and (min-width: 300px) and (max-width: 650px)' href='css/mobilestyle.css' />
 	<title>Pizza Gatto</title>
 </head>
 <body>
@@ -42,17 +46,18 @@
 				<c:out value="${p.nimi}"/>
 			</span>
 			<span>
-				<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${p.hinta}" />
+				<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${p.hinta}" /> €
 			</span>
 		</li>
 		<li class="taytelista">
 		<c:forEach items="${p.taytteet}" var="listNumber" varStatus="listStatus">
-		<c:out value="${listNumber}" />
+		<c:out value="${listNumber}"/>
 		
 	
 		</c:forEach>
-		</c:forEach>
 		</li>
+		</c:forEach>
+		
 		</ul>
 		
 		<div class="divider"></div>
@@ -64,17 +69,16 @@
 		<c:set var="counter" value="${counter + 1}"/>
 		<li class="nimihinta">
 			<span>
-				<c:out value="${counter}."/>
-				<c:out value="${j.nimi}"/>
+				<div class="juomanimi"><c:out value="${counter}."/>
+				<c:out value="${j.nimi}"/></div>
 			</span>
 			<span>
-				<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${j.hinta}" />
+				<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${j.hinta}" /> €
 			</span>
 			
 			<div class="juomakoko"><c:out value="${j.koko}"/></div>
 			<br><br>
 			<li class="taytelista"></li>
-		</li>
 
 		</c:forEach>
 		</ul>
@@ -98,7 +102,6 @@
 	
 	</div>
 </footer>
-</div>
 </body>
 
 

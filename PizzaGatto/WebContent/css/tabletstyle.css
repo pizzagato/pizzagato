@@ -15,13 +15,13 @@ body{
 	position: relative;
 }
 h1{
-	font-size: 20px;
+	font-size: 18px;
 	color: #446304;
 	text-transform: uppercase;
 	padding-left: 10px;
 }
 h2{
-	font-size: 18px;
+	font-size: 16px;
 	color: #576E27;
 	margin-top: 0px;
 }
@@ -43,37 +43,38 @@ p{
 #navi ul{
 	list-style-type: none;
 	margin: 0;
+	margin-left: -30px;
 	padding: 0;
 }
 #navi ul li{
-	width: 160px;
+	width: 100px;
 	display: inline-block;
 	padding-top: 0px;
-	font-size: 18px;
 }
-#navi li{
-	margin-left: -5px;
+#navi li:first-child {
+	margin-right: 40px;
 }
 #navi li:nth-child(2) {
-	margin-right: 100px;
+	margin-right: 90px;
 }
 #navi li:nth-child(3) {
-	margin-left: 100px;
+	margin-left: 90px;
 }
 #navi a{
-	font-size: 18px;
+	font-size: 16px;
 	padding-top: 40px;
 	display: block;
 	height: 60px;
 	color: white;
 	text-decoration: none;
-	
 }
 #navi a:hover{
-	background-color: #759533;
+	background-color: #527A00;
 }
 .active{
-	background-color: #759533;
+	text-decoration: underline;
+	background-color: #527A00;
+
 }
 #logo{
 	position: absolute;
@@ -88,17 +89,18 @@ p{
 	position:relative;
 	z-index: 1;
 	margin: auto;
+	width: 640px;
 }
 /* sisältö ja etusivun palstat */
 #wrapper{
 	margin: auto;
 	margin-top: 20px;
-	width: 900px;
+	width: 640px;
 	padding-bottom: 50px;
 }
 .vasen{
 	float: left;
-	width: 420px;
+	width: 290px;
 	min-height: 265px;
 	background: rgba(255,255,255,0.45);
 	box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
@@ -106,7 +108,7 @@ p{
 }
 .oikea{
 	float: right;
-	width: 420px;
+	width: 290px;
 	min-height: 370px;
 	background: rgba(255,255,255,0.45);
 	padding: 10px;
@@ -183,6 +185,11 @@ li.nimihinta{
 	font-style: italic;
 	padding-left: 35px;
 }
+.juomanimi{
+	float: left;
+	max-width: 695px;
+	padding-right: 5px;
+}
 .juomakoko{
 	font-style: italic;
 	color: #1C1C1B;
@@ -190,15 +197,10 @@ li.nimihinta{
 	display: inline;
 	font-weight: normal;
 }
-.juomanimi{
-	float: left;
-	max-width: 895px;
-	padding-right: 5px;
-}
 #menuotsikko{
-	margin-left: 336px;
-	margin-top: 65px;
-	margin-bottom: 45px;
+	margin-left: 206px;
+	margin-top: 25px;
+	margin-bottom: 25px;
 }
 .divider{
 	border-top: 4px dotted #446304;
@@ -208,21 +210,14 @@ li.nimihinta{
   	padding-bottom: 30px;
 }
 #polaroid{
-	position: absolute;
-	left: -35px;
-	top: 5px;
-	z-index: 1;
+	display: none;
 }
 #polaroid2{
-	position: relative;
-	left: 680px;
-	top: -255px;
-	margin-right: 680px;
-	margin-bottom: -155px;
+	display: none;
 }
 #filleri{
 	display: block;
-	height: 90px;
+	height: 20px;
 }
 /* tilauslomake */
 #tuotenimi{
@@ -231,7 +226,7 @@ li.nimihinta{
 }
 #tuotekpl{
 	float: left;
-	width: 300px;
+	width: 200px;
 }
 #pizzahinta{
 	float: left;
@@ -313,7 +308,7 @@ textarea{
 	float: left;
 	height: 330px;
 	margin-top: 26px;
-	margin-left: 35px;
+	margin-left: 5px;
 }
 
 #texti{
@@ -325,20 +320,10 @@ textarea{
 
 .map{
 	position: absolute;
-	left: 430px;
+	left: 370px;
 	top: 40px;
-	width: 440px;
-	height: 330px;
+	width: 255px;
 }
 .aukiolo {
 	margin-left: 10px;
-}
-
-/* tilaussivu kun tilaaminen on suljettu */
-
-.red1{
-	font-size: 19px;
-	color: #990000;
-	padding-top: 20px;
-	padding-bottom: 5px;
 }

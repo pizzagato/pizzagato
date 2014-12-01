@@ -15,7 +15,7 @@
 <body>
 <div id="container">	
 	<div id="navi">
-		<ul class>
+		<ul>
 			<li><a href="//localhost:8080/PizzaGatto/Etusivu">ETUSIVU</a> </li>
 			<li><a href="//localhost:8080/PizzaGatto/Menu">MENU</a> </li>
 			<li class="active"><a href="//localhost:8080/PizzaGatto/Tilaa">TILAA</a></li>	

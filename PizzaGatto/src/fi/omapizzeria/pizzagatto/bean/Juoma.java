@@ -23,9 +23,16 @@ public class Juoma extends Tuote {
 		this.koko = koko;
 		this.tyyppi = tyyppi;
 	}
+	public Juoma(int id, String nimi, Double hinta, String koko, String tyyppi){
+		super(id, nimi, hinta);
+	}
 	public Juoma(String nimi){
 		super();
 		this.nimi = nimi;
+	}
+	
+	public Juoma(int id){
+		this.id = id;
 	}
 	public String getKoko() {
 		return koko;
@@ -41,9 +48,6 @@ public class Juoma extends Tuote {
 	}
 	@Override
 	public String toString() {
-		return nimi + " koko=" + koko + ", tyyppi=" + tyyppi + "]";
+		return  super.toString()+nimi + " koko=" + koko + ", tyyppi=" + tyyppi + "]";
 	}
 }
-
-
-

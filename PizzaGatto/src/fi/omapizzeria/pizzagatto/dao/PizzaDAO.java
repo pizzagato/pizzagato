@@ -5,9 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-
-
-
 import fi.omapizzeria.pizzagatto.bean.Pizza;
 import fi.omapizzeria.pizzagatto.bean.Tayte;
 
@@ -21,14 +18,15 @@ public class PizzaDAO extends Yhteys {
 		ArrayList<Pizza> pitsut = new ArrayList<Pizza>();
 		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
 		try {
-			String selectLause = "Select Pizza.nimi, hinta, Tayte.nimi from Pizza LEFT JOIN Pizzatayte ON Pizza.pizza_id=Pizzatayte.pizza_id LEFT JOIN Tayte ON Pizzatayte.tayte_id=Tayte.tayte_id";
+			String selectLause = "Select Pizza.nimi,Pizza.pizza_id, hinta, Tayte.nimi from Pizza LEFT JOIN Pizzatayte ON Pizza.pizza_id=Pizzatayte.pizza_id LEFT JOIN Tayte ON Pizzatayte.tayte_id=Tayte.tayte_id";
 			Statement selectHaku = yhteys.createStatement(); //Syˆtt‰‰ SQL:‰‰n komennon, jolla valitaan pizzat
 			ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
 			while (selectTulokset.next()){ //Laitetaan tulokset omiin muuttujiinsa
+				int id = selectTulokset.getInt("pizza_id");
 				String nimi = selectTulokset.getString("pizza.nimi");
 				Double hinta = selectTulokset.getDouble("hinta");
 				String taytenimi = selectTulokset.getString("tayte.nimi");				
-				Pizza p = new Pizza(nimi, hinta); //Yhdistet‰‰n pizzoihin niiden ominaisuudet
+				Pizza p = new Pizza(id,nimi, hinta); //Yhdistet‰‰n pizzoihin niiden ominaisuudet
 				Tayte t = new Tayte(taytenimi);
 				p.addTayte(t);
 				boolean oliSamaaPizzaa = true;
@@ -66,7 +64,6 @@ public class PizzaDAO extends Yhteys {
 			lause.setString(1, p.getNimi());
 			lause.setDouble(2, p.getHinta());
 			lause.executeUpdate();
-			System.out.println("LISƒTTIIN PIZZA TIETOKANTAAN: "+p);
 		} catch(Exception e) {
 			throw new DAOPoikkeus("Pizzan lis‰‰misyritys aiheutti virheen", e);
 		}finally {
@@ -77,11 +74,15 @@ public class PizzaDAO extends Yhteys {
 	public void poista(Pizza pois) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
-			String sql = "DELETE from Pizza WHERE nimi = ?";
+			String sql="DELETE from Pizzatayte WHERE pizza_id = ?";
+			String sql2 = "DELETE from Pizza WHERE pizza_id = ?";
 			PreparedStatement lause = yhteys.prepareStatement(sql);
-			lause.setString(1, pois.getNimi());
+			PreparedStatement lause2 = yhteys.prepareStatement(sql2);
+			
+			lause.setInt(1, pois.getId());
+			lause2.setInt(1,pois.getId());
 			lause.executeUpdate();
-			System.out.println("Poistettiin pizza tietokannasta: "+pois);
+			lause2.executeUpdate();
 		} catch (Exception e) {
 			throw new DAOPoikkeus("Pizzan poistoyritys aiheutti virheen", e);
 		}finally {
@@ -93,12 +94,11 @@ public class PizzaDAO extends Yhteys {
 	public void muutaPizza(Pizza p)throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
-			String sql="UPDATE Pizza set status= ? WHERE nimi = ?";
+			String sql="UPDATE Pizza set status= ? WHERE pizza_id = ?";
 			PreparedStatement lause = yhteys.prepareStatement(sql);
 			lause.setInt(1, p.getStatus());
-			lause.setString(2, p.getNimi());
+			lause.setInt(2, p.getId());
 			lause.executeUpdate();
-			System.out.println("Muutettiin Pizzan "+p+" Status");
 		} catch (Exception e) {
 			// TODO: handle exception
 		}finally {
@@ -106,22 +106,57 @@ public class PizzaDAO extends Yhteys {
 		}
 	}
 	
-	public void lisaaPizztayte(Pizza pt) throws DAOPoikkeus{
+	public void lisaaPizztayte(Pizza pt, ArrayList<Integer> taytteet) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
-		int key=0;
+		String sql="insert into Pizza(nimi, hinta, status) values(?,?,?)";
+		String sql2="insert into Pizzatayte(tayte_id, pizza_id) values(?,?)";
+		String sql3="select MAX(pizza_id) from Pizza";
+		int maxid=0;
 		try {
-			String sql=" START TRANSACTION; insert into Pizza(nimi, hinta, status) values(?,?,?); insert into Pizzatayte(pizza_id, tayte_id) values(?,?),(?,?),(?,?),(?,?),(?,?); COMMIT;";
-			PreparedStatement lause = yhteys.prepareStatement(sql);
 			
+			PreparedStatement lause = yhteys.prepareStatement(sql);
+			PreparedStatement lause2 = yhteys.prepareStatement(sql2);
+			PreparedStatement lause3 = yhteys.prepareStatement(sql3);
 			lause.setString(1, pt.getNimi());
 			lause.setDouble(2, pt.getHinta());
 			lause.setInt(3,pt.getStatus());
+			
+			lause.executeUpdate();
+			lause3.executeUpdate();
+			
+			
+			ResultSet setit = lause3.getResultSet();
+			if(setit.next()){
+				maxid=setit.getInt(1);
+			}
+			
+			for (int i = 0; i < taytteet.size(); i++) {
 				
-			lause.executeUpdate();		
+					
+				
+				lause2.setInt(1,taytteet.get(i));
+				lause2.setInt(2,maxid);
+				lause2.executeUpdate();
+				}
+			
+			
+			
+			
+			
+
+			
+			
+			
+			
+		
+			
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}finally{
 			suljeYhteys(yhteys);
 		}
 	}
+	
+	
 }

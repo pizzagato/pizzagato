@@ -1,4 +1,4 @@
-Ôªø*{
+*{
 	font-family: verdana, sans-serif;
 }
 html{
@@ -47,6 +47,7 @@ body{
 #navi ul li{
 	display: inline-block;
 	padding: 8px;
+	margin-top: 10px;
 	text-align: center;
 	margin-left: -5px;
 }
@@ -81,13 +82,13 @@ p{
 	font-size: 14px;
 	padding-left: 10px;
 }
-/* sis√§lt√∂√§ */
+/* sis‰ltˆ‰ */
 #wrapper{
 	margin: auto;
 	margin-top: 20px;
 	width: 900px;
 }
-/* sis√§lt√∂boksi kaikilla muilla sivuilla paitsi etusivulla */
+/* sis‰ltˆboksi kaikilla muilla sivuilla paitsi etusivulla */
 #tekstiboxi{
 	position: relative;
 	min-height: 400px;

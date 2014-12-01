@@ -3,12 +3,15 @@ package fi.omapizzeria.pizzagatto.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.joda.time.DateTime;
 
 import fi.omapizzeria.pizzagatto.bean.Asiakastiedot;
 import fi.omapizzeria.pizzagatto.bean.Juoma;
@@ -23,11 +26,6 @@ import fi.omapizzeria.pizzagatto.dao.TilausDAO;
 public class TilausServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public TilausServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
     //Ohjaa tilaussivulle
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Pizza> pizzat;
@@ -37,8 +35,14 @@ public class TilausServlet extends HttpServlet {
 		
 		ArrayList<Juoma> juomat;
 		juomat=search.haeJuotavatTilaus();
-		request.setAttribute("juomat",juomat);	
-		request.getRequestDispatcher("WEB-INF/jsp/tilaa.jsp").forward(request, response);		
+		request.setAttribute("juomat",juomat);
+		DateTime time = new DateTime();
+		if (time.getDayOfWeek()==7 || (time.getDayOfWeek()==6 && (time.getHourOfDay()<=10  || time.getHourOfDay()>=(23-1))) ||
+				((time.getDayOfWeek()!=6 || time.getDayOfWeek()!=7) && (time.getHourOfDay()<=9 || time.getHourOfDay()>=(23-1)))) {
+			request.getRequestDispatcher("WEB-INF/jsp/error.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("WEB-INF/jsp/tilaa.jsp").forward(request, response);
+		}		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

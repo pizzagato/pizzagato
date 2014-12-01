@@ -2,15 +2,17 @@
     pageEncoding="ISO-8859-1"%>
     
     <%%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/style.css"> 
+	<link rel='stylesheet' media='screen and (min-width: 650px) and (max-width: 1024px)' href='css/tabletstyle.css'>
+	<link rel='stylesheet' media='screen and (min-width: 300px) and (max-width: 650px)' href='css/mobilestyle.css'>
 	<title>Pizza Gatto</title>
 
 
 <!-- Start WOWSlider.com HEAD section -->
-	<link rel="stylesheet" type="text/css" href="engine1//style.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="engine1//style.css" media="screen">
 	<script type="text/javascript" src="engine1//jquery.js"></script>
 <!-- End WOWSlider.com HEAD section -->
 
@@ -32,12 +34,13 @@
 	
 
 
-<div id="slide"><!-- Start WOWSlider.com BODY section id=wowslider-container1 -->
+<div id="slide">
+<!-- Start WOWSlider.com BODY section id=wowslider-container1 -->
 	<div id="wowslider-container1">
 	<div class="ws_images"><ul>
-<li><img src="data1/images/pizza1..png" alt="pizza1" title="pizza1" id="wows1_0"/></li>
-<li><a href="http://wowslider.com/vf"><img src="data1/images/pizza3..png" alt="full screen slider" title="pizza3" id="wows1_1"/></a></li>
-<li><img src="data1/images/pizza2..png" alt="pizza2" title="pizza2" id="wows1_2"/></li>
+<li><img src="data1/images/pizza1..png" alt="pizza1" title="pizza1" id="wows1_0"></li>
+<li><a href="http://wowslider.com/vf"><img src="data1/images/pizza3..png" alt="full screen slider" title="pizza3" id="wows1_1"></a></li>
+<li><img src="data1/images/pizza2..png" alt="pizza2" title="pizza2" id="wows1_2"></li>
 </ul></div>
 <div class="ws_bullets"><div>
 <a href="#" title="pizza1">1</a>
@@ -64,7 +67,7 @@
 	<table>
 	<tr><td>MA-PE</td><td>09-23</td></tr>
 	<tr><td>LA</td><td>10-23</td></tr>
-	<tr><td>SU</td><td>Suljettu</td><tr>
+	<tr><td>SU</td><td>Suljettu</td></tr>
 	</table>
 	
 	<h1>Kotiinkuljetus</h1>
@@ -72,18 +75,19 @@
 	<p>Tilaukset viimeist‰‰n puoli tuntia ennen ravintolan sulkeutumista.</p>
 	
 	<div id="someiconit">
-	<p><a href="http://localhost:8080/PizzaGatto/Etusivu"></a><img src='img/fbicon.png' onmouseover="this.src='img/fbicon_h.png';" onmouseout="this.src='img/fbicon.png';" /></a>
+	<p>
+	<img src='img/fbicon.png' onmouseover="this.src='img/fbicon_h.png';" onmouseout="this.src='img/fbicon.png';" alt="Facebook">
 
-	<img src='img/twittericon.png' onmouseover="this.src='img/twittericon_h.png';" onmouseout="this.src='img/twittericon.png';" />
+	<img src='img/twittericon.png' onmouseover="this.src='img/twittericon_h.png';" onmouseout="this.src='img/twittericon.png';" alt="Twitter">
 
-	<img src='img/instaicon.png' onmouseover="this.src='img/instaicon_h.png';" onmouseout="this.src='img/instaicon.png';" />
+	<img src='img/instaicon.png' onmouseover="this.src='img/instaicon_h.png';" onmouseout="this.src='img/instaicon.png';" alt="Instagram">
 	</p>
 	</div>
 	</div>
 </div>
 
 <div style="clear: both"></div>
-</div>
+
 <footer>
 	<div id="vasenfooter">
 	<img src="img/tekstilogo1.png" alt="tekstilogo"> 

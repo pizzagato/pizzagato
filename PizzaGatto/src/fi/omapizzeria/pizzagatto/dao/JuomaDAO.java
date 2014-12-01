@@ -26,11 +26,12 @@ public class JuomaDAO extends Yhteys {
 			Statement selectHaku = yhteys.createStatement(); //Syöttää SQL:ään komennon, jolla valitaan juomat
 			ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
 			while (selectTulokset.next()){ //Laitetaan tulokset omiin muuttujiinsa
+				int id=selectTulokset.getInt("juoma_id");
 				String nimi = selectTulokset.getString("nimi");
 				Double hinta = selectTulokset.getDouble("hinta");
 				String koko = selectTulokset.getString("koko");
 				String tyyppi = selectTulokset.getString("tyyppi");
-				Juoma j = new Juoma(nimi,hinta, koko, tyyppi); 
+				Juoma j = new Juoma(id,nimi,hinta, koko, tyyppi); 
 				juomat.add(j);
 			
 				
@@ -50,7 +51,7 @@ public class JuomaDAO extends Yhteys {
 	
 	public ArrayList<Juoma> haeJuomatTilaus() throws DAOPoikkeus{
 		ArrayList<Juoma> juomat = new ArrayList<Juoma>();
-			String selectLause = "Select nimi, hinta, koko, tyyppi from Juoma where tyyppi='virvoitusjuoma'";
+			String selectLause = "Select juoma_id, nimi, hinta, koko, tyyppi from Juoma where tyyppi='virvoitusjuoma'";
 			juomat = haeJuomat(selectLause);
 		
 		return juomat;
@@ -59,7 +60,7 @@ public class JuomaDAO extends Yhteys {
 	
 	public ArrayList<Juoma> haeJuomatMenu() throws DAOPoikkeus{
 		ArrayList<Juoma> juomat = new ArrayList<Juoma>();
-			String selectLause = "Select nimi, hinta, koko, tyyppi from Juoma";
+			String selectLause = "Select juoma_id,nimi, hinta, koko, tyyppi from Juoma";
 			juomat = haeJuomat(selectLause);
 			
 		return juomat;
@@ -77,9 +78,8 @@ public class JuomaDAO extends Yhteys {
 			lause.setString(3, j.getKoko());
 			lause.setString(4, j.getTyyppi());
 			lause.executeUpdate();
-			System.out.println("LISÄTTIIN PIZZA TIETOKANTAAN: "+j);
 		} catch(Exception e) {
-			throw new DAOPoikkeus("Pizzan lisäämisyritys aiheutti virheen", e);
+			throw new DAOPoikkeus("Juoma lisäämisyritys aiheutti virheen", e);
 		}finally {
 			suljeYhteys(yhteys);
 		}
@@ -88,13 +88,12 @@ public class JuomaDAO extends Yhteys {
 	public void poista(Juoma pois) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
-			String sql = "DELETE from Juoma WHERE nimi = ?";
+			String sql = "DELETE from Juoma WHERE juoma_id = ?";
 			PreparedStatement lause = yhteys.prepareStatement(sql);
-			lause.setString(1, pois.getNimi());
+			lause.setInt(1, pois.getId());
 			lause.executeUpdate();
-			System.out.println("Poistettiin juoma tietokannasta: "+pois);
 		} catch (Exception e) {
-			throw new DAOPoikkeus("Pizzan poistoyritys aiheutti virheen", e);
+			throw new DAOPoikkeus("Juoman poistoyritys aiheutti virheen", e);
 		}finally {
 			suljeYhteys(yhteys);
 		}
