@@ -29,25 +29,8 @@ public class MenunMuokkausServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	// pizzan setit
-	//poista pizza	
-	
-	String poistapizza=request.getParameter("poistapizza");
-	
-	
-	
-	AddPizzaService ad = new AddPizzaService();
-	int poistpizz;
-	if(request.getParameter("Poista") != null && poistapizza != null){
-	try {
-		poistpizz=Integer.parseInt(poistapizza);
-		ad.poistaPizza(poistpizz);
-		
-	} catch (Exception e) {
-		// TODO: handle exception
-		}
-			}
-	
 	//muuta pizzan status
+	AddPizzaService ad = new AddPizzaService();
 	String muutapizza=request.getParameter("pizzanstatus");
 	String status=request.getParameter("status");
 	int statusint;
@@ -96,25 +79,8 @@ public class MenunMuokkausServlet extends HttpServlet {
 	
 	//--------------------------------------------------------------------
 	// juoman setit
-	// poista juoma
-	
-	
-		String poistajuoma=request.getParameter("poistajuoma");
-		int juomanum;
-	AddJuomaService jd = new AddJuomaService();
-	if(request.getParameter("Poista") != null){
-		try {
-		juomanum=Integer.parseInt(poistajuoma);
-		jd.poistaJuoma(juomanum);
-		
-			} catch (Exception e) {
-		// TODO: handle exception
-		}
-			}
-	
-	
-	
 	//lis‰‰ juoma
+	AddJuomaService jd = new AddJuomaService();
 	String juomanimi=request.getParameter("juomanimi");
 	String juomahinta=request.getParameter("juomahinta");
 	String koko =request.getParameter("juomakoko");
@@ -133,22 +99,8 @@ public class MenunMuokkausServlet extends HttpServlet {
 	
 	//----------------------------------------------------------------------
 	//taytteen setit
-	// poista tayte
-	String poistatayte=request.getParameter("poistatayte");
-	int poist;
-	AddTayteService tj = new AddTayteService();
-	if(request.getParameter("Poista") != null && poistatayte != null){
-		
-		try {
-			poist=Integer.parseInt(poistatayte);
-			tj.poistaTayte(poist);
-		
-		} catch (Exception e) {
-		// TODO: handle exception
-			}
-				}
-		
 	//lis‰‰ t‰yte
+	AddTayteService tj = new AddTayteService();
 	String taytenimi=request.getParameter("tayte");
 	if(request.getParameter("Lis‰‰T‰yte") != null){
 		
@@ -159,6 +111,29 @@ public class MenunMuokkausServlet extends HttpServlet {
 		}
 	}
 	
+	//------------------------------------------------------------------------
+	//poista tuote
+	String optgroup= request.getParameter("optgroup");
+	String tuotenimi= request.getParameter("tuotenimi");
+	int tuoteid;
+
+	
+	
+
+	
+	
+	
+	if(request.getParameter("Poista") != null){
+		tuoteid=Integer.parseInt(tuotenimi);
+	if(optgroup.equals("Pizzat")){
+		ad.poistaPizza(tuoteid);
+	}else if(optgroup.equals("Juomat")){
+		jd.poistaJuoma(tuoteid);
+	}else if(optgroup.equals("T‰ytteet")){
+		tj.poistaTayte(tuoteid);
+	}
+	
+	}
 	
 
 	SearchService search = new SearchService();

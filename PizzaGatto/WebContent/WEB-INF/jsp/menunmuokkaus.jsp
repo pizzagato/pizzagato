@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="UTF-8"
+    pageEncoding="UTF-8"%>
     <%@page import="java.util.ArrayList"%>
 <%@page import="fi.omapizzeria.pizzagatto.bean.Pizza"%>
 <%@page import="fi.omapizzeria.pizzagatto.bean.Juoma"%>
@@ -28,7 +28,7 @@
 	<div id="tekstiboxi">
 	<form action="MenunMuokkaus" method="post">
 		<fieldset>
-		<h2>Lis‰‰ pizza</h2>
+		<h2>Lis√§√§ pizza</h2>
 		
 		<div class="tuotenimi">
 			<label>Nimi</label><br>
@@ -40,7 +40,7 @@
 		</div>
 		<br style="clear: left;" />
 		<div class="taytevalinta">
-			<label>T‰ytteet</label><br>
+			<label>T√§ytteet</label><br>
 			<select name="pizzatayte1" >
   					<option value="1" selected disabled>--</option>
   					<c:forEach items="${taytteet}" var="t">
@@ -74,13 +74,13 @@
 			</select>
 		</div>
 		<br style="clear: left;" />
-		<button type="submit" class="tilausnappi" name="Lis‰‰Pizza">Lis‰‰ pizza</button>		
+		<button type="submit" class="tilausnappi" name="Lis√§√§Pizza">Lis√§√§ pizza</button>		
 		</fieldset>
 	</form>
 	<form action="MenunMuokkaus" method="post">
 		<fieldset>
 	
-		<h2>Lis‰‰ juoma</h2>
+		<h2>Lis√§√§ juoma</h2>
 		<div class="tuotenimi">
 			<label>Nimi</label><br>
 				<input type="text" name="juomanimi" required>
@@ -116,48 +116,76 @@
 				</select>
 		</div>
 			<br style="clear: left;" />
-		<button type="submit" class="tilausnappi" name="Lis‰‰Juoma">Lis‰‰ juoma</button>	
+		<button type="submit" class="tilausnappi" name="Lis√§√§Juoma">Lis√§√§ juoma</button>	
 		</fieldset>
 	</form>
 	<form action="MenunMuokkaus" method="post">
 		<fieldset>
-		<h2>Lis‰‰ t‰yte</h2>
+		<h2>Lis√§√§ t√§yte</h2>
 		<div class="tuotenimi">
 			<label>Nimi</label><br>
 				<input type="text" name="tayte" required>
 		</div>
 
 		<br style="clear: left;" />
-		<button type="submit" class="tilausnappi2" name="Lis‰‰T‰yte">Lis‰‰ t‰yte</button>
+		<button type="submit" class="tilausnappi2" name="Lis√§√§T√§yte">Lis√§√§ t√§yte</button>
  		</fieldset>
 	</form>
-	<form action="MenunMuokkaus" method="post">
+
+<script>
+
+function getOption(form)
+{
+var selIndex = form.poistaminen.selectedIndex;
+
+var G = form.poistaminen.options[parseInt(selIndex)].parentNode.label;
+
+var selText = form.poistaminen.options[parseInt(selIndex)].value;
+
+var input = document.createElement("input");
+var input2 = document.createElement("input");
+
+
+input.setAttribute("type","hidden");
+input.setAttribute("name","optgroup");
+input.setAttribute("value",G)
+
+input2.setAttribute("type","hidden");
+input2.setAttribute("name","tuotenimi");
+input2.setAttribute("value",selText);
+
+document.getElementById("poisto").appendChild(input);
+document.getElementById("poisto").appendChild(input2);
+}
+</script>
+
+
+
+	
+	<form action="MenunMuokkaus" method="post" id="poisto">
 		<fieldset>
-		<h2>Poista pizza, juoma tai t‰yte</h2>
+		<h2>Poista tuote tai t√§yte</h2>
 		<div class="tuotenimi">
-			<label>Pizza</label><br>
-			<select name="poistapizza">
-  				<option value="1" selected disabled>--</option>
+			<select name="poistaminen">
+  					<option value="1" selected disabled>Valitse</option>
+  				<optgroup label="Pizzat">
   					<c:forEach items="${pitsut}" var="p">
   					<option value="${p.id}"><c:out value="${p.nimi}"></c:out></option>
   					</c:forEach>
-			</select><br>
-			<label>Juoma</label><br>
-			<select name="poistajuoma">
-  					<option value="1" selected disabled>--</option>
+				</optgroup>
+				<optgroup label="Juomat">
   					<c:forEach items="${juomat}" var="j">
   					<option value="${j.id}"><c:out value="${j.nimi}"></c:out></option>
   					</c:forEach>
-			</select><br>
-			<label>T‰yte</label><br>
-			<select name="poistatayte">
-  					<option value="1" selected disabled>--</option>
+  				</optgroup>
+  				<optgroup label="T√§ytteet">
   					<c:forEach items="${taytteet}" var="t">
   					<option value="${t.id}"><c:out value="${t.nimi}"></c:out></option>
   					</c:forEach>
+  				</optgroup>
 			</select></div>
 		<br style="clear: left;" />
-		<button type="submit" class="tilausnappi2" name="Poista">Poista</button>
+			<button type="submit" class="tilausnappi2" name="Poista" onclick="getOption(this.form)">Poista</button>
 		</fieldset>
 	</form>	
 	<form action="MenunMuokkaus" method="post">
@@ -173,8 +201,8 @@
 			</select>
 		</div>
 		<div id="tuotehinta"><label>Status</label></div>
-			<input type="radio" name="status" value="1" required>K‰ytˆss‰<br>
-			<input type="radio" name="status" value="0">Ei k‰ytˆss‰
+			<input type="radio" name="status" value="1" required>K√§yt√∂ss√§<br>
+			<input type="radio" name="status" value="0">Ei k√§yt√∂ss√§
 		
 		<br style="clear: left;" />
 		<button  type="submit" class="tilausnappi2" name="Muuta">Muuta status</button>
