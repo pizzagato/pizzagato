@@ -37,13 +37,26 @@
 
 <h2>Tilauksesi</h2>
 <br>
+
 <c:forEach items="${tilRivit}" var="tilRivit"> <!--doGet-metodi-->
+		
+		<li class="kikkihiiri">
+			<span>
+				<c:out value="${tilRivit.kpl}"/>			<%-- Tässä on kappalemäärä tuotteelle. --%>
+				<c:out value="${tilRivit.kokonaishinta}"/> 	<%-- Tässä on kokonaishinta tuotteelle. --%>
+			</span>
+			<span>
+				<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${p.hinta}" />
+			</span>
+		</li>
+	</c:forEach>
+
+<c:forEach items="${tuotteet}" var="tuotteet"> <!--doGet-metodi-->
 		<c:set var="counter" value="${counter + 1}"/>
 		<li class="kikkihiiri">
 			<span>
 				<c:out value="${counter}"/>
-				<c:out value="${tilRivit}"/>
-				
+				<c:out value="${tuotteet.nimi}"/>
 				
 
 			</span>
