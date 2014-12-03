@@ -7,9 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import fi.omapizzeria.pizzagatto.service.AddJuomaService;
-import fi.omapizzeria.pizzagatto.service.AddPizzaService;
-import fi.omapizzeria.pizzagatto.service.AddTayteService;
+import fi.omapizzeria.pizzagatto.service.ManagementService;
 import fi.omapizzeria.pizzagatto.service.SearchService;
 
 @WebServlet("/MenunMuokkaus")
@@ -29,7 +27,7 @@ public class MenunMuokkausServlet extends HttpServlet {
 	
 	
 	
-	AddPizzaService ad = new AddPizzaService();
+	ManagementService ad = new ManagementService();
 	int poistpizz;
 	if(request.getParameter("Poista") != null && poistapizza != null){
 	try {
@@ -95,7 +93,7 @@ public class MenunMuokkausServlet extends HttpServlet {
 	
 		String poistajuoma=request.getParameter("poistajuoma");
 		int juomanum;
-	AddJuomaService jd = new AddJuomaService();
+	ManagementService jd = new ManagementService();
 	if(request.getParameter("Poista") != null){
 		try {
 		juomanum=Integer.parseInt(poistajuoma);
@@ -130,7 +128,7 @@ public class MenunMuokkausServlet extends HttpServlet {
 	// poista tayte
 	String poistatayte=request.getParameter("poistatayte");
 	int poist;
-	AddTayteService tj = new AddTayteService();
+	ManagementService tj = new ManagementService();
 	if(request.getParameter("Poista") != null && poistatayte != null){
 		
 		try {

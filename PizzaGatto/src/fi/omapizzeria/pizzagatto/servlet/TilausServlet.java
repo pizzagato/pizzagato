@@ -3,7 +3,6 @@ package fi.omapizzeria.pizzagatto.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +19,8 @@ import fi.omapizzeria.pizzagatto.bean.Tilaus;
 import fi.omapizzeria.pizzagatto.bean.Tilausrivi;
 import fi.omapizzeria.pizzagatto.service.SearchService;
 import fi.omapizzeria.pizzagatto.dao.DAOPoikkeus;
-import fi.omapizzeria.pizzagatto.dao.TilausDAO;
+import fi.omapizzeria.pizzagatto.dao.JuomaDAO;
+import fi.omapizzeria.pizzagatto.dao.PizzaDAO;
 
 @WebServlet("/Tilaa") //P‰‰te joka n‰kyy URLissa
 public class TilausServlet extends HttpServlet {
@@ -73,7 +73,7 @@ public class TilausServlet extends HttpServlet {
 		double juomanhinta = 0;
 		// Haetaan pitsojen ja juomien hintatiedot DAO-luokkien avulla
 		try {
-			TilausDAO pizzahinta = new TilausDAO(pizzanimi);
+			PizzaDAO pizzahinta = new PizzaDAO(pizzanimi);
 			pizzanhinta = pizzahinta.pizzatieto(pizzanimi);
 		} catch (DAOPoikkeus e) {
 			e.printStackTrace();
@@ -81,8 +81,8 @@ public class TilausServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		try {
-			TilausDAO hinta = new TilausDAO(pizzanimi);
-			juomanhinta = hinta.juomatieto(juomanimi);
+			JuomaDAO juomahinta = new JuomaDAO(juomanimi);
+			juomanhinta = juomahinta.juomatieto(juomanimi);
 		} catch (DAOPoikkeus e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

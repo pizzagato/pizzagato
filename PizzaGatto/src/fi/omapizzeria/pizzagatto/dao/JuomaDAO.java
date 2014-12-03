@@ -5,8 +5,11 @@ package fi.omapizzeria.pizzagatto.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+
 
 
 
@@ -97,6 +100,25 @@ public class JuomaDAO extends Yhteys {
 		}finally {
 			suljeYhteys(yhteys);
 		}
-		
 	}
+	
+	public JuomaDAO (String juoma) throws DAOPoikkeus, SQLException{
+		juomatieto(juoma);
+	}
+	
+	public double juomatieto(String juoma) throws DAOPoikkeus, SQLException {
+		Connection yhteys = avaaYhteys();
+		String selectLause = "Select hinta FROM Juoma WHERE Juoma.nimi = '" + juoma + "'";
+		Statement selectHaku = yhteys.createStatement();
+		ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
+		if (selectTulokset.next()) {	// Otetaan juoman hinta ylös, mikäli sitä ei löydy, palauttaa hinnaksi 0.
+			double juomatieto = selectTulokset.getDouble("hinta");
+			suljeYhteys(yhteys);
+			return juomatieto;
+		}else {
+			suljeYhteys(yhteys);
+			return 0;
+		}
+	}
+	
 }

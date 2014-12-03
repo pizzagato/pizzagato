@@ -3,8 +3,10 @@ package fi.omapizzeria.pizzagatto.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
 import fi.omapizzeria.pizzagatto.bean.Pizza;
 import fi.omapizzeria.pizzagatto.bean.Tayte;
 
@@ -131,26 +133,10 @@ public class PizzaDAO extends Yhteys {
 			}
 			
 			for (int i = 0; i < taytteet.size(); i++) {
-				
-					
-				
 				lause2.setInt(1,taytteet.get(i));
 				lause2.setInt(2,maxid);
 				lause2.executeUpdate();
-				}
-			
-			
-			
-			
-			
-
-			
-			
-			
-			
-		
-			
-			
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}finally{
@@ -158,5 +144,27 @@ public class PizzaDAO extends Yhteys {
 		}
 	}
 	
+	public PizzaDAO (String pizza) throws DAOPoikkeus, SQLException{
+		pizzatieto(pizza);
+	}
+	
+	public void tilausriviin(){
+		
+	}
+
+	public double pizzatieto(String pizza) throws DAOPoikkeus, SQLException{
+		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
+		String selectLause = "Select hinta FROM Pizza WHERE Pizza.nimi = '" + pizza + "'";
+		Statement selectHaku = yhteys.createStatement(); //Syöttää SQL:ään komennon, jolla valitaan pizzat
+		ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
+		if (selectTulokset.next()) {	// Otetaan pitsan hinta ylös, mikäli sitä ei löydy, palauttaa hinnaksi 0.
+			double pizzatieto = selectTulokset.getDouble("hinta");
+			suljeYhteys(yhteys);
+			return pizzatieto;			
+		}else {
+			suljeYhteys(yhteys);
+			return 0;
+		}
+	}
 	
 }

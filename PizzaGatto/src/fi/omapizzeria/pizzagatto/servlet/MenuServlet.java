@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import fi.omapizzeria.pizzagatto.bean.Juoma;
 import fi.omapizzeria.pizzagatto.bean.Pizza;
-import fi.omapizzeria.pizzagatto.dao.DAOPoikkeus;
-import fi.omapizzeria.pizzagatto.dao.JuomaDAO;
 import fi.omapizzeria.pizzagatto.service.SearchService;
 
 @WebServlet("/Menu") //P‰‰te joka n‰kyy URLissa
