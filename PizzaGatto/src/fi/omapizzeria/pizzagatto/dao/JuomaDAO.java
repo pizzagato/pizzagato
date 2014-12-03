@@ -49,8 +49,21 @@ public class JuomaDAO extends Yhteys {
 		return juomat;
 	}
 	
-	
-	
+	public double juomaHinta(String juoma) throws DAOPoikkeus, SQLException {
+		Connection yhteys = avaaYhteys();
+		String selectLause = "Select hinta FROM Juoma WHERE Juoma.nimi = '" + juoma + "'";
+		Statement selectHaku = yhteys.createStatement();
+		ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
+		if (selectTulokset.next()) {	// Otetaan juoman hinta ylös, mikäli sitä ei löydy, palauttaa hinnaksi 0.
+			double juomatieto = selectTulokset.getDouble("hinta");
+			suljeYhteys(yhteys);
+			return juomatieto;
+		}else {
+			suljeYhteys(yhteys);
+			return 0;
+		}
+		
+	}	
 	
 	public ArrayList<Juoma> haeJuomatTilaus() throws DAOPoikkeus{
 		ArrayList<Juoma> juomat = new ArrayList<Juoma>();

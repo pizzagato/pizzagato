@@ -57,6 +57,23 @@ public class PizzaDAO extends Yhteys {
 			}
 		return pitsut;
 	}
+	
+	public double pizzaHinta(String pizza) throws DAOPoikkeus, SQLException{
+		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
+		String selectLause = "Select hinta FROM Pizza WHERE Pizza.nimi = '" + pizza + "'";
+		Statement selectHaku = yhteys.createStatement(); //Syöttää SQL:ään komennon, jolla valitaan pizzat
+		ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
+		if (selectTulokset.next()) {	// Otetaan pitsan hinta ylös, mikäli sitä ei löydy, palauttaa hinnaksi 0.
+			double pizzatieto = selectTulokset.getDouble("hinta");
+			suljeYhteys(yhteys);
+			return pizzatieto;
+		}else {
+			suljeYhteys(yhteys);
+			return 0;
+		}
+	
+	}
+	
 	//AddServicen käyttämä lisäysmetodi, jolla pizza lisätään tietokantaan. Ei käytössä.
 	public void lisaa(Pizza p) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
