@@ -342,3 +342,37 @@ textarea{
 	padding-top: 20px;
 	padding-bottom: 5px;
 }
+/* tilausvahvistus */
+.vahvistus table { 
+	empty-cells: show; 
+	border-collapse: collapse;
+	padding-bottom: 20px;
+}
+.vahvistus td {
+	display: inline-block;
+	min-height: 40px;
+	width: 50px;
+}
+.vahvistus tr{
+	display: block;
+}
+.vahvistus tr td:first-child {
+	width: 20px;
+}
+.vahvistus tr td:nth-child(2) {
+	width: 200px;
+}
+tr.yht{
+	border-top: 1px dashed black;
+	height: 20px;
+	padding-top: 10px;
+
+}
+.etoive {
+	display: block;
+	border: 1px dashed rgb(185,175,175);
+	max-width: 400px;
+	padding: 3px;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}

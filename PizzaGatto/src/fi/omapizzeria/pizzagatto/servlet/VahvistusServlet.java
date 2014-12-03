@@ -68,6 +68,16 @@ public class VahvistusServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String action = request.getParameter("action");
+		if ("vahvista".equals(action)) {
+			response.sendRedirect("/PizzaGatto/Etusivu");
+			
+			//t‰‰ nyt vaa vie sen takas
+		} else {
+		
+			response.sendRedirect("/PizzaGatto/Tilaa");
+		//Jouni saa heitt‰‰ t‰nne sen tietokantaan-siirto-jutun
+		}
 	}
 
 }
