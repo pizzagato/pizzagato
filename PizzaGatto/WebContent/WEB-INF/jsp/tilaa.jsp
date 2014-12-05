@@ -10,7 +10,9 @@
     <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="css/style.css"> 
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel='stylesheet' media='screen and (min-width: 650px) and (max-width: 1024px)' href='css/tabletstyle.css' />
+	<link rel='stylesheet' media='screen and (min-width: 300px) and (max-width: 650px)' href='css/mobilestyle.css' />
 	<title>Pizza Gatto</title>
 </head>
 <body>
@@ -35,7 +37,7 @@
 	<fieldset>
 		<h2>Pizzat</h2>
 		
-		<div id="tuotenimi"><label class="numerointi">1.</label>
+		<div id="tuotenimi">
 		
 				<select name="pizza">
   					<option value="" disabled selected>Valitse tuote</option>
@@ -51,42 +53,47 @@
 			<div id="hinta"></div>	<%-- <input type="submit" name="action" value="Tilaa" onclick="form.action='Tilaa';"> --%>
 			
 			<br style="clear: left;" />
-			<input type="submit" name="action" value="Lisää" onclick="form.action='Tilaa';">
+			<input type="submit" class="lisaysnapu" name="action" value="Lisää" onclick="form.action='Tilaa';">
 	</fieldset>
 	</form>
 	<form action="Tilaa" method="post">
 	<fieldset>
 		<h2>Juomat</h2>
-		<div id="tuotenimi"><label class="numerointi">1.</label>
+		<div id="tuotenimi">
 				<select name="juoma">
   					<option value="" selected>Valitse tuote</option>
   					<c:forEach items="${juomat}" var="j">
   					<option><c:out value="${j.nimi}"></c:out></option>
   					</c:forEach>
 				</select></div>
-			<div id="tuotekpl2"><label>Kpl</label>
+			<div id="tuotekpl"><label>Kpl</label>
 					<input type=number min="0" max="99" name="tuotekpl2"></input></div>
-			<div id="hinta"><input type="submit" name="action" value="Lisää" onclick="form.action='Tilaa';"></div>
-			<br style="clear: left;" />
+					<br style="clear: left;" />
+			<div id="hinta"><input type="submit" class="lisaysnapu" name="action" value="Lisää" onclick="form.action='Tilaa';"></div>
 	</fieldset>
 	</form>
-	<c:out value="Ostoskorisi sisältö:" />
+	<div class="ostoskori">
+	
+	<h2><c:out value="Ostoskori" /></h2>
+	<ul>
 	<c:forEach items="${tilRivit}" var="tilRivit"> <!--doGet-metodi-->
 		<c:set var="counter" value="${counter + 1}"/>
 		<li class="kikkihiiri">
 			<span>
-				<c:out value="${counter}"/>
-				<c:out value="${tilRivit}"/> 
+				<c:out value="${counter}"/>.
+				<c:out value="${tilRivit}"/>e
 			</span>
 			<span>
-				<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${p.hinta}" />
-				
+				<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${p.hinta}" />	
 			</span>
 		</li>
+		
 	</c:forEach>
-	<c:out value="kokonaishinta: "/>
-	<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${kokHi}" />
+	</ul>
+	<c:out value="Tilauksen hinta: "/>
+	<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${kokHi}" /> euroa.
 	
+	</div>
 	
 	
 	
@@ -95,15 +102,15 @@
 	<fieldset>
 	<h2>Tilaajan tiedot</h2>
 		<label class="tilaustiedot">Nimi</label>
-			<input type="text" name="nimi" maxlength="40" required><br>
+			<input type="text" name="nimi" maxlength="40"><br>
 		<label class="tilaustiedot">Puhelin</label>
 			<input type="text" name="puhnro" maxlength="10"><br>
 		<label class="tilaustiedot">Sähköposti</label>
-			<input type="email" name="email" required><br>
+			<input type="email" name="email"><br>
 		<label class="tilaustiedot">Osoite</label>
-			<input type="text" class="osoite" name="osoite" maxlength="30" required>
+			<input type="text" class="osoite" name="osoite" maxlength="30">
 		<label class="tilaustiedot">Postinumero</label>
-			<input type="text" pattern="[0-9]*" class="pnro" name="pnro" maxlength="5" required>
+			<input type="text" pattern="[0-9]*" class="pnro" name="pnro" maxlength="5">
  
  	<br>
  	<label>Lisätoiveet</label>

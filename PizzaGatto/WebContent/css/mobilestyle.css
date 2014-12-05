@@ -155,15 +155,9 @@ footer{
 	z-index: 2;
 }
 footer img{
-	margin-top: -20px;
+	margin-bottom: 35px;
+	margin-top: -30px;
 	width: 130px;
-}
-#vasenfooter{
-	float: left;
-}
-#oikeafooter{
-	float:right;
-	margin-right: 15px;
 }
 /* sisältöboksi kaikilla muilla sivuilla paitsi etusivulla */
 #tekstiboxi{
@@ -197,7 +191,7 @@ li.nimihinta{
 	color: #576E27;
 }
 .juomanimi{
-	max-width: 260px;
+	max-width: 210px;
 }
 .taytelista{
 	font-size: 14px;
@@ -240,7 +234,7 @@ li.nimihinta{
 /* tilauslomake */
 #tuotenimi{
 	float: none;
-	min-width: 200px;
+	max-width: 200px;
 	padding-bottom: 5px;
 }
 #tuotekpl{
@@ -251,7 +245,7 @@ li.nimihinta{
 	float: none;
 }
 fieldset{
-	border: 1px dashed rgb(185,175,175);
+	
 	margin-bottom: 10px;
 	padding-left: 6px;
 	padding-right: 0px;
@@ -348,4 +342,10 @@ textarea{
 }
 .aukiolo {
 	margin-left: 10px;
+}
+.vahvistus tr td:nth-child(2) {
+	width: 130px;
+}
+.ostoskori {
+	padding-left: 5px;
 }
