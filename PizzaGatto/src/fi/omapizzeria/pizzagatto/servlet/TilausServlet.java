@@ -110,7 +110,9 @@ public class TilausServlet extends HttpServlet {
 		// Haetaan pitsojen ja juomien hintatiedot DAO-luokkien avulla
 		try {
 			PizzaDAO pizzahinta = new PizzaDAO();
+			PizzaDAO pizzaId = new PizzaDAO();
 			pizza.setHinta(pizzahinta.pizzaHinta(pizzanimi));
+			pizza.setId(pizzaId.pizzaid(pizzanimi));
 			} catch (DAOPoikkeus e) {
 				e.printStackTrace();
 			} catch (SQLException e) {
@@ -118,7 +120,9 @@ public class TilausServlet extends HttpServlet {
 			}
 			try {
 				JuomaDAO juomahinta = new JuomaDAO();
+				JuomaDAO juomaid = new JuomaDAO();
 				juoma.setHinta(juomahinta.juomaHinta(juomanimi));
+				juoma.setId(juomaid.juomaid(juomanimi));
 			} catch (DAOPoikkeus e) {
 				e.printStackTrace();
 			} catch (SQLException e) {
@@ -146,6 +150,7 @@ public class TilausServlet extends HttpServlet {
 			}
 			kokHi = Double.toString(kokHint);
 			session.setAttribute("kokHi", kokHi);
+			System.out.println(tilRivit);
 			response.sendRedirect("/PizzaGatto/Tilaa");
 		}else if ("Tyhjenna".equals(action)) {
 			request.getSession().invalidate();

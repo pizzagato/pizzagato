@@ -70,7 +70,12 @@ public class Pizza extends Tuote{
 		this.status = status;
 	}
 	
-	
+	public void setId(int id){
+		this.id=id;
+	}
+	public int getId(int id){
+		return id;
+	}
 
 	public ArrayList<Tayte> getTaytteet() {
 		return taytteet;

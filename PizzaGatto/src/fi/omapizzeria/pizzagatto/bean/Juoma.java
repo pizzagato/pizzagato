@@ -34,6 +34,12 @@ public class Juoma extends Tuote {
 	public Juoma(int id){
 		this.id = id;
 	}
+	public void setId(int id){
+		this.id = id;
+	}
+	public int getId(int id){
+		return id;
+	}
 	public String getKoko() {
 		return koko;
 	}

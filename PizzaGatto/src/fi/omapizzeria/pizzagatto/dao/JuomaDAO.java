@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 
 
+
 import fi.omapizzeria.pizzagatto.bean.Juoma;
 
 
@@ -63,7 +64,23 @@ public class JuomaDAO extends Yhteys {
 			return 0;
 		}
 		
-	}	
+	}
+	
+	public int juomaid(String juoma) throws DAOPoikkeus, SQLException{
+		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
+		String selectLause = "Select juoma_id FROM Juoma WHERE Juoma.nimi = '" + juoma + "'";
+		Statement selectHaku = yhteys.createStatement(); //Syöttää SQL:ään komennon, jolla valitaan pizzat
+		ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
+		if (selectTulokset.next()) {	// Otetaan pitsan hinta ylös, mikäli sitä ei löydy, palauttaa hinnaksi 0.
+			int juomaId = selectTulokset.getInt("juoma_id");
+			suljeYhteys(yhteys);
+			return juomaId;
+		}else {
+			suljeYhteys(yhteys);
+			return 0;
+		}
+	
+	}
 	
 	public ArrayList<Juoma> haeJuomatTilaus() throws DAOPoikkeus{
 		ArrayList<Juoma> juomat = new ArrayList<Juoma>();

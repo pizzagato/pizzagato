@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fi.omapizzeria.pizzagatto.bean.Asiakastiedot;
+import fi.omapizzeria.pizzagatto.bean.Tilaus;
 import fi.omapizzeria.pizzagatto.bean.Tilausrivi;
 import fi.omapizzeria.pizzagatto.bean.Tuote;
+import fi.omapizzeria.pizzagatto.dao.VahvistusDAO;
 
 /**
  * Servlet implementation class VahvistusServlet
@@ -42,13 +44,11 @@ public class VahvistusServlet extends HttpServlet {
 		ArrayList<Tuote> tuotteet = new ArrayList<Tuote>();
 		for (int i = 0; i < tilRivit.size(); i++) {
 			Tuote t = new Tuote();
+			t.setId(tilRivit.get(i).getTuote().getId());
 			t.setNimi(tilRivit.get(i).getTuote().getNimi());
 			t.setHinta(tilRivit.get(i).getTuote().getHinta());
 			tuotteet.add(t);
 		}
-		System.out.println(tuotteet);
-		System.out.println(asTied);
-		System.out.println(tilRivit);
 		session.setAttribute("tuotteet", tuotteet);
 		//Tilaus at = (Tilaus) request.getSession().getAttribute("tilaus");
 		//request.setAttribute("tilaus",at);
@@ -67,7 +67,29 @@ public class VahvistusServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		String action = request.getParameter("action");
+		Asiakastiedot asTied = (Asiakastiedot) session.getAttribute("asTied");
+		double kokonaishinta;
+		String kokHi = (String) session.getAttribute("kokHi");
+		kokonaishinta = Double.parseDouble(kokHi);
+		ArrayList<Tilausrivi> tilRivit = (ArrayList<Tilausrivi>) session.getAttribute("tilRivit");
+		Tilaus tilaus = new Tilaus(asTied, tilRivit, kokonaishinta);
+		
+		if ("Vahvista".equals(action)) {
+			try {
+				VahvistusDAO vahvistus = new VahvistusDAO();
+				vahvistus.lisaaVahvistus(tilaus, tilRivit);
+				response.sendRedirect("/PizzaGatto/Etusivu");
+				session.invalidate();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}else if ("Takaisin".equalsIgnoreCase(action)) {
+			request.getSession().invalidate();
+			response.sendRedirect("/PizzaGatto/Tilaa");
+		}
+		
 	}
 
 }
