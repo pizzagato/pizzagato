@@ -117,21 +117,19 @@ public class MenunMuokkausServlet extends HttpServlet {
 	String tuotenimi= request.getParameter("tuotenimi");
 	int tuoteid;
 
-	
-	
-
-	
-	
-	
 	if(request.getParameter("Poista") != null){
-		tuoteid=Integer.parseInt(tuotenimi);
-	if(optgroup.equals("Pizzat")){
-		ad.poistaPizza(tuoteid);
-	}else if(optgroup.equals("Juomat")){
-		jd.poistaJuoma(tuoteid);
-	}else if(optgroup.equals("Täytteet")){
-		tj.poistaTayte(tuoteid);
-	}
+		try {
+			tuoteid=Integer.parseInt(tuotenimi);
+			if(optgroup.equals("Pizzat")){
+				ad.poistaPizza(tuoteid);
+			}else if(optgroup.equals("Juomat")){
+				jd.poistaJuoma(tuoteid);
+			}else if(optgroup.equals("Täytteet")){
+				tj.poistaTayte(tuoteid);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	
 	}
 	

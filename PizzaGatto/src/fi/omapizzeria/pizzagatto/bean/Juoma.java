@@ -24,7 +24,12 @@ public class Juoma extends Tuote {
 		this.tyyppi = tyyppi;
 	}
 	public Juoma(int id, String nimi, Double hinta, String koko, String tyyppi){
-		super(id, nimi, hinta);
+		super(id,nimi,hinta);
+		this.id=id;
+		this.nimi = nimi;
+		this.hinta = hinta;
+		this.koko = koko;
+		this.tyyppi = tyyppi;
 	}
 	public Juoma(String nimi){
 		super();

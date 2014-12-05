@@ -175,7 +175,7 @@ document.getElementById("poisto").appendChild(input2);
 				</optgroup>
 				<optgroup label="Juomat">
   					<c:forEach items="${juomat}" var="j">
-  					<option value="${j.id}"><c:out value="${j.nimi}"></c:out></option>
+  					<option value="${j.id}"><c:out value="${j.nimi} ${j.koko}"></c:out></option>
   					</c:forEach>
   				</optgroup>
   				<optgroup label="Täytteet">
