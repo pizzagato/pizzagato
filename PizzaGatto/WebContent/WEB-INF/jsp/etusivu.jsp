@@ -71,8 +71,8 @@
 	</table>
 	
 	<h1>Kotiinkuljetus</h1>
-	<p>Kuljetamme kaikki annokset 3 euron lisämaksua vastaan 5 kilometrin säteellä. Toimitusaika noin 30-60 minuuttia. </p>
-	<p>Tilaukset viimeistään puoli tuntia ennen ravintolan sulkeutumista.</p>
+	<p>Kuljetamme kaikki annokset 3 euron lisämaksua vastaan 2 kilometrin säteellä. Toimitusaika noin 30-60 minuuttia. </p>
+	<p>Tilaukset viimeistään tuntia ennen ravintolan sulkeutumista.</p>
 	
 	<div id="someiconit">
 	<p>

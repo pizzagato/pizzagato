@@ -2,11 +2,13 @@ package fi.omapizzeria.pizzagatto.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import fi.omapizzeria.pizzagatto.service.ManagementService;
 import fi.omapizzeria.pizzagatto.service.SearchService;
 
@@ -21,25 +23,8 @@ public class MenunMuokkausServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	// pizzan setit
-	//poista pizza	
-	
-	String poistapizza=request.getParameter("poistapizza");
-	
-	
-	
-	ManagementService ad = new ManagementService();
-	int poistpizz;
-	if(request.getParameter("Poista") != null && poistapizza != null){
-	try {
-		poistpizz=Integer.parseInt(poistapizza);
-		ad.poistaPizza(poistpizz);
-		
-	} catch (Exception e) {
-		// TODO: handle exception
-		}
-			}
-	
 	//muuta pizzan status
+	ManagementService ad = new ManagementService();
 	String muutapizza=request.getParameter("pizzanstatus");
 	String status=request.getParameter("status");
 	int statusint;
@@ -88,25 +73,8 @@ public class MenunMuokkausServlet extends HttpServlet {
 	
 	//--------------------------------------------------------------------
 	// juoman setit
-	// poista juoma
-	
-	
-		String poistajuoma=request.getParameter("poistajuoma");
-		int juomanum;
-	ManagementService jd = new ManagementService();
-	if(request.getParameter("Poista") != null){
-		try {
-		juomanum=Integer.parseInt(poistajuoma);
-		jd.poistaJuoma(juomanum);
-		
-			} catch (Exception e) {
-		// TODO: handle exception
-		}
-			}
-	
-	
-	
 	//lis‰‰ juoma
+	ManagementService jd = new ManagementService();
 	String juomanimi=request.getParameter("juomanimi");
 	String juomahinta=request.getParameter("juomahinta");
 	String koko =request.getParameter("juomakoko");
@@ -125,22 +93,8 @@ public class MenunMuokkausServlet extends HttpServlet {
 	
 	//----------------------------------------------------------------------
 	//taytteen setit
-	// poista tayte
-	String poistatayte=request.getParameter("poistatayte");
-	int poist;
-	ManagementService tj = new ManagementService();
-	if(request.getParameter("Poista") != null && poistatayte != null){
-		
-		try {
-			poist=Integer.parseInt(poistatayte);
-			tj.poistaTayte(poist);
-		
-		} catch (Exception e) {
-		// TODO: handle exception
-			}
-				}
-		
 	//lis‰‰ t‰yte
+	ManagementService tj = new ManagementService();
 	String taytenimi=request.getParameter("tayte");
 	if(request.getParameter("Lis‰‰T‰yte") != null){
 		
@@ -151,6 +105,29 @@ public class MenunMuokkausServlet extends HttpServlet {
 		}
 	}
 	
+	//------------------------------------------------------------------------
+	//poista tuote
+	String optgroup= request.getParameter("optgroup");
+	String tuotenimi= request.getParameter("tuotenimi");
+	int tuoteid;
+
+	
+	
+
+	
+	
+	
+	if(request.getParameter("Poista") != null){
+		tuoteid=Integer.parseInt(tuotenimi);
+	if(optgroup.equals("Pizzat")){
+		ad.poistaPizza(tuoteid);
+	}else if(optgroup.equals("Juomat")){
+		jd.poistaJuoma(tuoteid);
+	}else if(optgroup.equals("T‰ytteet")){
+		tj.poistaTayte(tuoteid);
+	}
+	
+	}
 	
 
 	SearchService search = new SearchService();

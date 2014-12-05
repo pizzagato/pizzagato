@@ -13,12 +13,14 @@
     <html>
     <head>
             <link rel="stylesheet" type="text/css" href="css/style.css">
+            <link rel='stylesheet' media='screen and (min-width: 650px) and (max-width: 1024px)' href='css/tabletstyle.css' />
+			<link rel='stylesheet' media='screen and (min-width: 300px) and (max-width: 650px)' href='css/mobilestyle.css' />
             <title>Pizza Gatto</title>
     </head>
     <body>
     <div id="container">  
             <div id="navi">
-                    <ul class>
+                    <ul>
                             <li><a href="//localhost:8080/PizzaGatto/Etusivu">ETUSIVU</a> </li>
                             <li><a href="//localhost:8080/PizzaGatto/Menu">MENU</a> </li>
                             <li class="active"><a href="//localhost:8080/PizzaGatto/Tilaa">TILAA</a></li>  
