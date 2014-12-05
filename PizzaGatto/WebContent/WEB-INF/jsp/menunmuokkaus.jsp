@@ -36,7 +36,7 @@
 		</div>
 		<div class="tuotehinta">
 			<label>Hinta</label><br>
-				<input type="text" name="pizzahinta" required>
+				<input type="text" class="hintasd" name="pizzahinta" required>
 		</div>
 		<br style="clear: left;" />
 		<div class="taytevalinta">
@@ -87,7 +87,7 @@
 		</div>
 		<div class="tuotehinta">
 			<label>Hinta</label><br>
-				<input type="text" name="juomahinta" required>
+				<input type="text" class="hintasd" name="juomahinta" required>
 		</div>
 	
 		<div class="tuotekoko">
