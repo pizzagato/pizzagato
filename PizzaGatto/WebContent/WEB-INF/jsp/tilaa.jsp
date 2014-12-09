@@ -19,10 +19,10 @@
 <div id="container">	
 	<div id="navi">
 		<ul>
-			<li><a href="//localhost:8080/PizzaGatto/Etusivu">ETUSIVU</a> </li>
-			<li><a href="//localhost:8080/PizzaGatto/Menu">MENU</a> </li>
-			<li class="active"><a href="//localhost:8080/PizzaGatto/Tilaa">TILAA</a></li>	
-			<li><a href="//localhost:8080/PizzaGatto/Yhteystiedot">YHTEYSTIEDOT</a></li>
+			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Etusivu">ETUSIVU</a> </li>
+			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Menu">MENU</a> </li>
+			<li class="active"><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Tilaa">TILAA</a></li>	
+			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Yhteystiedot">YHTEYSTIEDOT</a></li>
 			
 		</ul>
 	<div id="logo"><img src="img/pizzalogo_mini.png" alt="Logo"></div>
@@ -53,7 +53,7 @@
 			<div id="hinta"></div>	<%-- <input type="submit" name="action" value="Tilaa" onclick="form.action='Tilaa';"> --%>
 			
 			<br style="clear: left;" />
-			<input type="submit" class="lisaysnapu" name="action" value="Lisää" onclick="form.action='Tilaa';">
+			<input type="submit" class="lisaysnapu" name="action" value="Lisää Ostoskoriin" onclick="form.action='Tilaa';">
 	</fieldset>
 	</form>
 	<form action="Tilaa" method="post">
@@ -69,7 +69,7 @@
 			<div id="tuotekpl"><label>Kpl</label>
 					<input type=number min="0" max="99" name="tuotekpl2"></input></div>
 					<br style="clear: left;" />
-			<div id="hinta"><input type="submit" class="lisaysnapu" name="action" value="Lisää" onclick="form.action='Tilaa';"></div>
+			<div id="hinta"><input type="submit" class="lisaysnapu" name="action" value="Lisää Ostoskoriin" onclick="form.action='Tilaa';"></div>
 	</fieldset>
 	</form>
 	<div class="ostoskori">
@@ -117,8 +117,8 @@
  	<label>Lisätoiveet</label>
 
  	<textarea class=tilaustiedot name=lisatoiveet></textarea>
- 	<input type="submit" name="action" class="tilausnappi" value="Tyhjenna">
  	<input type="submit" class="tilausnappi" value="Vahvistus">
+ 	<input type="submit" name="action" class="tilausnappi" value="Tyhjennä">
  	</fieldset>
 	</form>
 	</div>

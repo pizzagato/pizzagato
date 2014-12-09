@@ -143,7 +143,7 @@ public class TilausServlet extends HttpServlet {
 		session.setAttribute("tilRivit", tilRivit); // T‰m‰ oli avain sessioon.
 		// session.setAttribute("asTied", asTiedot);
 		String action = request.getParameter("action");
-		if ("Lis‰‰".equals(action)) {
+		if ("Lis‰‰ Ostoskoriin".equals(action)) {
 			for (int i = 0; i < tilRivit.size(); i++) {
 				kokHint = kokHint + tilRivit.get(i).getKokonaishinta();
 				
@@ -152,7 +152,7 @@ public class TilausServlet extends HttpServlet {
 			session.setAttribute("kokHi", kokHi);
 			System.out.println(tilRivit);
 			response.sendRedirect("/PizzaGatto/Tilaa");
-		}else if ("Tyhjenna".equals(action)) {
+		}else if ("Tyhjenn‰".equals(action)) {
 			request.getSession().invalidate();
 			response.sendRedirect("/PizzaGatto/Tilaa");
 		}

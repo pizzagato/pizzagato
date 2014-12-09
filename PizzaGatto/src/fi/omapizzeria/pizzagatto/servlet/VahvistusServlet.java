@@ -86,7 +86,6 @@ public class VahvistusServlet extends HttpServlet {
 				// TODO: handle exception
 			}
 		}else if ("Takaisin".equalsIgnoreCase(action)) {
-			request.getSession().invalidate();
 			response.sendRedirect("/PizzaGatto/Tilaa");
 		}
 		

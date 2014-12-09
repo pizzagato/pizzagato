@@ -21,10 +21,10 @@
     <div id="container">  
             <div id="navi">
                     <ul>
-                            <li><a href="//localhost:8080/PizzaGatto/Etusivu">ETUSIVU</a> </li>
-                            <li><a href="//localhost:8080/PizzaGatto/Menu">MENU</a> </li>
-                            <li class="active"><a href="//localhost:8080/PizzaGatto/Tilaa">TILAA</a></li>  
-                            <li><a href="//localhost:8080/PizzaGatto/Yhteystiedot">YHTEYSTIEDOT</a></li>
+                            <li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Etusivu">ETUSIVU</a> </li>
+                            <li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Menu">MENU</a> </li>
+                            <li class="active"><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Tilaa">TILAA</a></li>  
+                            <li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Yhteystiedot">YHTEYSTIEDOT</a></li>
                            
                     </ul>
             <div id="logo"><img src="img/pizzalogo_mini.png" alt="Logo"></div>
@@ -85,8 +85,14 @@
     <h2>Tilauksen hinta <c:out value="${kokHi}"/>€</h2>
      
     <form action="Vahvistus" method="post" >
- 	<input type="submit" class="tilausnappi" name="action" value="takaisin">
- 	<input type="submit" class="tilausnappi" name="action" value="Vahvista">
+ 	 	<input type="submit" class="tilausnappi" name="action" value="Vahvista" onclick="return foo();">
+ 	 	 <script type="text/javascript">
+    function foo() {
+        alert("Tilauksesi on vastaanotettu!");
+        return true;
+    }
+</script>
+ 		<input type="submit" class="tilausnappi" name="action" value="Takaisin">
 	</form>
      
     </div>

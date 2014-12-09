@@ -22,9 +22,9 @@
 	<div id="navi">
 		<ul>
 			<li class="active"><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Etusivu">ETUSIVU</a> </li>
-			<li> <a href="//localhost:8080/PizzaGatto/Menu">MENU</a></li>
-			<li><a href="//localhost:8080/PizzaGatto/Tilaa">TILAA</a></li>	
-			<li><a href="//localhost:8080/PizzaGatto/Yhteystiedot">YHTEYSTIEDOT</a></li>
+			<li> <a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Menu">MENU</a></li>
+			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Tilaa">TILAA</a></li>	
+			<li><a href="//proto114.haaga-helia.fi:8080/PizzaGatto/Yhteystiedot">YHTEYSTIEDOT</a></li>
 			
 		</ul>
 	<div id="logo"><img src="img/pizzalogo_mini.png" alt="Logo"></div>
