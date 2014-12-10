@@ -1,6 +1,9 @@
 package fi.omapizzeria.pizzagatto.bean;
 
+import java.text.DecimalFormat;
+
 public class Tilausrivi {
+	DecimalFormat desi = new DecimalFormat("0.00");
 	int id;
 	Tuote tuote;
 	int kpl;
@@ -48,8 +51,8 @@ public class Tilausrivi {
 	}
 	@Override
 	public String toString() {
-		return tuote.getNimi() + ", " + kpl + "kpl"
-				+ ", kokonaishinta: " + kokonaishinta;
+		return tuote.getNimi() + ", " + kpl + " kpl"
+				+ ", kokonaishinta: " + desi.format(kokonaishinta);
 	}
 }
 	

@@ -36,24 +36,26 @@ public class VahvistusServlet extends HttpServlet {
 	 */
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		Asiakastiedot asTied = (Asiakastiedot) request.getSession().getAttribute("asTied");
+		HttpSession session = request.getSession();;
+		@SuppressWarnings("unchecked")
 		ArrayList<Tilausrivi> tilRivit = (ArrayList<Tilausrivi>) request.getSession().getAttribute("tilRivit");
 		request.getAttribute("tilRivit");
 		request.getAttribute("AsTied");
 		ArrayList<Tuote> tuotteet = new ArrayList<Tuote>();
-		for (int i = 0; i < tilRivit.size(); i++) {
-			Tuote t = new Tuote();
-			t.setId(tilRivit.get(i).getTuote().getId());
-			t.setNimi(tilRivit.get(i).getTuote().getNimi());
-			t.setHinta(tilRivit.get(i).getTuote().getHinta());
-			tuotteet.add(t);
+		try {
+			for (int i = 0; i < tilRivit.size(); i++) {
+				Tuote t = new Tuote();
+				t.setId(tilRivit.get(i).getTuote().getId());
+				t.setNimi(tilRivit.get(i).getTuote().getNimi());
+				t.setHinta(tilRivit.get(i).getTuote().getHinta());
+				tuotteet.add(t);
+			}
+		} catch (Exception e) {
+			response.sendRedirect("/PizzaGatto/Tilaa");
+			return;
 		}
+		
 		session.setAttribute("tuotteet", tuotteet);
-		//Tilaus at = (Tilaus) request.getSession().getAttribute("tilaus");
-		//request.setAttribute("tilaus",at);
-		//Asiakastiedot asTied = at.getAsiakastiedot();
-		//request.setAttribute("asiakastiedot", asTied);
 		
 		
 		
@@ -73,6 +75,7 @@ public class VahvistusServlet extends HttpServlet {
 		double kokonaishinta;
 		String kokHi = (String) session.getAttribute("kokHi");
 		kokonaishinta = Double.parseDouble(kokHi);
+		@SuppressWarnings("unchecked")
 		ArrayList<Tilausrivi> tilRivit = (ArrayList<Tilausrivi>) session.getAttribute("tilRivit");
 		Tilaus tilaus = new Tilaus(asTied, tilRivit, kokonaishinta);
 		

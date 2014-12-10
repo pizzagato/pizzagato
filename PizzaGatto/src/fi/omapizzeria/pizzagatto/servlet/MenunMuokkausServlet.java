@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fi.omapizzeria.pizzagatto.service.ManagementService;
-import fi.omapizzeria.pizzagatto.service.SearchService;
+import fi.omapizzeria.pizzagatto.service.AdminService;
+import fi.omapizzeria.pizzagatto.service.PublicService;
 
 @WebServlet("/MenunMuokkaus")
 public class MenunMuokkausServlet extends HttpServlet {
@@ -24,7 +24,7 @@ public class MenunMuokkausServlet extends HttpServlet {
 
 	// pizzan setit
 	//muuta pizzan status
-	ManagementService ad = new ManagementService();
+	AdminService ad = new AdminService();
 	String muutapizza=request.getParameter("pizzanstatus");
 	String status=request.getParameter("status");
 	int statusint;
@@ -74,7 +74,7 @@ public class MenunMuokkausServlet extends HttpServlet {
 	//--------------------------------------------------------------------
 	// juoman setit
 	//lis‰‰ juoma
-	ManagementService jd = new ManagementService();
+	AdminService jd = new AdminService();
 	String juomanimi=request.getParameter("juomanimi");
 	String juomahinta=request.getParameter("juomahinta");
 	String koko =request.getParameter("juomakoko");
@@ -94,7 +94,7 @@ public class MenunMuokkausServlet extends HttpServlet {
 	//----------------------------------------------------------------------
 	//taytteen setit
 	//lis‰‰ t‰yte
-	ManagementService tj = new ManagementService();
+	AdminService tj = new AdminService();
 	String taytenimi=request.getParameter("tayte");
 	if(request.getParameter("Lis‰‰T‰yte") != null){
 		
@@ -130,7 +130,7 @@ public class MenunMuokkausServlet extends HttpServlet {
 	}
 	
 
-	SearchService search = new SearchService();
+	PublicService search = new PublicService();
 	request.setAttribute("pitsut", search.haePizzat()); 
 	request.setAttribute("juomat", search.haeJuotavatMenu());
 	request.setAttribute("taytteet", search.haeTaytteet());

@@ -14,7 +14,7 @@ import fi.omapizzeria.pizzagatto.dao.JuomaDAO;
 import fi.omapizzeria.pizzagatto.dao.PizzaDAO;
 import fi.omapizzeria.pizzagatto.dao.TayteDAO;
 
-public class ManagementService extends HttpServlet {
+public class AdminService extends HttpServlet {
 
 	/**
 	 * 

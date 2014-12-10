@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fi.omapizzeria.pizzagatto.dao.DAOPoikkeus;
-import fi.omapizzeria.pizzagatto.service.SearchService;
+import fi.omapizzeria.pizzagatto.service.PublicService;
 
 @WebServlet("/Admin")
 public class AdminKirjautumisServlet extends HttpServlet {
@@ -92,7 +91,7 @@ public class AdminKirjautumisServlet extends HttpServlet {
 				break;
 				
 			case 1:
-		    	SearchService search = new SearchService();
+		    	PublicService search = new PublicService();
 		    	request.setAttribute("pitsut", search.haePizzat()); 
 		    	request.setAttribute("juomat", search.haeJuotavatMenu());
 		    	request.setAttribute("taytteet", search.haeTaytteet());

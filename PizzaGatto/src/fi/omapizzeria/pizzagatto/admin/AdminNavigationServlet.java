@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fi.omapizzeria.pizzagatto.service.SearchService;
+import fi.omapizzeria.pizzagatto.service.PublicService;
 
 @WebServlet("/AdminNavigationServlet")
 public class AdminNavigationServlet extends HttpServlet {
@@ -21,7 +21,7 @@ public class AdminNavigationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String target = request.getParameter("target");
 		if (target.equals("toMenu")) {
-			SearchService search = new SearchService();
+			PublicService search = new PublicService();
 			request.setAttribute("pitsut", search.haePizzat()); 
 			request.setAttribute("juomat", search.haeJuotavatMenu());
 			request.setAttribute("taytteet", search.haeTaytteet());

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fi.omapizzeria.pizzagatto.bean.Juoma;
 import fi.omapizzeria.pizzagatto.bean.Pizza;
-import fi.omapizzeria.pizzagatto.service.SearchService;
+import fi.omapizzeria.pizzagatto.service.PublicService;
 
 @WebServlet("/Menu") //P‰‰te joka n‰kyy URLissa
 public class MenuServlet extends HttpServlet {
@@ -20,8 +20,8 @@ public class MenuServlet extends HttpServlet {
     //Ohjaa menusivulle ja hakee sit‰ varten pizzalistan
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Pizza> pizzat;
-		SearchService search = new SearchService();
-		pizzat=search.haePizzat();
+		PublicService search = new PublicService();
+		pizzat=search.haeNaytettavatPizzat();
 		request.setAttribute("pitsut", pizzat);
 		
 		ArrayList<Juoma> juomat = new ArrayList<Juoma>();

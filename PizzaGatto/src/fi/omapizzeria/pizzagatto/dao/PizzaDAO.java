@@ -16,11 +16,10 @@ public class PizzaDAO extends Yhteys {
 		super();
 	}
 	//haeKaikki-metodi hakee tietokannasta kaikki pizzat
-	public ArrayList<Pizza> haeKaikkiPizzatTaytteilla() throws DAOPoikkeus{
+	public ArrayList<Pizza> haeKaikkiPizzatTaytteilla(String selectLause) throws DAOPoikkeus{
 		ArrayList<Pizza> pitsut = new ArrayList<Pizza>();
 		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
 		try {
-			String selectLause = "Select Pizza.nimi,Pizza.pizza_id, hinta, Tayte.nimi from Pizza LEFT JOIN Pizzatayte ON Pizza.pizza_id=Pizzatayte.pizza_id LEFT JOIN Tayte ON Pizzatayte.tayte_id=Tayte.tayte_id";
 			Statement selectHaku = yhteys.createStatement(); //Syöttää SQL:ään komennon, jolla valitaan pizzat
 			ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
 			while (selectTulokset.next()){ //Laitetaan tulokset omiin muuttujiinsa
