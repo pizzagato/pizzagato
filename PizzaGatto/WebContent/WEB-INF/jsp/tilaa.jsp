@@ -10,8 +10,9 @@
     <!DOCTYPE html>
 <html>
 <head>
+
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel='stylesheet' media='screen and (min-width: 650px) and (max-width: 1024px)' href='css/tabletstyle.css' />
+	<link rel='stylesheet' media='screen and (min-width: 650px) and (max-width: 960px)' href='css/tabletstyle.css' />
 	<link rel='stylesheet' media='screen and (min-width: 300px) and (max-width: 650px)' href='css/mobilestyle.css' />
 	<title>Pizza Gatto</title>
 </head>
@@ -72,6 +73,8 @@
 			<div id="hinta"><input type="submit" class="lisaysnapu" name="action" value="Lisää Ostoskoriin" onclick="form.action='Tilaa';"></div>
 	</fieldset>
 	</form>
+	
+	
 	<div class="ostoskori">
 	
 	<h2><c:out value="Ostoskori" /></h2>
@@ -94,7 +97,6 @@
 	<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${kokHi}" /> euroa.
 	
 	</div>
-	
 	
 	
 	<form action="Tilaa" method="post">

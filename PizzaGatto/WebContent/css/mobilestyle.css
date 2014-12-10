@@ -156,7 +156,7 @@ footer{
 }
 footer img{
 	margin-bottom: 35px;
-	margin-top: -30px;
+	margin-top: -20px;
 	width: 130px;
 }
 /* sisältöboksi kaikilla muilla sivuilla paitsi etusivulla */
@@ -202,7 +202,7 @@ li.nimihinta{
 	font-style: italic;
 	color: #1C1C1B;
 	font-size: 14px;
-	display: inline;
+	display: block;
 	font-weight: normal;
 }
 #menuotsikko{

@@ -10,7 +10,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel='stylesheet' media='screen and (min-width: 650px) and (max-width: 1024px)' href='css/tabletstyle.css' />
+	<link rel='stylesheet' media='screen and (min-width: 650px) and (max-width: 960px)' href='css/tabletstyle.css' />
 	<link rel='stylesheet' media='screen and (min-width: 300px) and (max-width: 650px)' href='css/mobilestyle.css' />
 	<title>Pizza Gatto</title>
 </head>
@@ -79,7 +79,7 @@
 			<div class="juomakoko"><c:out value="${j.koko}"/></div>
 			<br><br>
 			<li class="taytelista"></li>
-
+		<div style="clear: both"></div>
 		</c:forEach>
 		</ul>
 		
