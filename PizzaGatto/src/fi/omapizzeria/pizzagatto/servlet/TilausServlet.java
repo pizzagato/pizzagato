@@ -36,7 +36,7 @@ public class TilausServlet extends HttpServlet {
 		DateTime time = new DateTime();
 		if (time.getDayOfWeek()==7 || (time.getDayOfWeek()==6 && (time.getHourOfDay()<=10  || time.getHourOfDay()>=(23-1))) ||
 				((time.getDayOfWeek()!=6 || time.getDayOfWeek()!=7) && (time.getHourOfDay()<=9 || time.getHourOfDay()>=(23-1)))) {
-			request.getRequestDispatcher("WEB-INF/jsp/tilaa.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/jsp/tilauskiinni.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("WEB-INF/jsp/tilaa.jsp").forward(request, response);
 		}		

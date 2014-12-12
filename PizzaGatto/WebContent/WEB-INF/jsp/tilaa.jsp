@@ -74,7 +74,7 @@
 					<ul>
 						<c:forEach items="${tilRivit}" var="tilRivit"> <!--doGet-metodi-->
 							<c:set var="counter" value="${counter + 1}"/>
-							<li class="kikkihiiri">
+							<li class="tilausrivi">
 								<span>
 									<c:out value="${counter}"/>.
 									<c:out value="${tilRivit}"/> &#8364;

@@ -9,7 +9,7 @@ primary key (tayte_id) # taulun p‰‰avain
 ); 
 
 
-CREATE TABLE Pizzatesti( # Luodaan pizzataulu johon tallennetaan kaikki pizzerian pizzat
+CREATE TABLE Pizza( # Luodaan pizzataulu johon tallennetaan kaikki pizzerian pizzat
 pizza_id INT  AUTO_INCREMENT, # automaattisesti kasvava id jolla tunnistaa yksitt‰iset pizzat
 nimi varchar(20) NOT NULL, # pizzan nimi esim. klassinen
 hinta decimal(5,2) NOT NULL, # pizzan hinta kahden desimaalin tarkkuudella
@@ -34,7 +34,7 @@ katuosoite varchar(25) NOT NULL, # tilaajan katuosoite
 postinumero varchar(5) NOT NULL, # tilaajan postinumero
 puhelinnumero varchar(20), # tilaajan puhelinnumero
 kokonaishinta decimal(5,2) NOT NULL, # tilauksen yhteenlaskettu kokonaishinta
-primary key (tilaus_id), # taulun p‰‰avain
+primary key (tilaus_id) # taulun p‰‰avain
 );
 
 
@@ -47,7 +47,7 @@ foreign key(pizza_id) references Pizza (pizza_id) # viiteavain joka yhdist‰‰ tau
 );
 
 
-CREATE TABLE Tilausrivi( luodaan tilausrivitaulu johon tallennetaan tilauksen yksitt‰iset tilausrivit
+CREATE TABLE Tilausrivi( # luodaan tilausrivitaulu johon tallennetaan tilauksen yksitt‰iset tilausrivit
 rivi_id INT NOT NULL AUTO_INCREMENT , # automaattisesti kasvava id jolla tunnistaa yksitt‰iset tilaukset
 tilaus_id INT, # id jolla tunnistaa yksitt‰isen tilauksen
 pizza_id INT, # id jolla tunnistaa yksitt‰isen pizzan
@@ -74,7 +74,7 @@ tries INT NOT NULL, # kirjautumisyritykset
 primary key (ip) # Taulun p‰‰avain
 );
 
-CREATE TABLE banned( # Luodaan Bannitaulu johon tallennetaan tiedot kirjautujan bannist‰
+CREATE TABLE banned( # Luodaan Bannitaulu johon tallennetaan bannin tiedot
 ip varchar(50) NOT NULL, # Kirjautujan ip-osoite
 aika varchar(50) NOT NULL, # Bannin aika
 primary key (ip) # Taulun p‰‰avain
