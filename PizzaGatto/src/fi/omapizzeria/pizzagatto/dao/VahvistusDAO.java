@@ -16,8 +16,8 @@ public class VahvistusDAO extends Yhteys{
 	
 	/**
 	 * Lis‰‰ k‰ytt‰j‰n tilauksen Tilaus-tauluun
-	 * @param t: Lis‰tt‰v‰ tilaus
-	 * @param ti: Tilaukseen kuuluvat tilausrivit
+	 * @param t Lis‰tt‰v‰ tilaus
+	 * @param ti Tilaukseen kuuluvat tilausrivit
 	 */
 	public void lisaaVahvistus(Tilaus t, ArrayList<Tilausrivi> ti) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();

@@ -25,11 +25,11 @@ public class Salaaja {
 
 	/**
 	 * Salaa käyttäjän syöttämän salasanan ja palauttaa salasanan salattuna ja suolattuna
-	 * @param salattavaTeksti: Käyttäjän syöttämä salasana
-	 * @param suola: Salauksessa käytettävä suola
-	 * @param salausalgoritmi: Salauksessa käytettävä salausalgoritmi
-	 * @param montakoKertaa: Kuinka monta kertaa salasanan salaus suoritetaan
-	 * @return
+	 * @param salattavaTeksti Käyttäjän syöttämä salasana
+	 * @param suola Salauksessa käytettävä suola
+	 * @param salausalgoritmi Salauksessa käytettävä salausalgoritmi
+	 * @param montakoKertaa Kuinka monta kertaa salasanan salaus suoritetaan
+	 * @return Salattu ja suolattu salasana
 	 */
 	public static String salaa(String salattavaTeksti, String suola,
 			String salausalgoritmi, int montakoKertaa)

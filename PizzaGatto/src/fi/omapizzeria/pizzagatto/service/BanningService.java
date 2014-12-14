@@ -133,7 +133,7 @@ public class BanningService {
 	
 	/**
 	 * Poistaa kirjautumisyritt‰jien taulusta l‰hetetyn ip-osoitteen
-	 * @param poistettava ip-osoite
+	 * @param ipAddress poistettava ip-osoite
 	 */
 	
 	public void removeAttempter(String ipAddress) throws ServletException {
@@ -148,7 +148,7 @@ public class BanningService {
 	
 	/**
 	 * Lis‰‰ kirjautumisyritt‰jien tauluun l‰htetetyn ip-osoitteen
-	 * @param lis‰tt‰v‰ ip-osoite
+	 * @param ipAddress lis‰tt‰v‰ ip-osoite
 	 */
 	
 	public void addAttempter(String ipAddress) throws ServletException {
@@ -173,7 +173,7 @@ public class BanningService {
 	
 	/**
 	 * Tarkastaa, onko k‰ytt‰j‰n ip-osoite bannattu
-	 * @param tarkastettava ip-osoite
+	 * @param ipAddress tarkastettava ip-osoite
 	 * @return true: k‰ytt‰j‰ ei ole bannattu
 	 * @return false: k‰ytt‰j‰ on bannattu
 	 */

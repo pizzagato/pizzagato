@@ -3,6 +3,7 @@ package fi.omapizzeria.pizzagatto.dao;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+	
 	/**
 	 * Hoitaa tietokantayhteyden asetusten lukemisen properties-tiedostosta
 	 */

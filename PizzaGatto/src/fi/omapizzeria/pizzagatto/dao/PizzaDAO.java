@@ -21,7 +21,7 @@ public class PizzaDAO extends Yhteys {
 
 	/**
 	 * Hakee kaikki pizzat ja niihin liittyv‰t t‰ytteet. Yhdist‰‰ t‰ytteet pizzoihin.
-	 * @param selectLause: SQL-lause, jolla pizzat haetaan
+	 * @param selectLause SQL-lause, jolla pizzat haetaan
 	 * @return pitsut: Lista pizza-olioista, joihin on yhdistetty t‰ytteet
 	 */
 	public ArrayList<Pizza> haeKaikkiPizzatTaytteilla(String selectLause) throws DAOPoikkeus{
@@ -67,7 +67,7 @@ public class PizzaDAO extends Yhteys {
 	
 	/**
 	 * Hakee pizzan hinnan
-	 * @param pizza: Pizzan nimi, jonka hinta halutaan tiet‰‰
+	 * @param pizza Pizzan nimi, jonka hinta halutaan tiet‰‰
 	 * @return pizzatieto: Palauttaa annetun pizzan hinnan
 	 * @return 0: Jos pizzaa ei lˆydy tietokannasta, palauttaa hinnan 0
 	 */
@@ -89,7 +89,7 @@ public class PizzaDAO extends Yhteys {
 	
 	/**
 	 * Hakee pizzan id:n
-	 * @param pizza: Pizzan nimi, jonka id halutaan tiet‰‰
+	 * @param pizza Pizzan nimi, jonka id halutaan tiet‰‰
 	 * @return pizzaId: Palauttaa annetun pizzan id:n
 	 * @return 0: Jos pizzaa ei lˆydy tietokannasta, palauttaa id:n 0
 	 */
@@ -111,7 +111,7 @@ public class PizzaDAO extends Yhteys {
 	
 	/**
 	 * Lis‰‰ annetun pizzan Pizzat-tauluun
-	 * @param p: Lis‰tt‰v‰ pizza
+	 * @param p Lis‰tt‰v‰ pizza
 	 */
 	public void lisaa(Pizza p) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
@@ -130,7 +130,7 @@ public class PizzaDAO extends Yhteys {
 
 	/**
 	 * Poistaa annetun pizzan Pizzat-taulusta
-	 * @param pois: Poistettava pizza
+	 * @param pois Poistettava pizza
 	 */
 	public void poista(Pizza pois) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
@@ -154,7 +154,7 @@ public class PizzaDAO extends Yhteys {
 	
 	/**
 	 * Muuttaa annetun pizzan statusta
-	 * @param p: Muutettava pizza
+	 * @param p Muutettava pizza
 	 */
 	public void muutaPizza(Pizza p)throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
@@ -171,8 +171,8 @@ public class PizzaDAO extends Yhteys {
 	}
 	/**
 	 * Yhdist‰‰ listan t‰ytteit‰ annettuun pizzaan
-	 * @param pt: Pizza, johon t‰ytteet liitet‰‰n
-	 * @param taytteet: Lista t‰ytteist‰, jotka pizzaan liitet‰‰n
+	 * @param pt Pizza, johon t‰ytteet liitet‰‰n
+	 * @param taytteet Lista t‰ytteist‰, jotka pizzaan liitet‰‰n
 	 */
 	public void lisaaPizztayte(Pizza pt, ArrayList<Integer> taytteet) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();

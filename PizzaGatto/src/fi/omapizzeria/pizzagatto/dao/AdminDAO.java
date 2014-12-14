@@ -77,7 +77,7 @@ public class AdminDAO extends Yhteys {
 	
 	/**
 	 * Bannaa annetun ip-osoitteen
-	 * @param bannattava ip-osoite
+	 * @param i Bannattava ip-osoite
 	 * 
 	 */
 	public void banaaniVasara(Ip i) throws DAOPoikkeus{
@@ -97,7 +97,7 @@ public class AdminDAO extends Yhteys {
 	
 	/**
 	 * Lis‰‰ annetun ip-osoitteen kirjautumisyritt‰jien tauluun
-	 * @param lis‰tt‰v‰ ip-osoite
+	 * @param i Lis‰tt‰v‰ ip-osoite
 	 */
 	public void addAttempter(Ip i) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
@@ -117,7 +117,7 @@ public class AdminDAO extends Yhteys {
 	
 	/**
 	 * Kasvattaa annetun ip-osoitteen kirjautumisyrityskertoja yhdell‰
-	 * @param ip-osoite, jonka kirjautumisyrityskertoja kasvatetaan
+	 * @param ipAddress ip-osoite, jonka kirjautumisyrityskertoja kasvatetaan
 	 */
 	public void riseAttempterTries(String ipAddress) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
@@ -135,7 +135,7 @@ public class AdminDAO extends Yhteys {
 	
 	/**
 	 * Poistaa annetun ip-osoitteen bannannattujen listalta
-	 * @param poistettava ip-osoite
+	 * @param ipAddress poistettava ip-osoite
 	 */
 	public void removeBanned(String ipAddress) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
@@ -156,7 +156,6 @@ public class AdminDAO extends Yhteys {
 	 * hakee Admin-taulusta adminnin k‰ytt‰j‰tunnuksen, kryptatun ja suolatun salasanan ja k‰ytetyn suolan
 	 * @return adminin tunnuksen, kryptatun ja suolatun salasanan ja k‰ytetyn suolan
 	 */
-	
 	public ArrayList<String> getAdmin() throws DAOPoikkeus{
 		ArrayList<String> admin = new ArrayList<String>();
 		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
@@ -184,8 +183,8 @@ public class AdminDAO extends Yhteys {
 	
 	/**
 	 * Poistaa annetun ip-osoitteen kirjautumisyritt‰jien taulusta
+	 * @param ipAddress Poistettava ip-osoite
 	 */
-	
 	public void removeAttempter(String ipAddress) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {

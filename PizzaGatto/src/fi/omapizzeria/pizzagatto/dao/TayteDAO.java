@@ -26,7 +26,7 @@ public class TayteDAO extends Yhteys {
 	
 	/**
 	 * Hakee kaikki t‰ytteet, pakkaa ne Tayte-olioihin ja pakkaa oliot listaan
-	 * @return taytteet: Lista Tayte-olioista, jotka sis‰lt‰v‰t t‰ytteiden id:n ja nimen
+	 * @return taytteet Lista Tayte-olioista, jotka sis‰lt‰v‰t t‰ytteiden id:n ja nimen
 	 */
 	public ArrayList<Tayte> haeTaytteet() throws DAOPoikkeus {
 		ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
@@ -54,7 +54,7 @@ public class TayteDAO extends Yhteys {
 
 	/**
 	 * Lis‰‰ l‰hetetyn t‰ytteen Tayte-tauluun
-	 * @param t: Lis‰tt‰v‰ t‰yte
+	 * @param t Lis‰tt‰v‰ t‰yte
 	 */
 	public void lisaa(Tayte t) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
@@ -72,7 +72,7 @@ public class TayteDAO extends Yhteys {
 	
 	/**
 	 * Poistaa l‰hetetyn t‰ytteen Tayte-taulusta
-	 * @param pois: Poistettava t‰yte
+	 * @param pois Poistettava t‰yte
 	 */
 	public void poista(Tayte pois) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();

@@ -14,7 +14,6 @@ import fi.omapizzeria.pizzagatto.dao.DAOPoikkeus;
  * Hoitaa kaiken kirjautumisprosessiin liittyvän
  *
  */
-
 public class LogInService {
 	private BanningService banService = new BanningService();
 	private AdminDAO admindao;
@@ -29,8 +28,8 @@ public class LogInService {
 	
 	/**
 	 * Vertaa annettuja tietoja oikeisiin admintunnuksiin. Palautusarvon perusteella näytetään haluttu sivu halutulla sisällöllä
-	 * @param ipAddress: lähetetty (käyttäjän) ip-osoite
-	 * @param namepassword: käyttäjän syöttämä käyttäjätunnus ja salasana
+	 * @param ipAddress lähetetty (käyttäjän) ip-osoite
+	 * @param namepassword käyttäjän syöttämä käyttäjätunnus ja salasana
 	 * @return 0: Käyttäjä bannataan
 	 * @return 1: Käyttäjä pääsee sisään adminjärjestelmään
 	 * @return 2: Käyttäjälle kerrotaan, että annetut tunnukset ovat väärät

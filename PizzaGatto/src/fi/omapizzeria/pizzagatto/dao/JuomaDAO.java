@@ -25,8 +25,8 @@ public class JuomaDAO extends Yhteys {
 	
 	/**
 	 * Hakee Juomat-taulusta halutut juomat, pakkaa tiedot juoma-olioon ja oliot listaan.
-	 * @param selectLause: SQL-lause juomien hakuun
-	 * @return listan juomista
+	 * @param selectLause SQL-lause juomien hakuun
+	 * @return Listan juomista
 	 */
 	private ArrayList<Juoma> haeJuomat(String selectLause) throws DAOPoikkeus {
 		ArrayList<Juoma> juomat = new ArrayList<Juoma>();
@@ -57,7 +57,7 @@ public class JuomaDAO extends Yhteys {
 	
 	/**
 	 * Hakee juoman hinnan
-	 * @param juoma: Juoman nimi, jonka hinta halutaan tiet‰‰
+	 * @param juoma Juoman nimi, jonka hinta halutaan tiet‰‰
 	 * @return juomatieto: Palauttaa annetun juoman hinnan
 	 * @return 0: Jos juomaa ei lˆydy tietokannasta, palauttaa hinnan 0
 	 */
@@ -79,7 +79,7 @@ public class JuomaDAO extends Yhteys {
 	
 	/**
 	 * Hakee juoman id:n
-	 * @param juoma: Juoman nimi, jonka id halutaan tiet‰‰
+	 * @param juoma Juoman nimi, jonka id halutaan tiet‰‰
 	 * @return juomaId: Palauttaa annetun juoman id:n
 	 * @return 0: Jos juomaa ei lˆydy tietokannasta, palauttaa id:n 0
 	 */
@@ -101,7 +101,7 @@ public class JuomaDAO extends Yhteys {
 	
 	/**
 	 * Hakee juomat tilaussivulle
-	 * @return juomat: lista juomista, joiden tyyppi on virvoitusjuoma
+	 * @return juomat lista juomista, joiden tyyppi on virvoitusjuoma
 	 */
 	public ArrayList<Juoma> haeJuomatTilaus() throws DAOPoikkeus{
 		ArrayList<Juoma> juomat = new ArrayList<Juoma>();
@@ -113,7 +113,7 @@ public class JuomaDAO extends Yhteys {
 	
 	/**
 	 * Hakee juomat menuun
-	 * @return juomat: lista juomista
+	 * @return juomat lista juomista
 	 */
 	public ArrayList<Juoma> haeJuomatMenu() throws DAOPoikkeus{
 		ArrayList<Juoma> juomat = new ArrayList<Juoma>();
@@ -125,7 +125,7 @@ public class JuomaDAO extends Yhteys {
 	
 	/**
 	 * Lis‰‰ annetun juoman Juomat-tauluun
-	 * @param j: Lis‰tt‰v‰ juoma
+	 * @param j Lis‰tt‰v‰ juoma
 	 */
 	public void lisaa(Juoma j) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
@@ -146,7 +146,7 @@ public class JuomaDAO extends Yhteys {
 
 	/**
 	 * Poistaa annetun juoman Juomat-taulusta
-	 * @param j: Poistettava juoma
+	 * @param pois Poistettava juoma
 	 */
 	public void poista(Juoma pois) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();

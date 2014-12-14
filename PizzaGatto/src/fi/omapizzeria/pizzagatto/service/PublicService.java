@@ -56,11 +56,11 @@ public class PublicService {
 	
 	/**
 	 * Lis‰‰ tilausriviin tietoja ja palauttaa sen takaisin
-	 * @param pizzanimi: Lis‰tt‰v‰n pizzan nimi
-	 * @param juomanimi: Lis‰tt‰v‰n juoman nimi
-	 * @param kpl1: Lis‰tt‰v‰n pizzan kappalem‰‰r‰
-	 * @param kpl2: Lis‰tt‰v‰n juoman kappalem‰‰r‰
-	 * @param tilRivit: Tilausrivi, johon tuotteita lis‰t‰‰n
+	 * @param pizzanimi Lis‰tt‰v‰n pizzan nimi
+	 * @param juomanimi Lis‰tt‰v‰n juoman nimi
+	 * @param kpl1 Lis‰tt‰v‰n pizzan kappalem‰‰r‰
+	 * @param kpl2 Lis‰tt‰v‰n juoman kappalem‰‰r‰
+	 * @param tilRivit Tilausrivi, johon tuotteita lis‰t‰‰n
 	 * @return Lista tilausriveist‰
 	 */
 	public ArrayList<Tilausrivi> tilauksenTilausrivi(String pizzanimi, String juomanimi, int kpl1, int kpl2, ArrayList<Tilausrivi> tilRivit) {
