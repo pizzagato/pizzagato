@@ -1,7 +1,5 @@
 package fi.omapizzeria.pizzagatto.dao;
 
-
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,28 +15,32 @@ import java.util.ArrayList;
 
 import fi.omapizzeria.pizzagatto.bean.Tayte;
 
-
+/**
+ * Hoitaa kaikki muutokset tietokannassa, jotka liittyvät täytteisiin
+ */
 public class TayteDAO extends Yhteys {	
 	
 	public TayteDAO() throws DAOPoikkeus {
 		super();
 	}
 	
+	/**
+	 * Hakee kaikki täytteet, pakkaa ne Tayte-olioihin ja pakkaa oliot listaan
+	 * @return taytteet: Lista Tayte-olioista, jotka sisältävät täytteiden id:n ja nimen
+	 */
 	public ArrayList<Tayte> haeTaytteet() throws DAOPoikkeus {
 		ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
-		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
+		Connection yhteys = avaaYhteys();
 		try {
 			String selectLause = "Select tayte_id, nimi from Tayte";
-			Statement selectHaku = yhteys.createStatement(); //Syöttää SQL:ään komennon, jolla valitaan juomat
+			Statement selectHaku = yhteys.createStatement();
 			ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
-			while (selectTulokset.next()){ //Laitetaan tulokset omiin muuttujiinsa
+			while (selectTulokset.next()){
 				String nimi = selectTulokset.getString("nimi");
 				int id = selectTulokset.getInt("tayte_id");
 				
 				Tayte t= new Tayte(id, nimi); 
 				taytteet.add(t);
-			
-				
 			}
 			
 		} catch(Exception e) {
@@ -49,13 +51,11 @@ public class TayteDAO extends Yhteys {
 			}
 		return taytteet;
 	}
-	
-	
-	
-	
-	
-	
-	//AddServicen käyttämä lisäysmetodi, jolla pizza lisätään tietokantaan. Ei käytössä.
+
+	/**
+	 * Lisää lähetetyn täytteen Tayte-tauluun
+	 * @param t: Lisättävä täyte
+	 */
 	public void lisaa(Tayte t) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
@@ -69,7 +69,11 @@ public class TayteDAO extends Yhteys {
 			suljeYhteys(yhteys);
 		}
 	}
-	//AddServicen käyttämä poistometodi, jolla pizza poistetaan tietokannasta. Ei käytössä.
+	
+	/**
+	 * Poistaa lähetetyn täytteen Tayte-taulusta
+	 * @param pois: Poistettava täyte
+	 */
 	public void poista(Tayte pois) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {

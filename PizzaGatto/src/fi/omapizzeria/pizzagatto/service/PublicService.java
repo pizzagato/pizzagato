@@ -15,12 +15,16 @@ import fi.omapizzeria.pizzagatto.dao.JuomaDAO;
 import fi.omapizzeria.pizzagatto.dao.PizzaDAO;
 import fi.omapizzeria.pizzagatto.dao.TayteDAO;
 
+/**
+ * Hoitaa kaikki haut tietokannasta ja kaikki asiakasn‰kym‰n tietokantamuutokset
+ */
 public class PublicService {
 
-	/*
-	 * Hakee tietokannasta kaikki pizzat ja niihin kuuluvat t‰ytteet
+
+	/**
+	 * Hakee kaikki pizzat
+	 * @return lista, jossa on kaikki pizzat
 	 */
-	
 	public ArrayList<Pizza> haePizzat() throws ServletException, IOException {
 		ArrayList<Pizza> pizzat;
 		try {
@@ -34,7 +38,10 @@ public class PublicService {
 		return pizzat;
 	}
 	
-	
+	/**
+	 * Hakee kaikki n‰ytett‰v‰t pizzat
+	 * @return lista, jossa on kaikki n‰ytett‰v‰t pizzat
+	 */
 	public ArrayList<Pizza> haeNaytettavatPizzat() throws ServletException, IOException {
 		ArrayList<Pizza> pizzat;
 		try {
@@ -44,10 +51,18 @@ public class PublicService {
 		} catch(DAOPoikkeus e) {
 			throw new ServletException(e);
 		}
-		
 		return pizzat;
 	}
 	
+	/**
+	 * Lis‰‰ tilausriviin tietoja ja palauttaa sen takaisin
+	 * @param pizzanimi: Lis‰tt‰v‰n pizzan nimi
+	 * @param juomanimi: Lis‰tt‰v‰n juoman nimi
+	 * @param kpl1: Lis‰tt‰v‰n pizzan kappalem‰‰r‰
+	 * @param kpl2: Lis‰tt‰v‰n juoman kappalem‰‰r‰
+	 * @param tilRivit: Tilausrivi, johon tuotteita lis‰t‰‰n
+	 * @return Lista tilausriveist‰
+	 */
 	public ArrayList<Tilausrivi> tilauksenTilausrivi(String pizzanimi, String juomanimi, int kpl1, int kpl2, ArrayList<Tilausrivi> tilRivit) {
 		Pizza pizza = new Pizza();
 		Juoma juoma = new Juoma();
@@ -88,10 +103,10 @@ public class PublicService {
 		return tilRivit;
 	}
 	
-	/*
+	/**
 	 * Hakee tietokannasta kaikki juomat menulle
+	 * @return lista, jossa on kaikki juomat
 	 */
-	
 	public ArrayList<Juoma> haeJuotavatMenu () throws ServletException, IOException {
 		ArrayList<Juoma> juomat;
 		try {
@@ -100,14 +115,13 @@ public class PublicService {
 		} catch(DAOPoikkeus e) {
 			throw new ServletException(e);
 		}
-		
 		return juomat;
 	}
 	
-	/*
-	 * Hakee tietokannasta juotavat tilaukselle
+	/**
+	 * Hakee tietokannasta juotavat tilaussivulle
+	 * @return lista, jossa on kaikki alkoholittomat juomat
 	 */
-	
 	public ArrayList<Juoma> haeJuotavatTilaus() throws ServletException, IOException {
 		ArrayList<Juoma> juomat;
 		try {
@@ -116,14 +130,13 @@ public class PublicService {
 		} catch(DAOPoikkeus e) {
 			throw new ServletException(e);
 		}
-		
 		return juomat;
 	}
 	
-	/*
+	/**
 	 * Hakee tietokannasta kaikki t‰ytteet
+	 * @return lista, jossa on kaikki t‰ytteet
 	 */
-	
 	public ArrayList<Tayte> haeTaytteet() throws ServletException, IOException {
 		ArrayList<Tayte> taytteet;
 		try {
@@ -132,7 +145,6 @@ public class PublicService {
 		} catch(DAOPoikkeus e) {
 			throw new ServletException(e);
 		}
-		
 		return taytteet;
 	}
 }

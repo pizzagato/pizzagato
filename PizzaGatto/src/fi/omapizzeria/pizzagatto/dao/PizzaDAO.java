@@ -10,19 +10,27 @@ import java.util.ArrayList;
 import fi.omapizzeria.pizzagatto.bean.Pizza;
 import fi.omapizzeria.pizzagatto.bean.Tayte;
 
+/**
+ * Hoitaa kaikki muutokset tietokannassa, jotka liittyvät pizzoihin
+ */
 public class PizzaDAO extends Yhteys {	
 	
 	public PizzaDAO() throws DAOPoikkeus {
 		super();
 	}
-	//haeKaikki-metodi hakee tietokannasta kaikki pizzat
+
+	/**
+	 * Hakee kaikki pizzat ja niihin liittyvät täytteet. Yhdistää täytteet pizzoihin.
+	 * @param selectLause: SQL-lause, jolla pizzat haetaan
+	 * @return pitsut: Lista pizza-olioista, joihin on yhdistetty täytteet
+	 */
 	public ArrayList<Pizza> haeKaikkiPizzatTaytteilla(String selectLause) throws DAOPoikkeus{
 		ArrayList<Pizza> pitsut = new ArrayList<Pizza>();
-		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
+		Connection yhteys = avaaYhteys();
 		try {
-			Statement selectHaku = yhteys.createStatement(); //Syöttää SQL:ään komennon, jolla valitaan pizzat
+			Statement selectHaku = yhteys.createStatement();
 			ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
-			while (selectTulokset.next()){ //Laitetaan tulokset omiin muuttujiinsa
+			while (selectTulokset.next()){
 				int id = selectTulokset.getInt("pizza_id");
 				String nimi = selectTulokset.getString("pizza.nimi");
 				Double hinta = selectTulokset.getDouble("hinta");
@@ -32,7 +40,7 @@ public class PizzaDAO extends Yhteys {
 				p.addTayte(t);
 				boolean oliSamaaPizzaa = true;
 				
-				do{//Lisätään täytteet oikeaan pizzaan
+				do{ //Lisätään täytteet oikeaan pizzaan
 					if (selectTulokset.next() && selectTulokset.getString("pizza.nimi").equals(nimi)) {
 						taytenimi = selectTulokset.getString("tayte.nimi");
 						if (taytenimi != null) {
@@ -57,12 +65,18 @@ public class PizzaDAO extends Yhteys {
 		return pitsut;
 	}
 	
+	/**
+	 * Hakee pizzan hinnan
+	 * @param pizza: Pizzan nimi, jonka hinta halutaan tietää
+	 * @return pizzatieto: Palauttaa annetun pizzan hinnan
+	 * @return 0: Jos pizzaa ei löydy tietokannasta, palauttaa hinnan 0
+	 */
 	public double pizzaHinta(String pizza) throws DAOPoikkeus, SQLException{
-		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
+		Connection yhteys = avaaYhteys();
 		String selectLause = "Select hinta FROM Pizza WHERE Pizza.nimi = '" + pizza + "'";
-		Statement selectHaku = yhteys.createStatement(); //Syöttää SQL:ään komennon, jolla valitaan pizzat
+		Statement selectHaku = yhteys.createStatement();
 		ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
-		if (selectTulokset.next()) {	// Otetaan pitsan hinta ylös, mikäli sitä ei löydy, palauttaa hinnaksi 0.
+		if (selectTulokset.next()) {
 			double pizzatieto = selectTulokset.getDouble("hinta");
 			suljeYhteys(yhteys);
 			return pizzatieto;
@@ -73,12 +87,18 @@ public class PizzaDAO extends Yhteys {
 	
 	}
 	
+	/**
+	 * Hakee pizzan id:n
+	 * @param pizza: Pizzan nimi, jonka id halutaan tietää
+	 * @return pizzaId: Palauttaa annetun pizzan id:n
+	 * @return 0: Jos pizzaa ei löydy tietokannasta, palauttaa id:n 0
+	 */
 	public int pizzaid(String pizza) throws DAOPoikkeus, SQLException{
-		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
+		Connection yhteys = avaaYhteys();
 		String selectLause = "Select pizza_id FROM Pizza WHERE Pizza.nimi = '" + pizza + "'";
-		Statement selectHaku = yhteys.createStatement(); //Syöttää SQL:ään komennon, jolla valitaan pizzat
+		Statement selectHaku = yhteys.createStatement();
 		ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
-		if (selectTulokset.next()) {	// Otetaan pitsan hinta ylös, mikäli sitä ei löydy, palauttaa hinnaksi 0.
+		if (selectTulokset.next()) {
 			int pizzaId = selectTulokset.getInt("pizza_id");
 			suljeYhteys(yhteys);
 			return pizzaId;
@@ -89,7 +109,10 @@ public class PizzaDAO extends Yhteys {
 	
 	}
 	
-	//AddServicen käyttämä lisäysmetodi, jolla pizza lisätään tietokantaan. Ei käytössä.
+	/**
+	 * Lisää annetun pizzan Pizzat-tauluun
+	 * @param p: Lisättävä pizza
+	 */
 	public void lisaa(Pizza p) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
@@ -104,7 +127,11 @@ public class PizzaDAO extends Yhteys {
 			suljeYhteys(yhteys);
 		}
 	}
-	//AddServicen käyttämä poistometodi, jolla pizza poistetaan tietokannasta. Ei käytössä.
+
+	/**
+	 * Poistaa annetun pizzan Pizzat-taulusta
+	 * @param pois: Poistettava pizza
+	 */
 	public void poista(Pizza pois) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
@@ -125,6 +152,10 @@ public class PizzaDAO extends Yhteys {
 		
 	}
 	
+	/**
+	 * Muuttaa annetun pizzan statusta
+	 * @param p: Muutettava pizza
+	 */
 	public void muutaPizza(Pizza p)throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
@@ -134,12 +165,15 @@ public class PizzaDAO extends Yhteys {
 			lause.setInt(2, p.getId());
 			lause.executeUpdate();
 		} catch (Exception e) {
-			// TODO: handle exception
 		}finally {
 			suljeYhteys(yhteys);
 		}
 	}
-	
+	/**
+	 * Yhdistää listan täytteitä annettuun pizzaan
+	 * @param pt: Pizza, johon täytteet liitetään
+	 * @param taytteet: Lista täytteistä, jotka pizzaan liitetään
+	 */
 	public void lisaaPizztayte(Pizza pt, ArrayList<Integer> taytteet) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		String sql="insert into Pizza(nimi, hinta, status) values(?,?,?)";
@@ -170,33 +204,9 @@ public class PizzaDAO extends Yhteys {
 				lause2.executeUpdate();
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
-		}finally{
+			
+		} finally{
 			suljeYhteys(yhteys);
 		}
-	}
-	
-	public PizzaDAO (String pizza) throws DAOPoikkeus, SQLException{
-		pizzatieto(pizza);
-	}
-	
-	public void tilausriviin(){
-		
-	}
-
-	public double pizzatieto(String pizza) throws DAOPoikkeus, SQLException{
-		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
-		String selectLause = "Select hinta FROM Pizza WHERE Pizza.nimi = '" + pizza + "'";
-		Statement selectHaku = yhteys.createStatement(); //Syöttää SQL:ään komennon, jolla valitaan pizzat
-		ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
-		if (selectTulokset.next()) {	// Otetaan pitsan hinta ylös, mikäli sitä ei löydy, palauttaa hinnaksi 0.
-			double pizzatieto = selectTulokset.getDouble("hinta");
-			suljeYhteys(yhteys);
-			return pizzatieto;			
-		}else {
-			suljeYhteys(yhteys);
-			return 0;
-		}
-	}
-	
+	}	
 }

@@ -14,20 +14,27 @@ import java.util.ArrayList;
 
 import fi.omapizzeria.pizzagatto.bean.Juoma;
 
-
+/**
+ * Hoitaa kaikki muutokset tietokannassa, jotka liittyvät juomiin
+ */
 public class JuomaDAO extends Yhteys {	
 	
 	public JuomaDAO() throws DAOPoikkeus {
 		super();
 	}
 	
+	/**
+	 * Hakee Juomat-taulusta halutut juomat, pakkaa tiedot juoma-olioon ja oliot listaan.
+	 * @param selectLause: SQL-lause juomien hakuun
+	 * @return listan juomista
+	 */
 	private ArrayList<Juoma> haeJuomat(String selectLause) throws DAOPoikkeus {
 		ArrayList<Juoma> juomat = new ArrayList<Juoma>();
-		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
+		Connection yhteys = avaaYhteys();
 		try {
-			Statement selectHaku = yhteys.createStatement(); //Syöttää SQL:ään komennon, jolla valitaan juomat
+			Statement selectHaku = yhteys.createStatement();
 			ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
-			while (selectTulokset.next()){ //Laitetaan tulokset omiin muuttujiinsa
+			while (selectTulokset.next()){
 				int id=selectTulokset.getInt("juoma_id");
 				String nimi = selectTulokset.getString("nimi");
 				Double hinta = selectTulokset.getDouble("hinta");
@@ -48,12 +55,18 @@ public class JuomaDAO extends Yhteys {
 		return juomat;
 	}
 	
+	/**
+	 * Hakee juoman hinnan
+	 * @param juoma: Juoman nimi, jonka hinta halutaan tietää
+	 * @return juomatieto: Palauttaa annetun juoman hinnan
+	 * @return 0: Jos juomaa ei löydy tietokannasta, palauttaa hinnan 0
+	 */
 	public double juomaHinta(String juoma) throws DAOPoikkeus, SQLException {
 		Connection yhteys = avaaYhteys();
 		String selectLause = "Select hinta FROM Juoma WHERE Juoma.nimi = '" + juoma + "'";
 		Statement selectHaku = yhteys.createStatement();
 		ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
-		if (selectTulokset.next()) {	// Otetaan juoman hinta ylös, mikäli sitä ei löydy, palauttaa hinnaksi 0.
+		if (selectTulokset.next()) {
 			double juomatieto = selectTulokset.getDouble("hinta");
 			suljeYhteys(yhteys);
 			return juomatieto;
@@ -64,12 +77,18 @@ public class JuomaDAO extends Yhteys {
 		
 	}
 	
+	/**
+	 * Hakee juoman id:n
+	 * @param juoma: Juoman nimi, jonka id halutaan tietää
+	 * @return juomaId: Palauttaa annetun juoman id:n
+	 * @return 0: Jos juomaa ei löydy tietokannasta, palauttaa id:n 0
+	 */
 	public int juomaid(String juoma) throws DAOPoikkeus, SQLException{
-		Connection yhteys = avaaYhteys(); //Avaa yhteyden tietokantaan
+		Connection yhteys = avaaYhteys();
 		String selectLause = "Select juoma_id FROM Juoma WHERE Juoma.nimi = '" + juoma + "'";
-		Statement selectHaku = yhteys.createStatement(); //Syöttää SQL:ään komennon, jolla valitaan pizzat
+		Statement selectHaku = yhteys.createStatement();
 		ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
-		if (selectTulokset.next()) {	// Otetaan pitsan hinta ylös, mikäli sitä ei löydy, palauttaa hinnaksi 0.
+		if (selectTulokset.next()) {
 			int juomaId = selectTulokset.getInt("juoma_id");
 			suljeYhteys(yhteys);
 			return juomaId;
@@ -80,6 +99,10 @@ public class JuomaDAO extends Yhteys {
 	
 	}
 	
+	/**
+	 * Hakee juomat tilaussivulle
+	 * @return juomat: lista juomista, joiden tyyppi on virvoitusjuoma
+	 */
 	public ArrayList<Juoma> haeJuomatTilaus() throws DAOPoikkeus{
 		ArrayList<Juoma> juomat = new ArrayList<Juoma>();
 			String selectLause = "Select juoma_id, nimi, hinta, koko, tyyppi from Juoma where tyyppi='virvoitusjuoma'";
@@ -88,7 +111,10 @@ public class JuomaDAO extends Yhteys {
 		return juomat;
 	}
 	
-	
+	/**
+	 * Hakee juomat menuun
+	 * @return juomat: lista juomista
+	 */
 	public ArrayList<Juoma> haeJuomatMenu() throws DAOPoikkeus{
 		ArrayList<Juoma> juomat = new ArrayList<Juoma>();
 			String selectLause = "Select juoma_id,nimi, hinta, koko, tyyppi from Juoma";
@@ -97,8 +123,10 @@ public class JuomaDAO extends Yhteys {
 		return juomat;
 	}
 	
-	
-	//AddServicen käyttämä lisäysmetodi, jolla pizza lisätään tietokantaan. Ei käytössä.
+	/**
+	 * Lisää annetun juoman Juomat-tauluun
+	 * @param j: Lisättävä juoma
+	 */
 	public void lisaa(Juoma j) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
@@ -115,7 +143,11 @@ public class JuomaDAO extends Yhteys {
 			suljeYhteys(yhteys);
 		}
 	}
-	//AddServicen käyttämä poistometodi, jolla pizza poistetaan tietokannasta. Ei käytössä.
+
+	/**
+	 * Poistaa annetun juoman Juomat-taulusta
+	 * @param j: Poistettava juoma
+	 */
 	public void poista(Juoma pois) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
@@ -128,25 +160,5 @@ public class JuomaDAO extends Yhteys {
 		}finally {
 			suljeYhteys(yhteys);
 		}
-	}
-	
-	public JuomaDAO (String juoma) throws DAOPoikkeus, SQLException{
-		juomatieto(juoma);
-	}
-	
-	public double juomatieto(String juoma) throws DAOPoikkeus, SQLException {
-		Connection yhteys = avaaYhteys();
-		String selectLause = "Select hinta FROM Juoma WHERE Juoma.nimi = '" + juoma + "'";
-		Statement selectHaku = yhteys.createStatement();
-		ResultSet selectTulokset = selectHaku.executeQuery(selectLause);
-		if (selectTulokset.next()) {	// Otetaan juoman hinta ylös, mikäli sitä ei löydy, palauttaa hinnaksi 0.
-			double juomatieto = selectTulokset.getDouble("hinta");
-			suljeYhteys(yhteys);
-			return juomatieto;
-		}else {
-			suljeYhteys(yhteys);
-			return 0;
-		}
-	}
-	
+	}	
 }

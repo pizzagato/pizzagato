@@ -13,7 +13,6 @@ import javax.xml.bind.DatatypeConverter;
 
 /**
  * Luokalla generoidaan suola ja kryptataan käyttäjän antama salasana
- * 
  */
 public class Salaaja {
 
@@ -24,6 +23,14 @@ public class Salaaja {
 	public static final String SHA384 = "SHA-384";
 	public static final String SHA512 = "SHA-512";
 
+	/**
+	 * Salaa käyttäjän syöttämän salasanan ja palauttaa salasanan salattuna ja suolattuna
+	 * @param salattavaTeksti: Käyttäjän syöttämä salasana
+	 * @param suola: Salauksessa käytettävä suola
+	 * @param salausalgoritmi: Salauksessa käytettävä salausalgoritmi
+	 * @param montakoKertaa: Kuinka monta kertaa salasanan salaus suoritetaan
+	 * @return
+	 */
 	public static String salaa(String salattavaTeksti, String suola,
 			String salausalgoritmi, int montakoKertaa)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException {

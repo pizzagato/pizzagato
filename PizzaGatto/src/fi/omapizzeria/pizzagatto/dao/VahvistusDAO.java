@@ -9,10 +9,16 @@ import fi.omapizzeria.pizzagatto.bean.Tilaus;
 import fi.omapizzeria.pizzagatto.bean.Tilausrivi;
 
 public class VahvistusDAO extends Yhteys{
+	
 	public VahvistusDAO() throws DAOPoikkeus{
 		
 	}
 	
+	/**
+	 * Lis‰‰ k‰ytt‰j‰n tilauksen Tilaus-tauluun
+	 * @param t: Lis‰tt‰v‰ tilaus
+	 * @param ti: Tilaukseen kuuluvat tilausrivit
+	 */
 	public void lisaaVahvistus(Tilaus t, ArrayList<Tilausrivi> ti) throws DAOPoikkeus{
 		Connection yhteys = avaaYhteys();
 		try {
@@ -31,8 +37,7 @@ public class VahvistusDAO extends Yhteys{
 			if(setit.next()){
 				maxid=setit.getInt(1);
 			}
-			//String sql2 = "insert into Tilausrivi(tilaus_id, pizza_id, juoma_id, rivihinta, maara) values(?,?,?,?,?)";
-			//PreparedStatement lause2 = yhteys.prepareStatement(sql2);
+
 			for (int i = 0; i < ti.size(); i++) {
 				String sql2 = "insert into Tilausrivi(tilaus_id, pizza_id, juoma_id, rivihinta, maara) values(?,?,?,?,?)";
 				PreparedStatement lause2 = yhteys.prepareStatement(sql2);

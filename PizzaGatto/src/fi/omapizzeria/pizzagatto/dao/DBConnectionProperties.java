@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 	/**
-	 * Tämä luokka hoitaa tietokantayhteyden asetusten lukemisen properties-tiedostosta
+	 * Hoitaa tietokantayhteyden asetusten lukemisen properties-tiedostosta
 	 */
 public class DBConnectionProperties {
 	public static final String FILE_NAME = "db_connection.properties";

@@ -10,6 +10,11 @@ import fi.omapizzeria.pizzagatto.bean.AdminUser;
 import fi.omapizzeria.pizzagatto.dao.AdminDAO;
 import fi.omapizzeria.pizzagatto.dao.DAOPoikkeus;
 
+/**
+ * Hoitaa kaiken kirjautumisprosessiin liittyvän
+ *
+ */
+
 public class LogInService {
 	private BanningService banService = new BanningService();
 	private AdminDAO admindao;
